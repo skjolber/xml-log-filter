@@ -30,8 +30,8 @@ The project is built with [Maven] and is available not yet on the central Maven 
 
 ```xml
 <dependency>
-	<groupId>com.github.skjolber.xml-log-filter</groupId>
-	<artifactId>xml-log-filter-core</artifactId>
+    <groupId>com.github.skjolber.xml-log-filter</groupId>
+    <artifactId>xml-log-filter-core</artifactId>
     <version>1.0.0-SNAPSHOT</version>
 </dependency>
 ```
@@ -85,7 +85,7 @@ results in
 
 ```xml
 <parent>
-	<child><!-- [SUBTREE REMOVED] --></child>
+    <child><!-- [SUBTREE REMOVED] --></child>
 </parent>
 ```
 
@@ -97,32 +97,32 @@ A minor subset of the XPath syntax is supported. However multiple expressions ca
 #### Anonymize 
 Supported syntax:
 
-	/my/xml/element
-	/my/xml/@attribute
+    /my/xml/element
+    /my/xml/@attribute
 
 with support for wildcards; 
 
-	/my/xml/*
-	/my/xml/@*
+    /my/xml/*
+    /my/xml/@*
 
 or a simple any-level element search 
 
-	//myElement
+    //myElement
 
 which cannot target attributes.
 
 #### Prune
 Supported syntax:
 
-	/my/xml/element
+    /my/xml/element
 
 with support for wildcards; 
 
-	/my/xml/*
+    /my/xml/*
 
 or a simple any-level element search 
 
-	//myElement
+    //myElement
 
 ## Performance
 The processors within this project are considerably faster than stock processors. This is expected as parser/serializer features have been traded for performance.
@@ -140,10 +140,10 @@ See the [xml-formatter] for additional indenting/formatting.
 - [1.0.0]: Initial release.
 
 [1.0.0]:                releases
-[Aalto]:				https://github.com/FasterXML/aalto-xml
-[Apache 2.0]:          	http://www.apache.org/licenses/LICENSE-2.0.html
-[issue-tracker]:       	https://github.com/skjolber/xml-log-filter/issues
-[Maven]:               	http://maven.apache.org/
-[latest]: 				https://www.w3.org/XML/Test/
+[Aalto]:                https://github.com/FasterXML/aalto-xml
+[Apache 2.0]:           http://www.apache.org/licenses/LICENSE-2.0.html
+[issue-tracker]:        https://github.com/skjolber/xml-log-filter/issues
+[Maven]:                http://maven.apache.org/
+[latest]:               https://www.w3.org/XML/Test/
 [JMH]:                  benchmark/jmh
-[xml-formatter]:		https://github.com/greenbird/xml-formatter-core
+[xml-formatter]:        https://github.com/greenbird/xml-formatter-core
