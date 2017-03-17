@@ -1,0 +1,7 @@
+<ns:parent xmlns:ns="http://www.greenbird.com">
+	<ns:child>
+		<ns:grandchild1></ns:grandchild1>
+		<ns:grandchild2></ns:grandchild2>
+		<ns:grandchild3></ns:grandchild3>
+	</ns:child>
+</ns:parent>

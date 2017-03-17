@@ -1,0 +1,5 @@
+<aparent>
+	<achild attr='[*****]' my="other">
+		<agrandchild></agrandchild>
+	</achild>
+</aparent>

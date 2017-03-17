@@ -1,0 +1,3 @@
+<aparent xmlns:my="urn">
+	<achild my:attr="value"/>
+</aparent>

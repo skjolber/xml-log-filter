@@ -1,0 +1,6 @@
+<aparent>
+	<achild  attr="doubleSpace"/>
+	<achild	attr="tab"/>
+	<achild attr="trailingSpace" />
+	<achild attr="trailingSpace" ></achild>
+</aparent>

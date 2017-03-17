@@ -1,0 +1,9 @@
+<parent>
+	<child>
+		<x>
+			<m>
+				<l a='b' c="d">[*****]</l>
+			</m>
+		</x>
+	</child>
+</parent>

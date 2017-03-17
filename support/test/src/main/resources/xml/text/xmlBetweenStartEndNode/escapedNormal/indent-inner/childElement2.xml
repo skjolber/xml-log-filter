@@ -1,0 +1,9 @@
+<parent>
+	<child>
+		<x>
+			<m>
+				<l a='b' c="d">text with &#198;&#216;&#197;&amp;</l>
+			</m>
+		</x>
+	</child>
+</parent>

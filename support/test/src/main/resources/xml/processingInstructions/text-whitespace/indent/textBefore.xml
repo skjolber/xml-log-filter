@@ -1,0 +1,5 @@
+<parent>
+	<child> text 
+		<?target data?>
+	</child>
+</parent>

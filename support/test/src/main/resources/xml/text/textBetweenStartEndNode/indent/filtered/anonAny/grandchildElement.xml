@@ -1,0 +1,10 @@
+<aparent>
+	<achild>
+		<achild>[*****]</achild>
+		<achild><![CDATA[[*****]]]></achild>
+		<anotherchild>text</anotherchild>
+		<!-- comment -->
+		<empty></empty>
+		<?target data?>
+	</achild>
+</aparent>
