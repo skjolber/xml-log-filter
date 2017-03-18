@@ -154,7 +154,7 @@ public class SoapHeaderBenchmark {
 	}
 	
 	@Benchmark
-    public long filter_passthrough() {
+    public long filter_noop_passthrough() {
         return defaultXmlFilter.benchmark();
     }
 
@@ -174,12 +174,12 @@ public class SoapHeaderBenchmark {
     }
 
 	@Benchmark
-    public long filter_stax_soapheader_singleXPathAnonymizeStAXSoapHeaderXmlFilter() {
+    public long filter_soapheader_stax_singleXPathAnonymizeStAXSoapHeaderXmlFilter() {
         return singleXPathAnonymizeStAXSoapHeaderXmlFilter.benchmark();
     }
 	
 	@Benchmark
-    public long filter_stax_soapheader_singleXPathPruneStAXSoapHeaderXmlFilter() {
+    public long filter_soapheader_stax_singleXPathPruneStAXSoapHeaderXmlFilter() {
         return singleXPathPruneStAXSoapHeaderXmlFilter.benchmark();
     }
 
@@ -220,7 +220,7 @@ public class SoapHeaderBenchmark {
 
 	
 	@Benchmark
-    public long reference_w3cDomXPathXmlFilter() {
+    public long filter_dom_w3cDomXPathXmlFilter() {
         return w3cDomXPathXmlIndentationFilter.benchmark();
     }	
 

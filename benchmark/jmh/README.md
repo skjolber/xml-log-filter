@@ -80,7 +80,7 @@ is included. This filter simply copies from input to output and serves as a mini
 java -Ddirectory=./src/test/resources/soap -jar target/benchmarks.jar SoapHeaderBench
 ```
 
-runs for a few minutes.
+Runtime is a few (4-5) minutes.
 
 [JMH]: http://openjdk.java.net/projects/code-tools/jmh/
 [Aalto XML]: https://github.com/FasterXML/aalto-xml

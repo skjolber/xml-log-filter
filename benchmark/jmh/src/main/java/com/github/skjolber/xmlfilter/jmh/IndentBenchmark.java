@@ -119,7 +119,7 @@ public class IndentBenchmark {
 	}
 
 	@Benchmark
-    public long filter_passthrough() {
+    public long filter_noop_passthrough() {
         return defaultXmlFilter.benchmark();
     }
 
@@ -174,7 +174,7 @@ public class IndentBenchmark {
     }	
 	
 	@Benchmark
-    public long indent_reference_w3cDomXmlIndentationFilter() {
+    public long indent_dom_w3cDomXmlIndentationFilter() {
         return w3cDomIndentationFilter.benchmark();
     }	
 
