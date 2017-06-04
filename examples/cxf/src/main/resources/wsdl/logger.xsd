@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://xmlns.skjolber.github.com/schema/logger"
+	xmlns:tns="http://xmlns.skjolber.github.com/schema/logger" elementFormDefault="qualified">
+
+	<annotation>
+		<documentation>Example of web service</documentation>
+	</annotation>
+
+	<element name="logHeader">
+		<complexType>
+            <sequence>
+                <element name="userId" type="string"/>
+                <element name="sessionId" type="string"/>
+            </sequence>
+		</complexType>
+	</element>
+
+	<element name="performLogMessageRequest">
+		<complexType>
+			<sequence>
+				<element name="image" type="string"/>
+			</sequence>
+		</complexType>
+	</element>
+
+	<element name="performLogMessageResponse">
+		<complexType>
+			<sequence>
+				<element name="image" type="string"/>
+			</sequence>
+		</complexType>
+	</element>
+
+    <element name="errorResponse" >
+        <complexType>
+            <sequence>
+                <element name="code" type="string"/>
+                <element name="message" type="string"/>
+            </sequence>
+        </complexType>
+    </element>
+
+</schema>

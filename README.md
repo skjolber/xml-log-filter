@@ -15,6 +15,12 @@ Projects using this library will benefit from:
     * Indenting (pretty-printing) for use in testing
   * Custom processors
     * SOAP header filter
+  * Support for popular frameworks
+    * CXF 
+    * JAX-RS
+  * Examples
+    * Spring
+    * CXF
 
 The processors have all been validated to handle valid documents using the [latest] W3C XML test suite.
 
@@ -123,6 +129,7 @@ with support for wildcards;
 or a simple any-level element search 
 
     //myElement
+
 
 ## Performance
 The processors within this project are considerably faster than stock processors. This is expected as parser/serializer features have been traded for performance.

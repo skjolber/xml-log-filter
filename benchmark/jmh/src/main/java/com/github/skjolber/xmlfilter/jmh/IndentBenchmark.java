@@ -48,7 +48,6 @@ import com.skjolberg.xmlfilter.w3c.dom.XPathFilterFactory;
 public class IndentBenchmark {
 		
 	private BenchmarkRunner defaultXmlFilter;
-	private BenchmarkRunner maxNodeLengthXmlFilter;	
 	private BenchmarkRunner xmlIndentationFilter;
 	private BenchmarkRunner maxNodeLengthXmlIndentationFilter;
 	private BenchmarkRunner singleXPathXmlIndentationFilter;
@@ -71,9 +70,6 @@ public class IndentBenchmark {
 		
 		defaultXmlFilter = new BenchmarkRunner(file, true);
 		defaultXmlFilter.setXmlFilter(new DefaultXmlFilter());
-
-		maxNodeLengthXmlFilter = new BenchmarkRunner(file, true);
-		maxNodeLengthXmlFilter.setXmlFilter(new MaxNodeLengthXmlFilter(false, -1, -1));
 
 		xmlIndentationFilter = new BenchmarkRunner(file, true);
 		xmlIndentationFilter.setXmlFilter(new XmlIndentationFilter(false, indent));
@@ -121,11 +117,6 @@ public class IndentBenchmark {
 	@Benchmark
     public long filter_noop_passthrough() {
         return defaultXmlFilter.benchmark();
-    }
-
-	@Benchmark
-    public long filter_maxNodeLengthXmlFilter() {
-        return maxNodeLengthXmlFilter.benchmark();
     }
 
 	@Benchmark
@@ -187,7 +178,7 @@ public class IndentBenchmark {
        Options opt = new OptionsBuilder()
                .include(IndentBenchmark.class.getSimpleName())
                .warmupIterations(25)
-               .measurementIterations(50)
+               .measurementIterations(200)
                .build();
 
        new Runner(opt).run();

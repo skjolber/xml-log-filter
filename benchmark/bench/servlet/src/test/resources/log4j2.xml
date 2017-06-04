@@ -1,0 +1,19 @@
+<Configuration monitorInterval="60">
+	<Properties>
+		<Property name="log-path">target/applogs</Property>
+	</Properties>
+	<Appenders>
+		<Console name="consoleAppender" target="SYSTEM_OUT">
+			<PatternLayout>
+				<pattern>
+					[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n
+				</pattern>
+			</PatternLayout>
+		</Console>
+	</Appenders>
+	<Loggers>
+		<Root level="info">
+			<AppenderRef ref="consoleAppender" />
+		</Root>
+	</Loggers>
+</Configuration>

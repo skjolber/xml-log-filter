@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="LoggerService"
+	targetNamespace="http://xmlns.skjolber.github.com/schema/logger" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:e="http://xmlns.skjolber.github.com/schema/logger"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+	<wsdl:types>
+		<xsd:schema>
+			<xsd:import namespace="http://xmlns.skjolber.github.com/schema/logger" schemaLocation="logger.xsd" />
+		</xsd:schema>
+	</wsdl:types>
+
+	<wsdl:message name="performLogMessageRequest">
+		<wsdl:part name="parameters" element="e:performLogMessageRequest" />
+	</wsdl:message>
+	<wsdl:message name="performLogMessageResponse">
+		<wsdl:part name="parameters" element="e:performLogMessageResponse" />
+	</wsdl:message>
+	
+   <wsdl:message name="logHeader">
+      <wsdl:part name="logHeader" element="e:logHeader"/>
+   </wsdl:message>
+
+	<wsdl:message name="loggerException">
+		<wsdl:part name="fault" element="e:errorResponse" />
+	</wsdl:message>
+
+	<wsdl:portType name="LoggerPort">
+		<wsdl:operation name="performLogMessage">
+			<wsdl:input message="e:performLogMessageRequest" />
+			<wsdl:output message="e:performLogMessageResponse" />
+			<wsdl:fault name="loggerException" message="e:loggerException"/>
+		</wsdl:operation>
+	</wsdl:portType>
+
+	<wsdl:binding name="LoggerServiceSoapBinding" type="e:LoggerPort">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="performLogMessage">
+			<soap:operation soapAction="" style="document" />
+			<wsdl:input>
+				<soap:header use="literal" part="logHeader" message="e:logHeader"/>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="LoggerService">
+		<wsdl:port name="LoggerPort" binding="e:LoggerServiceSoapBinding">
+			<soap:address location="http://localhost:50000/services/logger/message" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

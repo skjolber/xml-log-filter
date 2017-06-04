@@ -1,0 +1,25 @@
+<Configuration monitorInterval="60">
+	<Properties>
+		<Property name="log-path">target/applogs</Property>
+	</Properties>
+	<Appenders>
+		<RollingRandomAccessFile name="appAppender"
+			fileName="${log-path}/app.log"
+			filePattern="${log-path}/app.log.%d{yyyy-MM-dd-hh-mm-ss-SSS}"
+			>
+			<PatternLayout>
+				<Pattern>[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n
+				</Pattern>
+			</PatternLayout>
+			<Policies>
+				<SizeBasedTriggeringPolicy size="100 MB" />
+			</Policies>
+			<DefaultRolloverStrategy max="10" />
+		</RollingRandomAccessFile>
+	</Appenders>
+	<Loggers>
+	    <Root level="info" includeLocation="false">
+	      <AppenderRef ref="RandomAccessFile"/>
+	    </Root>	
+	</Loggers>
+</Configuration>

@@ -1,0 +1,1 @@
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"><soap:Body><ns2:sayHello xmlns:ns2="http://cxf.xmlformatter.greenbird.com/"><text>Thomas</text></ns2:sayHello></soap:Body></soap:Envelope>

@@ -1,0 +1,35 @@
+<Configuration monitorInterval="60">
+	<Properties>
+		<Property name="log-path">target/applogs</Property>
+	</Properties>
+	<Appenders>
+		<RollingRandomAccessFile name="appAppender"
+			fileName="${log-path}/app.log"
+			filePattern="${log-path}/app.log.%d{yyyy-MM-dd-hh-mm-ss-SSS}"
+			>
+			<PatternLayout>
+				<Pattern>[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n
+				</Pattern>
+			</PatternLayout>
+			<Policies>
+				<SizeBasedTriggeringPolicy size="100 MB" />
+                <OnStartupTriggeringPolicy />
+			</Policies>
+			<DefaultRolloverStrategy max="2" />
+		</RollingRandomAccessFile>
+	</Appenders>
+	<Loggers>
+		<AsyncLogger name="org.springframework.web" level="info">
+			<AppenderRef ref="appAppender" />
+		</AsyncLogger>
+		<AsyncLogger name="org.apache.cxf.services" level="info">
+			<AppenderRef ref="appAppender" />
+		</AsyncLogger>		
+		<AsyncLogger name="com.github.skjolber" level="info">
+			<AppenderRef ref="appAppender" />
+		</AsyncLogger>
+		<Root level="warn">
+			<AppenderRef ref="appAppender" />
+		</Root>
+	</Loggers>
+</Configuration>
