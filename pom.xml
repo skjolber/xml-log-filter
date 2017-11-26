@@ -61,7 +61,8 @@
 		<xmlunit.version>2.3.0</xmlunit.version>
 		<logback.version>1.2.1</logback.version>
 		<slf4j.version>1.7.24</slf4j.version>
-		
+
+		<!-- plugins -->
 		<build-helper-maven-plugin.version>1.9.1</build-helper-maven-plugin.version>
 		<jacoco-maven-plugin.version>0.7.8</jacoco-maven-plugin.version>
 		<nexus-staging-maven-plugin.version>1.6.7</nexus-staging-maven-plugin.version>
@@ -71,9 +72,10 @@
 		<maven-release-plugin.version>2.5.3</maven-release-plugin.version>
 		<maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
 		<maven-dependency-plugin.version>2.10</maven-dependency-plugin.version>
+		<jacoco-maven-plugin.version>0.7.8</jacoco-maven-plugin.version>
+		<maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
 		<maven-shade-plugin.version>2.0</maven-shade-plugin.version>
 		<maven-war-plugin.version>3.0.0</maven-war-plugin.version>
-		<jacoco-maven-plugin.version>0.7.8</jacoco-maven-plugin.version>
 	</properties>
 	
 	<dependencyManagement>
@@ -84,33 +86,14 @@
 				<version>${indent.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>junit</groupId>
-				<artifactId>junit</artifactId>
-				<version>${junit.version}</version>
-				<scope>test</scope>
-			</dependency>
-			<dependency>
 				<groupId>commons-io</groupId>
 				<artifactId>commons-io</artifactId>
 				<version>${commons-io.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.mockito</groupId>
-				<artifactId>mockito-core</artifactId>
-				<version>${mockito.version}</version>
-				<scope>test</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.hamcrest</groupId>
-				<artifactId>hamcrest-library</artifactId>
-				<version>${hamcrest.version}</version>
-				<scope>test</scope>
-			</dependency>
-			<dependency>
 				<groupId>com.github.skjolber.xml-log-filter</groupId>
 				<artifactId>xml-log-filter-test</artifactId>
 				<version>${project.version}</version>
-				<scope>test</scope>
 			</dependency>
 			<dependency>
 				<groupId>com.github.skjolber.xml-log-filter</groupId>
@@ -203,7 +186,25 @@
 			    <groupId>org.xmlunit</groupId>
 			    <artifactId>xmlunit-core</artifactId>
 			    <version>${xmlunit.version}</version>
-			</dependency>	
+			</dependency>
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>${junit.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.mockito</groupId>
+				<artifactId>mockito-core</artifactId>
+				<version>${mockito.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.hamcrest</groupId>
+				<artifactId>hamcrest-library</artifactId>
+				<version>${hamcrest.version}</version>
+				<scope>test</scope>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 	
@@ -213,32 +214,86 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-compiler-plugin</artifactId>
-					<version>3.1</version>
+					<version>${maven-compiler-plugin.version}</version>
 					<configuration>
-						<source>1.7</source>
-						<target>1.7</target>
+						<source>${maven.compiler.source}</source>
+						<target>${maven.compiler.target}</target>
 					</configuration>
 				</plugin>
-	            <plugin>
-	                <groupId>org.apache.maven.plugins</groupId>
-	                <artifactId>maven-surefire-plugin</artifactId>
-	                <version>${maven-surefire-plugin.version}</version>
-	                <configuration>
-	                    <forkMode>always</forkMode>
-	                    <redirectTestOutputToFile>true</redirectTestOutputToFile>
-	                </configuration>
-	            </plugin>
-				
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>${maven-surefire-plugin.version}</version>
+					<configuration>
+						<forkMode>always</forkMode>
+						<redirectTestOutputToFile>true</redirectTestOutputToFile>
+					</configuration>
+				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-dependency-plugin</artifactId>
-					<version>${maven-dependency-plugin.version}</version>
-				</plugin>				
+					<executions>
+						<execution>
+							<id>resource-dependencies</id>
+							<phase>process-test-resources</phase>
+							<goals>
+								<goal>unpack-dependencies</goal>
+							</goals>
+							<configuration>
+								<includeArtifactIds>xml-log-filter-test-resources</includeArtifactIds>
+								<includes>**/*.*</includes>
+								<outputDirectory>${project.build.testOutputDirectory}</outputDirectory>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
 				<plugin>
 					<groupId>org.jacoco</groupId>
 					<artifactId>jacoco-maven-plugin</artifactId>
 					<version>${jacoco-maven-plugin.version}</version>
-				</plugin>
+					<configuration>
+					<!-- 
+						<excludes>
+							<exclude>com/skjolberg/example/spring/soap/v1/*.class</exclude>
+						</excludes>
+					 -->					
+					</configuration>
+					<executions>
+						<execution>
+							<id>default-prepare-agent</id>
+							<goals>
+								<goal>prepare-agent</goal>
+							</goals>
+						</execution>
+						<execution>
+							<id>default-report</id>
+							<phase>prepare-package</phase>
+							<goals>
+								<goal>report</goal>
+							</goals>
+						</execution>
+						<execution>
+							<id>default-check</id>
+							<goals>
+								<goal>check</goal>
+							</goals>
+							<configuration>
+								<rules>
+									<rule>
+										<element>BUNDLE</element>
+										<limits>
+											<limit>
+												<counter>INSTRUCTION</counter>
+												<value>COVEREDRATIO</value>
+												<minimum>0.00</minimum>
+											</limit>
+										</limits>
+									</rule>
+								</rules>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>				
 				<plugin>
 					<groupId>org.sonatype.plugins</groupId>
 					<artifactId>nexus-staging-maven-plugin</artifactId>
@@ -295,8 +350,7 @@
 						<releaseProfiles>release</releaseProfiles>
 						<goals>deploy</goals>
 					</configuration>
-				</plugin>	
-				
+				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-gpg-plugin</artifactId>
@@ -335,27 +389,20 @@
 		<module>impl/soap-header</module>
 		<module>impl/stax-soap-header</module>
 		<module>impl/w3c-dom</module>
-		<module>benchmark/jmh</module>
 		<module>frameworks/cxf</module>
-		<module>examples/cxf</module>
-		<module>examples/servlet</module>
 		<module>frameworks/jax-rs</module>
-		<module>examples/jax-rs</module>
-		<module>benchmark/bench/servlet</module>
-		<module>benchmark/bench/cxf</module>
-		<!-- 
-		<module>benchmark/gatling</module>
-		-->
 	</modules>
 	
 	<profiles>
 		<profile>
-			<!-- mvn -P release release:perform -->
+			<id>base</id>
+		</profile>
+		<profile>
+			<!-- mvn -P release release:perform also see https://stackoverflow.com/questions/8304110/skip-a-submodule-during-a-maven-build -->
 			<id>release</id>
 			<properties>
-				<!-- this is useful when the desired key is not the default (first)
-					 export GPG_KEY_NAME=ABCDEF01
-				 -->
+				<!-- this is useful when the desired key is not the default (first) export 
+					GPG_KEY_NAME=ABCDEF01 -->
 				<gpg.executable>gpg</gpg.executable>
 				<gpg.keyname>${env.GPG_KEY_NAME}</gpg.keyname>
 			</properties>
@@ -363,10 +410,36 @@
 				<plugins>
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-release-plugin</artifactId>
+					</plugin>
+					<plugin>
+						<groupId>org.sonatype.plugins</groupId>
+						<artifactId>nexus-staging-maven-plugin</artifactId>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-gpg-plugin</artifactId>
 					</plugin>
 				</plugins>
 			</build>
+		</profile>
+		<profile>
+			<id>develop</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<modules>
+				<module>examples/cxf</module>
+				<module>examples/servlet</module>
+				<module>examples/jax-rs</module>
+				<module>benchmark/bench/servlet</module>
+				<module>benchmark/bench/cxf</module>
+				<module>benchmark/jmh</module>
+				<!-- 
+				<module>benchmark/gatling</module>
+				-->
+			
+			</modules>			
 		</profile>
 	</profiles>
 

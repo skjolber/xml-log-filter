@@ -10,7 +10,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.5.2.RELEASE</version>
+		<version>1.5.8.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
@@ -85,6 +85,12 @@
 			<groupId>com.github.skjolber.xml-log-filter</groupId>
 			<artifactId>xml-log-filter-w3c-dom</artifactId>
 			<version>${xml-log-filter.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>ch.qos.logback</groupId>					
+					<artifactId>logback-classic</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
         <dependency>
             <groupId>com.fasterxml</groupId>
@@ -114,8 +120,6 @@
 	</dependencies>
 	
 	<build>
-		<defaultGoal>clean test</defaultGoal>
-
 		<plugins>
 			<plugin>
 				<groupId>org.apache.cxf</groupId>
@@ -152,6 +156,5 @@
 			</plugin>
 		</plugins>
 	</build>
-
 
 </project>
