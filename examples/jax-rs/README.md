@@ -8,6 +8,6 @@ Build using maven command
 	
 then deploy resulting war package on Apache Tomcat version 7 or any other suitable container. Then access
 
-	http://${host}:${port}/xml-log-filter-jax-rs-example/myResource/myMethod
+	http://${host}:${port}/rest/myResource/myMethod
 	
 

@@ -13,7 +13,7 @@ import com.github.skjolber.xml.prettyprint.jaxrs.XmlLogFilter;
  * Resource (exposed at "myResource" path)
  */
 @Component
-@Path("myResource")
+@Path("/myResource")
 public class MyResource {
 
 	private static final String resourceValue = "<a><b>Value</b></a>";
@@ -24,7 +24,7 @@ public class MyResource {
     @GET
     @Produces(MediaType.TEXT_XML)
     @XmlLogFilter
-    @Path("myMethod")
+    @Path("/myMethod")
     public String myMethod() {
         return resourceValue;
     }
@@ -32,7 +32,7 @@ public class MyResource {
     @GET
     @Produces(MediaType.TEXT_XML)
     @XmlLogFilter(anonymizeFilters = {"/a/b"})
-    @Path("myFilterMethod")
+    @Path("/myFilterMethod")
     public String myFilerMethod() {
         return resourceValue;
     }

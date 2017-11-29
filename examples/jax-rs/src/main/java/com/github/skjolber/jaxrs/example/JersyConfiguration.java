@@ -1,14 +1,18 @@
 package com.github.skjolber.jaxrs.example;
 
+import javax.ws.rs.ApplicationPath;
+
 import org.glassfish.jersey.server.ResourceConfig;
+import org.springframework.context.annotation.Configuration;
 
 import com.github.skjolber.jaxrs.example.resource.MyResource;
 import com.github.skjolber.xml.prettyprint.jaxrs.XmlLogFilter;
-import com.skjolberg.xmlfilter.XmlFilter;
 
-public class MyApp extends ResourceConfig {
+@Configuration
+@ApplicationPath("/rest")
+public class JersyConfiguration extends ResourceConfig {
 
-	public MyApp() {
+	public JersyConfiguration() {
 		packages(MyResource.class.getPackage().getName(), XmlLogFilter.class.getPackage().getName());
 	}
 	
