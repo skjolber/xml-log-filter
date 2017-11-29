@@ -33,7 +33,7 @@ import org.apache.cxf.phase.Phase;
 
 /**
  * Caches part of an input. 
- * <br/> <br/>
+ * <br> <br>
  * TODO this class is more or less incompatible with a streaming approach.
  *
  */
@@ -48,9 +48,7 @@ public class LoggingAccumulatorInteceptor extends AbstractLoggingInterceptor {
 
     /**
      * Instantiates a new WireTapIn
-     * @param limit 
      *
-     * @param logMessageContent the log message content
      */
     public LoggingAccumulatorInteceptor() {
         super(Phase.RECEIVE);

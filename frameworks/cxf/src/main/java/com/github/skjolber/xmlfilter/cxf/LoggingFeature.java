@@ -39,15 +39,6 @@ import com.skjolberg.xmlfilter.soap.SoapHeaderXmlFilterFactory;
  * By attaching this feature to an endpoint, you
  * can specify logging. If this feature is present, an endpoint will log input
  * and output of ordinary and log messages.
- * <pre>
- * <![CDATA[
-    <jaxws:endpoint ...>
-      <jaxws:features>
-       <bean class="org.apache.cxf.ext.logging.LoggingFeature"/>
-      </jaxws:features>
-    </jaxws:endpoint>
-  ]]>
-  </pre>
  */
 @NoJSR250Annotations
 @Provider(value = Type.Feature)
