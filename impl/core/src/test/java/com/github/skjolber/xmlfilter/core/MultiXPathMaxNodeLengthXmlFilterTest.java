@@ -8,7 +8,6 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-import com.github.skjolber.xmlfilter.core.MultiXPathMaxNodeLengthXmlFilter;
 import com.skjolberg.xmlfilter.XmlFilter;
 
 public class MultiXPathMaxNodeLengthXmlFilterTest extends BaseXmlFilterTest {

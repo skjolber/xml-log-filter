@@ -3,8 +3,6 @@ package com.github.skjolber.xmlfilter.core;
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.github.skjolber.xmlfilter.core.MaxNodeLengthXmlFilter;
-import com.github.skjolber.xmlfilter.core.XmlFilterBuilder;
 import com.skjolberg.xmlfilter.XmlFilter;
 
 public class XmlFilterBuilderTest {

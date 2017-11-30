@@ -6,7 +6,6 @@ import java.util.List;
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.github.skjolber.xmlfilter.core.MaxNodeLengthXmlIndentationFilter;
 import com.skjolberg.xmlfilter.XmlFilter;
 
 public class MaxNodeLengthXmlIndentationFilterTest extends BaseXmlFilterTest {

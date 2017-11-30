@@ -7,7 +7,6 @@ import java.util.List;
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.github.skjolber.xmlfilter.core.DefaultXmlFilter;
 import com.skjolberg.xmlfilter.XmlFilter;
 
 public class DefaultXmlFilterTest extends BaseXmlFilterTest {

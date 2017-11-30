@@ -7,8 +7,6 @@ import java.util.Arrays;
 
 import org.junit.Test;
 
-import com.github.skjolber.xmlfilter.core.DefaultXmlFilterFactory;
-
 public class XmlFilterFactoryTest extends BaseXmlFilterTest {
 
 	@Test

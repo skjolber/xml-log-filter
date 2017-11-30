@@ -1,7 +1,7 @@
-package com.skjoblerg.xmlfilter.filter;
+package com.skjolberg.xmlfilter.filter;
 
-import static com.skjoblerg.xmlfilter.filter.XPathExpressions.INVALID_XPATH;
-import static com.skjoblerg.xmlfilter.filter.XPathExpressions.PASSTHROUGH_XPATH;
+import static com.skjolberg.xmlfilter.filter.XPathExpressions.INVALID_XPATH;
+import static com.skjolberg.xmlfilter.filter.XPathExpressions.PASSTHROUGH_XPATH;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
@@ -10,8 +10,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-import com.github.skjolber.indent.Indent;
-import com.skjolberg.xmlfilter.filter.AbstractXPathFilter;;
+import com.github.skjolber.indent.Indent;;
 public class AbstractXPathXmlFilterTest {
 
 	private class DefaultXPathXmlFilter extends AbstractXPathFilter {

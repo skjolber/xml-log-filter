@@ -1,4 +1,4 @@
-package com.skjoblerg.xmlfilter.filter;
+package com.skjolberg.xmlfilter.filter;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
@@ -12,8 +12,7 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 import com.github.skjolber.indent.Indent;
-import com.github.skjolber.xmlfilter.test.XmlFilterRunner;
-import com.skjolberg.xmlfilter.filter.AbstractXmlFilter;;
+import com.github.skjolber.xmlfilter.test.XmlFilterRunner;;
 public class AbstractXmlFilterTest {
 
 	private class DefaultXmlFilter extends AbstractXmlFilter {

@@ -8,8 +8,6 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-import com.github.skjolber.xmlfilter.core.MultiXPathMaxNodeLengthXmlFilter;
-import com.github.skjolber.xmlfilter.core.MultiXPathXmlIndentationFilter;
 import com.skjolberg.xmlfilter.XmlFilter;
 
 public class MultiXPathXmlIndentationFilterTest extends BaseXmlFilterTest {

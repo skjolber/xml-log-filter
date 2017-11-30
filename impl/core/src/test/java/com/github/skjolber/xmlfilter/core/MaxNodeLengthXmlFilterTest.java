@@ -6,7 +6,6 @@ import java.util.List;
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.github.skjolber.xmlfilter.core.MaxNodeLengthXmlFilter;
 import com.skjolberg.xmlfilter.XmlFilter;
 
 public class MaxNodeLengthXmlFilterTest extends BaseXmlFilterTest {
