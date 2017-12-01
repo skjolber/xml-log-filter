@@ -394,7 +394,7 @@
 		<module>impl/w3c-dom</module>
 		<module>frameworks/cxf</module>
 		<module>frameworks/jax-rs</module>
-	</modules>
+	</modules>			
 	
 	<profiles>
 		<profile>
@@ -409,18 +409,6 @@
 				<gpg.executable>gpg</gpg.executable>
 				<gpg.keyname>${env.GPG_KEY_NAME}</gpg.keyname>
 			</properties>
-			<modules>
-				<module>api</module>
-				<module>support/conformance</module>
-				<module>impl/base</module>
-				<module>impl/core</module>
-				<module>impl/stax</module>
-				<module>impl/soap-header</module>
-				<module>impl/stax-soap-header</module>
-				<module>impl/w3c-dom</module>
-				<module>frameworks/cxf</module>
-				<module>frameworks/jax-rs</module>
-			</modules>			
 			<build>
 				<plugins>
 					<plugin>
@@ -444,17 +432,6 @@
 				<activeByDefault>true</activeByDefault>
 			</activation>
 			<modules>
-				<module>api</module>
-				<module>support/test</module>
-				<module>support/conformance</module>
-				<module>impl/base</module>
-				<module>impl/core</module>
-				<module>impl/stax</module>
-				<module>impl/soap-header</module>
-				<module>impl/stax-soap-header</module>
-				<module>impl/w3c-dom</module>
-				<module>frameworks/cxf</module>
-				<module>frameworks/jax-rs</module>
 				<module>examples/cxf</module>
 				<module>examples/servlet</module>
 				<module>examples/jax-rs</module>
@@ -464,8 +441,7 @@
 				<!-- 
 				<module>benchmark/gatling</module>
 				-->
-			
-			</modules>			
+			</modules>
 		</profile>
 	</profiles>
 
