@@ -1,10 +1,12 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.github.skjolber.xml-log-filter</groupId>
 	<artifactId>xml-log-filter-parent</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
+	<name>xml-log-filter</name>
+	<description>Project for filtering of XML for logging purposes</description>
+	<url>https://github.com/skjolber/xml-log-filter</url>
 
 	<organization>
 		<name>Media Skjolberg</name>
@@ -30,6 +32,7 @@
 		<connection>scm:git:git@github.com:skjolber/xml-log-filter.git</connection>
 		<developerConnection>scm:git:git@github.com:skjolber/xml-log-filter.git</developerConnection>
 		<url>git@github.com:skjolber/xml-log-filter.git</url>
+		<tag>HEAD</tag>
 	</scm>
 
 	<issueManagement>
@@ -406,6 +409,18 @@
 				<gpg.executable>gpg</gpg.executable>
 				<gpg.keyname>${env.GPG_KEY_NAME}</gpg.keyname>
 			</properties>
+			<modules>
+				<module>api</module>
+				<module>support/conformance</module>
+				<module>impl/base</module>
+				<module>impl/core</module>
+				<module>impl/stax</module>
+				<module>impl/soap-header</module>
+				<module>impl/stax-soap-header</module>
+				<module>impl/w3c-dom</module>
+				<module>frameworks/cxf</module>
+				<module>frameworks/jax-rs</module>
+			</modules>			
 			<build>
 				<plugins>
 					<plugin>
@@ -429,6 +444,17 @@
 				<activeByDefault>true</activeByDefault>
 			</activation>
 			<modules>
+				<module>api</module>
+				<module>support/test</module>
+				<module>support/conformance</module>
+				<module>impl/base</module>
+				<module>impl/core</module>
+				<module>impl/stax</module>
+				<module>impl/soap-header</module>
+				<module>impl/stax-soap-header</module>
+				<module>impl/w3c-dom</module>
+				<module>frameworks/cxf</module>
+				<module>frameworks/jax-rs</module>
 				<module>examples/cxf</module>
 				<module>examples/servlet</module>
 				<module>examples/jax-rs</module>

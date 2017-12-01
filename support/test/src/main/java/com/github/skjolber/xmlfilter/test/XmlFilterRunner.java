@@ -11,8 +11,6 @@ import java.util.List;
 import java.util.Properties;
 
 import javax.xml.parsers.SAXParserFactory;
-import javax.xml.stream.XMLInputFactory;
-import javax.xml.stream.XMLStreamReader;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.xerces.jaxp.SAXParserFactoryImpl;
