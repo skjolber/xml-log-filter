@@ -32,13 +32,13 @@ Bugs, feature suggestions and help requests can be filed with the [issue-tracker
 [Apache 2.0]
 
 ## Obtain
-The project is built with [Maven] and is available not yet on the central Maven repository.
+The project is built with [Maven] and is available on the central Maven repository.
 
 ```xml
 <dependency>
     <groupId>com.github.skjolber.xml-log-filter</groupId>
     <artifactId>xml-log-filter-core</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.0</version>
 </dependency>
 ```
 

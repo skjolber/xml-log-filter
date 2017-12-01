@@ -2,7 +2,7 @@
 Pretty-printing CXF logging feature implementation using [xml-log-filter].
 
 ## Obtain
-The project is based on [Maven] and is not yet available on the central Maven repository.
+The project is based on [Maven] and is available on the central Maven repository.
 
 Example dependency config:
 
@@ -10,7 +10,7 @@ Example dependency config:
 <dependency>
     <groupId>com.github.skjolber.xml-log-filter</groupId>
     <artifactId>xml-log-filter-cxf</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.0</version>
 </dependency>
 ```
 

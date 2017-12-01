@@ -8,7 +8,7 @@ The project is based on [Maven] and is available on the central Maven repository
 <dependency>
     <groupId>com.github.skjolber.xml-log-filter</groupId>
     <artifactId>xml-log-filter-soap-header</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
 </dependency>
 ```
 
