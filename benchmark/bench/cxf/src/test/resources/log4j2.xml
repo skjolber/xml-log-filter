@@ -1,17 +1,16 @@
-<Configuration monitorInterval="60">
-	<Properties>
-		<Property name="log-path">target/applogs</Property>
-	</Properties>
-	<Appenders>
-		<Console name="consoleAppender" target="SYSTEM_OUT">
-			<PatternLayout>
-				<pattern>
-					[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n
-				</pattern>
-			</PatternLayout>
-		</Console>
-	</Appenders>
-	<Loggers>
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN" monitorInterval="30">
+    <Properties>
+        <Property name="LOG_PATTERN">
+            %d{yyyy-MM-dd HH:mm:ss.SSS} %5p ${hostName} --- [%15.15t] %-40.40c{1.} : %m%n%ex
+        </Property>
+    </Properties>
+    <Appenders>
+        <Console name="ConsoleAppender" target="SYSTEM_OUT" follow="true">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+        </Console>
+    </Appenders>
+    <Loggers>
 		<AsyncLogger name="org.springframework.web" level="info">
 			<AppenderRef ref="consoleAppender" />
 		</AsyncLogger>
@@ -21,8 +20,9 @@
 		<AsyncLogger name="com.github.skjolber" level="info">
 			<AppenderRef ref="consoleAppender" />
 		</AsyncLogger>
-		<Root level="warn">
-			<AppenderRef ref="consoleAppender" />
-		</Root>
-	</Loggers>
+
+        <Root level="info">
+            <AppenderRef ref="ConsoleAppender" />
+        </Root>
+    </Loggers>
 </Configuration>

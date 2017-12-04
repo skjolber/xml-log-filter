@@ -134,7 +134,7 @@ or a simple any-level element search
 ## Performance
 The processors within this project are considerably faster than stock processors. This is expected as parser/serializer features have been traded for performance.
 
-Depending on the implementation, throughput is at least double compared to stock processors. 
+Depending on the implementation, throughput is approximately double compared to stock processors.
 
 Memory use will be approximately two times the XML string size.
 

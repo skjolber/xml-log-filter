@@ -16,7 +16,7 @@ import org.xml.sax.InputSource;
 
 import com.skjolberg.xmlfilter.XmlFilter;
 
-public class W3cDomXPathXmlIndentationFilter implements XmlFilter {
+public class W3cDomXPathXmlFilter implements XmlFilter {
 
 	private final DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
 	private final DocumentBuilder documentBuilder;
@@ -28,7 +28,7 @@ public class W3cDomXPathXmlIndentationFilter implements XmlFilter {
 	private final boolean declaration;
 	private final boolean indent;
 	
-	public W3cDomXPathXmlIndentationFilter(boolean declaration, boolean indent, XPathFilter filter) throws Exception {
+	public W3cDomXPathXmlFilter(boolean declaration, boolean indent, XPathFilter filter) throws Exception {
 		this.declaration = declaration;
 		this.indent = indent;
     	this.filter = filter;

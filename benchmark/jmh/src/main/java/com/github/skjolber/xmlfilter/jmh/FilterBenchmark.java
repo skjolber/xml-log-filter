@@ -26,6 +26,7 @@ import org.openjdk.jmh.runner.options.OptionsBuilder;
 import com.fasterxml.aalto.stax.InputFactoryImpl;
 import com.fasterxml.aalto.stax.OutputFactoryImpl;
 import com.github.skjolber.xmlfilter.core.DefaultXmlFilter;
+import com.github.skjolber.xmlfilter.core.MaxNodeLengthXmlFilter;
 import com.github.skjolber.xmlfilter.core.MultiXPathMaxNodeLengthXmlFilter;
 import com.github.skjolber.xmlfilter.core.MultiXPathXmlFilter;
 import com.github.skjolber.xmlfilter.core.SingleXPathAnonymizeMaxNodeLengthXmlFilter;
@@ -35,46 +36,38 @@ import com.github.skjolber.xmlfilter.core.SingleXPathPruneXmlFilter;
 import com.github.skjolber.xmlfilter.jmh.utils.MapNamespaceContext;
 import com.github.skjolber.xmlfilter.stax.SingleXPathAnonymizeMaxNodeLengthStAXXmlFilter;
 import com.github.skjolber.xmlfilter.stax.SingleXPathPruneMaxNodeLengthStAXXmlFilter;
-import com.github.skjolber.xmlfilter.stax.soap.SingleXPathAnonymizeStAXSoapHeaderXmlFilter;
-import com.github.skjolber.xmlfilter.stax.soap.SingleXPathPruneStAXSoapHeaderXmlFilter;
-import com.skjolberg.xmlfilter.soap.SingleXPathAnonymizeSoapHeaderXmlFilter;
-import com.skjolberg.xmlfilter.soap.SingleXPathPruneSoapHeaderXmlFilter;
 import com.skjolberg.xmlfilter.w3c.dom.W3cDomXPathXmlFilter;
 import com.skjolberg.xmlfilter.w3c.dom.XPathFilter;
 import com.skjolberg.xmlfilter.w3c.dom.XPathFilterFactory;
 
-/**
- * 
- * Note that SOAP-header filters do no max node length filtering, then they would have to read the whole document.
- * 
- */
 
 @State(Scope.Thread)
 @BenchmarkMode(Mode.Throughput)
 @OutputTimeUnit(TimeUnit.SECONDS)
 @Warmup(iterations = 5, time = 1, timeUnit = TimeUnit.SECONDS)
 @Measurement(iterations = 15, time = 1, timeUnit = TimeUnit.SECONDS)
+
 @Fork(1)
-public class SoapHeaderBenchmark {
+public class FilterBenchmark {
 		
+	public static final String DEFAULT_XPATH = "/aparent/achild";
+	
 	private BenchmarkRunner defaultXmlFilter;
 	
-	private BenchmarkRunner xpathPruneXmlFilter;
-	private BenchmarkRunner xpathPruneMaxNodeLengthXmlFilter;
-	private BenchmarkRunner xpathAnonymizeXmlFilter;
-	private BenchmarkRunner xpathAnonymizeMaxNodeLengthXmlFilter;
+	private BenchmarkRunner singleXPathPruneXmlFilter;
+	private BenchmarkRunner singleXPathPruneMaxNodeLengthXmlFilter;
+	private BenchmarkRunner singleXPathAnonymizeXmlFilter;
+	private BenchmarkRunner singleXPathAnonymizeMaxNodeLengthXmlFilter;
 	private BenchmarkRunner multiXPathXmlFilter;
 	private BenchmarkRunner multiXPathMaxNodeLengthXmlFilter;
 	
-	private BenchmarkRunner xpathAnonymizeMaxNodeLengthStAXXmlFilter;
-	private BenchmarkRunner xpathPruneMaxNodeLengthStAXXmlFilter;
+	private BenchmarkRunner maxNodeLengthXmlFilter;
 	
-	private BenchmarkRunner xpathAnonymizeStAXSoapHeaderXmlFilter;
-	private BenchmarkRunner xpathPruneStAXSoapHeaderXmlFilter;
+	private BenchmarkRunner singleXPathAnonymizeMaxNodeLengthStAXXmlFilter;
+	private BenchmarkRunner singleXPathPruneMaxNodeLengthStAXXmlFilter;
 
-	private BenchmarkRunner xpathAnonymizeSoapHeaderXmlFilter;
-	private BenchmarkRunner xpathPruneSoapHeaderXmlFilter;
-
+	
+	
 	private BenchmarkRunner w3cDomXPathXmlFilter;
 
 	@Setup
@@ -90,55 +83,43 @@ public class SoapHeaderBenchmark {
 		
 		String property = System.getProperty("directory");
 		
-		String xpath = "/Envelope/Header/Security/UsernameToken/Password";
+		String xpath = DEFAULT_XPATH;
 		
 		File file = new File(property);
 
 		defaultXmlFilter = new BenchmarkRunner(file, true);
 		defaultXmlFilter.setXmlFilter(new DefaultXmlFilter());
 
-		// tailor made
-		// stax
-		xpathAnonymizeStAXSoapHeaderXmlFilter = new BenchmarkRunner(file, true);
-		xpathAnonymizeStAXSoapHeaderXmlFilter.setXmlFilter(new SingleXPathAnonymizeStAXSoapHeaderXmlFilter(true, xpath, 1, xmlInputFactory, xmlOutputFactory));
-
-		xpathPruneStAXSoapHeaderXmlFilter = new BenchmarkRunner(file, true);
-		xpathPruneStAXSoapHeaderXmlFilter.setXmlFilter(new SingleXPathPruneStAXSoapHeaderXmlFilter(true, xpath, 1, xmlInputFactory, xmlOutputFactory));
-
-		// xml-log-filter
-		xpathAnonymizeSoapHeaderXmlFilter = new BenchmarkRunner(file, true);
-		xpathAnonymizeSoapHeaderXmlFilter.setXmlFilter(new SingleXPathAnonymizeSoapHeaderXmlFilter(true, xpath, 1));
-
-		xpathPruneSoapHeaderXmlFilter = new BenchmarkRunner(file, true);
-		xpathPruneSoapHeaderXmlFilter.setXmlFilter(new SingleXPathPruneSoapHeaderXmlFilter(true, xpath, 1));
-
 		// generic filters
 		// stax
-		xpathPruneMaxNodeLengthStAXXmlFilter = new BenchmarkRunner(file, true);
-		xpathPruneMaxNodeLengthStAXXmlFilter.setXmlFilter(new SingleXPathPruneMaxNodeLengthStAXXmlFilter(true, xpath, -1, -1, xmlInputFactory, xmlOutputFactory));
+		singleXPathPruneMaxNodeLengthStAXXmlFilter = new BenchmarkRunner(file, true);
+		singleXPathPruneMaxNodeLengthStAXXmlFilter.setXmlFilter(new SingleXPathPruneMaxNodeLengthStAXXmlFilter(true, xpath, 127, 127, xmlInputFactory, xmlOutputFactory));
 
-		xpathAnonymizeMaxNodeLengthStAXXmlFilter = new BenchmarkRunner(file, true);
-		xpathAnonymizeMaxNodeLengthStAXXmlFilter.setXmlFilter(new SingleXPathAnonymizeMaxNodeLengthStAXXmlFilter(true, xpath, -1, -1, xmlInputFactory, xmlOutputFactory));
+		singleXPathAnonymizeMaxNodeLengthStAXXmlFilter = new BenchmarkRunner(file, true);
+		singleXPathAnonymizeMaxNodeLengthStAXXmlFilter.setXmlFilter(new SingleXPathAnonymizeMaxNodeLengthStAXXmlFilter(true, xpath, 127, 127, xmlInputFactory, xmlOutputFactory));
 		
 		// xml-log-filter
-		xpathAnonymizeXmlFilter = new BenchmarkRunner(file, true);
-		xpathAnonymizeXmlFilter.setXmlFilter(new SingleXPathAnonymizeXmlFilter(true, xpath));
+		singleXPathAnonymizeXmlFilter = new BenchmarkRunner(file, true);
+		singleXPathAnonymizeXmlFilter.setXmlFilter(new SingleXPathAnonymizeXmlFilter(true, xpath));
 
-		xpathPruneXmlFilter = new BenchmarkRunner(file, true);
-		xpathPruneXmlFilter.setXmlFilter(new SingleXPathPruneXmlFilter(true, xpath));
+		singleXPathPruneXmlFilter = new BenchmarkRunner(file, true);
+		singleXPathPruneXmlFilter.setXmlFilter(new SingleXPathPruneXmlFilter(true, xpath));
 
 		multiXPathXmlFilter = new BenchmarkRunner(file, true);
 		multiXPathXmlFilter.setXmlFilter(new MultiXPathXmlFilter(false, new String[]{xpath}, null));
 
-		xpathAnonymizeMaxNodeLengthXmlFilter = new BenchmarkRunner(file, true);
-		xpathAnonymizeMaxNodeLengthXmlFilter.setXmlFilter(new SingleXPathAnonymizeMaxNodeLengthXmlFilter(true, xpath, -1, -1));
+		singleXPathAnonymizeMaxNodeLengthXmlFilter = new BenchmarkRunner(file, true);
+		singleXPathAnonymizeMaxNodeLengthXmlFilter.setXmlFilter(new SingleXPathAnonymizeMaxNodeLengthXmlFilter(true, xpath, 127, 127));
 
-		xpathPruneMaxNodeLengthXmlFilter = new BenchmarkRunner(file, true);
-		xpathPruneMaxNodeLengthXmlFilter.setXmlFilter(new SingleXPathPruneMaxNodeLengthXmlFilter(true, xpath, -1, -1));
+		singleXPathPruneMaxNodeLengthXmlFilter = new BenchmarkRunner(file, true);
+		singleXPathPruneMaxNodeLengthXmlFilter.setXmlFilter(new SingleXPathPruneMaxNodeLengthXmlFilter(true, xpath, 127, 127));
 
 		multiXPathMaxNodeLengthXmlFilter = new BenchmarkRunner(file, true);
-		multiXPathMaxNodeLengthXmlFilter.setXmlFilter(new MultiXPathMaxNodeLengthXmlFilter(false, -1, -1, new String[]{xpath}, null));
+		multiXPathMaxNodeLengthXmlFilter.setXmlFilter(new MultiXPathMaxNodeLengthXmlFilter(false, 127, 127, new String[]{xpath}, null));
 
+		maxNodeLengthXmlFilter = new BenchmarkRunner(file, true);
+		maxNodeLengthXmlFilter.setXmlFilter(new MaxNodeLengthXmlFilter(false, 127, 127));
+		
 		// DOM
 		XPathFilterFactory factory = new XPathFilterFactory();
 		Map<String, String> namespaces = new HashMap<String, String>();
@@ -159,63 +140,48 @@ public class SoapHeaderBenchmark {
 
 	@Benchmark
     public long stax_pruneLimit() {
-        return xpathPruneMaxNodeLengthStAXXmlFilter.benchmark();
+        return singleXPathPruneMaxNodeLengthStAXXmlFilter.benchmark();
     }
 
 	@Benchmark
     public long stax_anonymizeLimit() {
-        return xpathAnonymizeMaxNodeLengthStAXXmlFilter.benchmark();
-    }
-
-	@Benchmark
-    public long soapheader_anonymize() {
-        return xpathAnonymizeSoapHeaderXmlFilter.benchmark();
-    }
-
-	@Benchmark
-    public long soapheader_prune() {
-        return xpathPruneSoapHeaderXmlFilter.benchmark();
-    }	
-
-	@Benchmark
-    public long soapheader_stax_anonymize() {
-        return xpathAnonymizeStAXSoapHeaderXmlFilter.benchmark();
-    }
-	
-	@Benchmark
-    public long soapheader_stax_prune() {
-        return xpathPruneStAXSoapHeaderXmlFilter.benchmark();
+        return singleXPathAnonymizeMaxNodeLengthStAXXmlFilter.benchmark();
     }
 
 	@Benchmark
     public long anonymize() {
-        return xpathAnonymizeXmlFilter.benchmark();
+        return singleXPathAnonymizeXmlFilter.benchmark();
     }
 
 	@Benchmark
     public long prune() {
-        return xpathPruneXmlFilter.benchmark();
+        return singleXPathPruneXmlFilter.benchmark();
     }
 
 	@Benchmark
-    public long nAnonymizePrune() {
+    public long nPruneAnonymize() {
         return multiXPathXmlFilter.benchmark();
     }	
 
 	@Benchmark
     public long anonymizeLimit() {
-        return xpathAnonymizeMaxNodeLengthXmlFilter.benchmark();
+        return singleXPathAnonymizeMaxNodeLengthXmlFilter.benchmark();
     }	
 
 	@Benchmark
     public long pruneLimit() {
-        return xpathPruneMaxNodeLengthXmlFilter.benchmark();
+        return singleXPathPruneMaxNodeLengthXmlFilter.benchmark();
     }	
 
 	@Benchmark
-    public long nAnonymizePruneLimit() {
+    public long nPruneAnonymizeLimit() {
         return multiXPathMaxNodeLengthXmlFilter.benchmark();
     }	
+
+	@Benchmark
+	public long limit() {
+		return maxNodeLengthXmlFilter.benchmark();
+	}
 	
 	@Benchmark
     public long dom_nPruneAnonymizeLimit() {
@@ -224,7 +190,7 @@ public class SoapHeaderBenchmark {
 
    public static void main(String[] args) throws RunnerException {
        Options opt = new OptionsBuilder()
-               .include(SoapHeaderBenchmark.class.getSimpleName())
+               .include(FilterBenchmark.class.getSimpleName())
                .warmupIterations(25)
                .measurementIterations(50)
                .build();

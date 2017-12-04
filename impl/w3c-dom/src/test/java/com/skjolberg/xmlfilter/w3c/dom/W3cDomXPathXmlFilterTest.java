@@ -14,7 +14,7 @@ import com.skjolberg.xmlfilter.w3c.dom.MapNamespaceContext;
 import com.skjolberg.xmlfilter.w3c.dom.XPathFilter;
 import com.skjolberg.xmlfilter.w3c.dom.XPathFilterFactory;
 
-public class W3cDomXPathXmlIndentationFilterTest extends BaseW3cDomXPathXmlIndentationFilterTest {
+public class W3cDomXPathXmlFilterTest extends BaseW3cDomXPathXmlIndentationFilterTest {
 
 	@Test
 	public void testFilter() throws Exception {
@@ -23,7 +23,7 @@ public class W3cDomXPathXmlIndentationFilterTest extends BaseW3cDomXPathXmlInden
 		MapNamespaceContext context = new MapNamespaceContext(namespaces);
 		XPathFilter filter = factory.getFilter(context, null, null);
 		
-		W3cDomXPathXmlIndentationFilter w3cDomXPathXmlIndentationFilter = new W3cDomXPathXmlIndentationFilter(false, true, filter);
+		W3cDomXPathXmlFilter w3cDomXPathXmlIndentationFilter = new W3cDomXPathXmlFilter(false, true, filter);
 	
 		List<XmlFilter> filters = new ArrayList<>();
 		filters.add(w3cDomXPathXmlIndentationFilter);
@@ -37,7 +37,7 @@ public class W3cDomXPathXmlIndentationFilterTest extends BaseW3cDomXPathXmlInden
 		MapNamespaceContext context = new MapNamespaceContext(namespaces);
 		XPathFilter xpathFilter = factory.getFilter(context, null, null);
 		
-		W3cDomXPathXmlIndentationFilter filter = new W3cDomXPathXmlIndentationFilter(false, true, xpathFilter);
+		W3cDomXPathXmlFilter filter = new W3cDomXPathXmlFilter(false, true, xpathFilter);
 		
 		Assert.assertNull(filter.process("</xml>"));
 		Assert.assertNull(filter.process("</xml>".toCharArray()));

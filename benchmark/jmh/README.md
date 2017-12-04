@@ -15,6 +15,14 @@ e.g.
 java -Ddirectory=./src/test/resources/soap -jar target/benchmarks.jar SoapHeaderBench
 ```
 
+or
+
+```
+java -Ddirectory=./src/test/resources/soap -jar target/benchmarks.jar  -wi 1 -i 1 -rf json -of json ".*Benchmark.*"
+```
+
+with a visualizer like [JMH Visualizer].
+
 # IndentBenchmark
 Benchmark including all pretty-printing xml-filters from this project, compared to various (more or less) reference implementations:
 
@@ -42,6 +50,9 @@ is included. This filter simply copies from input to output and serves as a mini
 ```
 java -Ddirectory=./src/test/resources/soap -jar target/benchmarks.jar IndentBenchmark
 ```
+
+# FilterBenchmark
+Combines an XPath expression with max node length of 127.
 
 # SoapHeaderBenchmark
 The SOAP header use-case requires the first part of the XML document to be filtered, whereas the bulk is to be skipped (kept as-is). A few reference implementations
@@ -124,5 +135,6 @@ Average time, floored.
 | indent_reference_w3cDomXPathXmlIndentationFilter  | 1453416 ± 11747 |
 | indent_reference_xercesSAXXmlIndentationFilter    | 763993 ±  5803 |
 
-[JMH]: http://openjdk.java.net/projects/code-tools/jmh/
-[Aalto XML]: https://github.com/FasterXML/aalto-xml
+[JMH]: 				http://openjdk.java.net/projects/code-tools/jmh/
+[Aalto XML]: 		https://github.com/FasterXML/aalto-xml
+[JMH Visualizer]:	http://jmh.morethan.io/

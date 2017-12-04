@@ -24,6 +24,7 @@ import com.github.skjolber.indent.IndentBuilder;
 import com.github.skjolber.xmlfilter.core.DefaultXmlFilter;
 import com.github.skjolber.xmlfilter.core.MaxNodeLengthXmlFilter;
 import com.github.skjolber.xmlfilter.core.MaxNodeLengthXmlIndentationFilter;
+import com.github.skjolber.xmlfilter.core.MultiXPathMaxNodeLengthXmlIndentationFilter;
 import com.github.skjolber.xmlfilter.core.MultiXPathXmlIndentationFilter;
 import com.github.skjolber.xmlfilter.core.SingleXPathXmlIndentationFilter;
 import com.github.skjolber.xmlfilter.core.XmlIndentationFilter;
@@ -35,13 +36,13 @@ import com.github.skjolber.xmlfilter.jmh.filter.W3CDOMXmlIndentationFilter;
 import com.github.skjolber.xmlfilter.jmh.filter.XercesSAXXmlIndentationFilter;
 import com.github.skjolber.xmlfilter.jmh.utils.MapNamespaceContext;
 import com.skjolberg.xmlfilter.filter.AbstractXPathFilter.FilterType;
-import com.skjolberg.xmlfilter.w3c.dom.W3cDomXPathXmlIndentationFilter;
+import com.skjolberg.xmlfilter.w3c.dom.W3cDomXPathXmlFilter;
 import com.skjolberg.xmlfilter.w3c.dom.XPathFilter;
 import com.skjolberg.xmlfilter.w3c.dom.XPathFilterFactory;
 
 @State(Scope.Thread)
-@BenchmarkMode(Mode.AverageTime )
-@OutputTimeUnit(TimeUnit.NANOSECONDS)
+@BenchmarkMode(Mode.Throughput)
+@OutputTimeUnit(TimeUnit.SECONDS)
 @Warmup(iterations = 5, time = 1, timeUnit = TimeUnit.SECONDS)
 @Measurement(iterations = 5, time = 1, timeUnit = TimeUnit.SECONDS)
 @Fork(1)
@@ -50,10 +51,11 @@ public class IndentBenchmark {
 	private BenchmarkRunner defaultXmlFilter;
 	private BenchmarkRunner xmlIndentationFilter;
 	private BenchmarkRunner maxNodeLengthXmlIndentationFilter;
-	private BenchmarkRunner singleXPathXmlIndentationFilter;
+	private BenchmarkRunner multiXPathMaxNodeLengthXmlIndentationFilter;
+	private BenchmarkRunner singleXPathAnonymizeXmlIndentationFilter;
+	private BenchmarkRunner singleXPathPruneXmlIndentationFilter;
 	private BenchmarkRunner multiXPathXmlIndentationFilter;
 	private BenchmarkRunner aaltoStaxXmlIndentationFilter;
-	private BenchmarkRunner defaultStAXXmlIndentationFilter;
 	private BenchmarkRunner xercesSAXXmlIndentationFilter;
 	private BenchmarkRunner cxfIndentationFilter;
 	private BenchmarkRunner transformIndentationFilter;
@@ -77,18 +79,21 @@ public class IndentBenchmark {
 		maxNodeLengthXmlIndentationFilter = new BenchmarkRunner(file, true);
 		maxNodeLengthXmlIndentationFilter.setXmlFilter(new MaxNodeLengthXmlIndentationFilter(false, -1, -1, indent));
 
-		singleXPathXmlIndentationFilter = new BenchmarkRunner(file, true);
-		singleXPathXmlIndentationFilter.setXmlFilter(new SingleXPathXmlIndentationFilter(true, "/aparent/achild/*", FilterType.PRUNE, indent));
+		singleXPathPruneXmlIndentationFilter = new BenchmarkRunner(file, true);
+		singleXPathPruneXmlIndentationFilter.setXmlFilter(new SingleXPathXmlIndentationFilter(true, "/aparent/achild/*", FilterType.PRUNE, indent));
+
+		singleXPathAnonymizeXmlIndentationFilter = new BenchmarkRunner(file, true);
+		singleXPathAnonymizeXmlIndentationFilter.setXmlFilter(new SingleXPathXmlIndentationFilter(true, "/aparent/achild/*", FilterType.ANON, indent));
 
 		multiXPathXmlIndentationFilter = new BenchmarkRunner(file, true);
 		multiXPathXmlIndentationFilter.setXmlFilter(new MultiXPathXmlIndentationFilter(true, new String[]{"/aparent/achild/*"}, null, indent));
 
+		multiXPathMaxNodeLengthXmlIndentationFilter = new BenchmarkRunner(file, true);
+		multiXPathMaxNodeLengthXmlIndentationFilter.setXmlFilter(new MultiXPathMaxNodeLengthXmlIndentationFilter(true, -1, -1, new String[]{"/aparent/achild/*"}, null, indent));
+		
 		aaltoStaxXmlIndentationFilter = new BenchmarkRunner(file, true);
 		aaltoStaxXmlIndentationFilter.setXmlFilter(new AaltoStaxXmlIndentationFilter(false, indent));
-		
-		defaultStAXXmlIndentationFilter = new BenchmarkRunner(file, true);
-		defaultStAXXmlIndentationFilter.setXmlFilter(new DefaultStAXXmlIndentationFilter(false, indent));
-		
+				
 		xercesSAXXmlIndentationFilter = new BenchmarkRunner(file, true);
 		xercesSAXXmlIndentationFilter.setXmlFilter(new XercesSAXXmlIndentationFilter(false, indent));
 		
@@ -110,67 +115,72 @@ public class IndentBenchmark {
 		XPathFilter filter = factory.getFilter(context, null, anon);
 		
 		w3cDomXPathIndentationFilter = new BenchmarkRunner(file, true);
-		w3cDomXPathIndentationFilter.setXmlFilter(new W3cDomXPathXmlIndentationFilter(false, true, filter));
+		w3cDomXPathIndentationFilter.setXmlFilter(new W3cDomXPathXmlFilter(false, true, filter));
 
 	}
 
 	@Benchmark
-    public long filter_noop_passthrough() {
+    public long noop_passthrough() {
         return defaultXmlFilter.benchmark();
     }
 
 	@Benchmark
-    public long indent_filter_xmlIndentationFilter() {
+    public long format() {
         return xmlIndentationFilter.benchmark();
     }
 
 	@Benchmark
-    public long indent_filter_maxNodeLengthXmlIndentationFilter() {
+    public long limit() {
         return maxNodeLengthXmlIndentationFilter.benchmark();
     }
 	
 	@Benchmark
-    public long indent_filter_singleXPathXmlIndentationFilter() {
-        return singleXPathXmlIndentationFilter.benchmark();
+    public long nPruneAnonymizeLimit() {
+        return multiXPathMaxNodeLengthXmlIndentationFilter.benchmark();
     }
 	
 	@Benchmark
-    public long indent_filter_multiXPathXmlIndentationFilter() {
+    public long anonymize() {
+        return singleXPathAnonymizeXmlIndentationFilter.benchmark();
+    }
+
+	@Benchmark
+    public long prune() {
+        return singleXPathPruneXmlIndentationFilter.benchmark();
+    }
+
+	@Benchmark
+    public long nPruneAnonymize() {
         return multiXPathXmlIndentationFilter.benchmark();
     }	
 
 	@Benchmark
-    public long indent_reference_aaltoStaxXmlIndentationFilter() {
+    public long stax_aalto() {
         return aaltoStaxXmlIndentationFilter.benchmark();
     }	
 
 	@Benchmark
-    public long indent_reference_defaultStAXXmlIndentationFilter() {
-        return defaultStAXXmlIndentationFilter.benchmark();
-    }	
-
-	@Benchmark
-    public long indent_reference_xercesSAXXmlIndentationFilter() {
+    public long sax_xerces() {
         return xercesSAXXmlIndentationFilter.benchmark();
     }	
 
 	@Benchmark
-    public long indent_reference_cxfXmlIndentationFilter() {
+    public long transform_cxf() {
         return cxfIndentationFilter.benchmark();
     }	
 	
 	@Benchmark
-    public long indent_reference_transformXmlIndentationFilter() {
+    public long transform_default() {
         return transformIndentationFilter.benchmark();
     }	
 	
 	@Benchmark
-    public long indent_dom_w3cDomXmlIndentationFilter() {
+    public long dom_w3c() {
         return w3cDomIndentationFilter.benchmark();
     }	
 
 	@Benchmark
-    public long indent_reference_w3cDomXPathXmlIndentationFilter() {
+    public long dom_w3c_nPruneAnonymize() {
         return w3cDomXPathIndentationFilter.benchmark();
     }	
 
