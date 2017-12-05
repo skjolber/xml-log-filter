@@ -95,46 +95,45 @@ Runtime is a few (4-5) minutes.
 
 ## Example results
 All benchmarks should be taken with a grain of salt; the below results give hints to the true performance, but not absolute truth.
+
 Saving a decent amount of time on a small operation will not necessarily improve the overall system performance.
 
-### SoapHeaderBench.
-Average time, floored.
+See this [visualization] for interactive results. Summarized below.
 
-| Benchmark                                                           | Score ±  Error (ns/op)  |
-| ------------------------------------------------------------------- | ----------------------- |
-| filter_dom_w3cDomXPathXmlFilter                                     | 1153793 ± 2608 | 
-| filter_multiXPathMaxNodeLengthXmlFilter                             | 270549 ± 1255  | 
-| filter_multiXPathXmlFilter                                          | 266102 ± 2160  | 
-| filter_noop_passthrough                                             | 230876 ± 1095  | 
-| filter_singleXPathAnonymizeMaxNodeLengthXmlFilter                   | 253404 ±  598  | 
-| filter_singleXPathPruneMaxNodeLengthXmlFilter                       | 254527 ± 1627  | 
-| filter_singleXPathPruneXmlFilter                                    | 246637 ± 1077  | 
-| filter_singleXPathXmlFilter                                         | 259887 ± 1637  | 
-| filter_soapheader_singleXPathAnonymizeSoapHeaderXmlFilter           | 230177 ± 1698  | 
-| filter_soapheader_singleXPathPruneSoapHeaderXmlFilter               | 269108 ± 2769  | 
-| filter_soapheader_stax_singleXPathAnonymizeStAXSoapHeaderXmlFilter  | 423603 ± 1816  | 
-| filter_soapheader_stax_singleXPathPruneStAXSoapHeaderXmlFilter      | 447423 ± 5663  | 
-| filter_stax_singleXPathAnonymizeMaxNodeLengthStAXXmlFilter          | 432579 ± 1635  | 
-| filter_stax_singleXPathPruneMaxNodeLengthStAXXmlFilter              | 462964 ± 6687  | 
+### FilterBenchmark 
+
+| Benchmark                               | Score     |
+| --------------------------------------- | --------- |
+| DOM                                     | 1.1k      | 
+| StAX                                    | 2.9k      | 
+| xml-log-filte                           | 4.5-5.0K  | 
+| passthrough                             | 5.2k      | 
 
 ### IndentBenchmark
 Average time, floored.
 
-| Benchmark                                         | Score ±  Error (ns/op)  |
-| --------------------------------------------------| ----------------------- |
-| filter_noop_passthrough                           | 228328 ±  4849 |
-| indent_dom_w3cDomXmlIndentationFilter             | 987627 ± 10710 |
-| indent_filter_maxNodeLengthXmlIndentationFilter   | 257310 ± 11611 |
-| indent_filter_multiXPathXmlIndentationFilter      | 296749 ±  9246 |
-| indent_filter_singleXPathXmlIndentationFilter     | 273716 ±  6337 |
-| indent_filter_xmlIndentationFilter                | 253629 ±  5315 |
-| indent_reference_aaltoStaxXmlIndentationFilter    | 578140 ± 15793 |
-| indent_reference_cxfXmlIndentationFilter          | 737174 ±  6440 |
-| indent_reference_defaultStAXXmlIndentationFilter  | 572491 ±  3891 |
-| indent_reference_transformXmlIndentationFilter    | 711115 ± 10045 |
-| indent_reference_w3cDomXPathXmlIndentationFilter  | 1453416 ± 11747 |
-| indent_reference_xercesSAXXmlIndentationFilter    | 763993 ±  5803 |
+| Benchmark                               | Score     |
+| --------------------------------------- | --------- |
+| DOM                                     | 09-1.2k   | 
+| SAX                                     | 1.5-1.8k  |
+| StAX                                    | 2.2k      | 
+| xml-log-filter                          | 4.0-4.5K  | 
+| passthrough                             | 5.1k      | 
+
+
+### SoapHeaderBench
+Average time, floored.
+
+| Benchmark                               | Score     |
+| --------------------------------------- | --------- |
+| DOM                                     | 1.1k   | 
+| SAX                                     | 1.5-1.8k  |
+| StAX                                    | 2.7-2.9k      | 
+| xml-log-filter                          | 4.5-4.8K  | 
+| xml-log-filter app-specific             | 5.0-5.1K  | 
+| passthrough                             | 5.1k      | 
 
 [JMH]: 				http://openjdk.java.net/projects/code-tools/jmh/
 [Aalto XML]: 		https://github.com/FasterXML/aalto-xml
 [JMH Visualizer]:	http://jmh.morethan.io/
+[visualization]:	https://skjolber.github.io/xml-log-filter/docs/benchmark/jmh/index.html

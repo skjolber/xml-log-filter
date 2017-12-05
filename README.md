@@ -138,7 +138,7 @@ Depending on the implementation, throughput is approximately double compared to 
 
 Memory use will be approximately two times the XML string size.
 
-See the [JMH] module for detailed benchmarks.
+See this [visualization] and the [JMH] module for running detailed benchmarks.
 
 # See also
 See the [xml-formatter] for additional indenting/formatting. 
@@ -154,3 +154,4 @@ See the [xml-formatter] for additional indenting/formatting.
 [latest]:               https://www.w3.org/XML/Test/
 [JMH]:                  benchmark/jmh
 [xml-formatter]:        https://github.com/greenbird/xml-formatter-core
+[visualization]:		https://skjolber.github.io/xml-log-filter/docs/benchmark/jmh/index.html
