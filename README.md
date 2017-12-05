@@ -154,5 +154,5 @@ See the [xml-formatter] for additional indenting/formatting.
 [latest]:               https://www.w3.org/XML/Test/
 [JMH]:                  benchmark/jmh
 [xml-formatter]:        https://github.com/greenbird/xml-formatter-core
-[visualization]:		docs/benchmark/jmh/index.html
-[High-performance]:		docs/benchmark/jmh/index.html
+[visualization]:		https://skjolber.github.io/xml-log-filter/docs/benchmark/jmh/index.html
+[High-performance]:		https://skjolber.github.io/xml-log-filter/docs/benchmark/jmh/index.html
