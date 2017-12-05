@@ -18,10 +18,10 @@ java -Ddirectory=./src/test/resources/soap -jar target/benchmarks.jar SoapHeader
 or
 
 ```
-java -Ddirectory=./src/test/resources/soap -jar target/benchmarks.jar  -wi 1 -i 1 -rf json -of json ".*Benchmark.*"
+java -Ddirectory=./src/test/resources/soap -jar target/benchmarks.jar -rf json ".*Benchmark.*"
 ```
 
-with a visualizer like [JMH Visualizer].
+for all benchmark. Display with a visualizer like [JMH Visualizer].
 
 # IndentBenchmark
 Benchmark including all pretty-printing xml-filters from this project, compared to various (more or less) reference implementations:
