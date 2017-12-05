@@ -8,7 +8,7 @@ The corresponding reduction of complexity has resulted in being able to read, fi
 
 Projects using this library will benefit from:
 
-  * High-performance filtering of XML
+  * [High-performance] filtering of XML
     * Max text and/or CDATA node sizes
     * Anonymize of element and/or attribute contents
     * Removal of subtrees
@@ -154,4 +154,5 @@ See the [xml-formatter] for additional indenting/formatting.
 [latest]:               https://www.w3.org/XML/Test/
 [JMH]:                  benchmark/jmh
 [xml-formatter]:        https://github.com/greenbird/xml-formatter-core
-[visualization]:		https://skjolber.github.io/xml-log-filter/docs/benchmark/jmh/index.html
+[visualization]:		docs/benchmark/jmh/index.html
+[High-performance]:		docs/benchmark/jmh/index.html
