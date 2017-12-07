@@ -1,4 +1,4 @@
-# xml-formatter-components-jax-rs
+# xml-log-filter-jax-rs
 JAX-RS annotation for pretty-printing of XML in RESTful services.
 
 ## Obtain
