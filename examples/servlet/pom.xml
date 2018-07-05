@@ -17,7 +17,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.8</java.version>
-		<cxf.version>3.1.6</cxf.version>
+		<cxf.version>3.1.16</cxf.version>
 		<log4j.version>2.8.2</log4j.version>
 	</properties>
 
