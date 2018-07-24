@@ -59,7 +59,7 @@
 			
 		<hamcrest.version>1.3</hamcrest.version>
 		<commons-io.version>2.5</commons-io.version>
-		<mockito.version>2.19.0</mockito.version>
+		<mockito.version>2.19.1</mockito.version>
 		<junit.version>4.12</junit.version>
 		<xmlunit.version>2.6.0</xmlunit.version>
 		<logback.version>1.2.3</logback.version>
