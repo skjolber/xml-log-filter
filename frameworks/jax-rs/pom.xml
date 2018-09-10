@@ -16,7 +16,7 @@
     <description>Component for logging of pretty-printed XML in JAX-RS.</description>
 
 	<properties>
-	    <jaxrs.api.version>2.1</jaxrs.api.version>
+	    <jaxrs.api.version>2.1.1</jaxrs.api.version>
 	    <jersey.version>2.27</jersey.version>
 	    <woodstox.version>4.4.1</woodstox.version>
 	</properties>
