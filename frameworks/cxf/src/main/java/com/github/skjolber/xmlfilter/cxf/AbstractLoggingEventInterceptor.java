@@ -22,7 +22,6 @@ import java.util.UUID;
 
 import org.apache.cxf.ext.logging.event.DefaultLogEventMapper;
 import org.apache.cxf.ext.logging.event.LogEvent;
-import org.apache.cxf.ext.logging.event.LogEventMapper;
 import org.apache.cxf.ext.logging.event.LogEventSender;
 import org.apache.cxf.message.Exchange;
 import org.apache.cxf.message.Message;
@@ -32,7 +31,7 @@ import com.skjolberg.xmlfilter.XmlFilter;
 public abstract class AbstractLoggingEventInterceptor extends AbstractLoggingInterceptor {
 	
     protected LogEventSender logEventSender;
-    protected LogEventMapper logEventMapper = new DefaultLogEventMapper();
+    protected DefaultLogEventMapper logEventMapper = new DefaultLogEventMapper();
     
 	protected XmlFilter xmlFilter;
 
@@ -54,7 +53,7 @@ public abstract class AbstractLoggingEventInterceptor extends AbstractLoggingInt
 		this.xmlFilter = xmlFilter;
 	}
  
-    public void setLogEventMapper(LogEventMapper logEventMapper) {
+    public void setLogEventMapper(DefaultLogEventMapper logEventMapper) {
 		this.logEventMapper = logEventMapper;
 	}
     
