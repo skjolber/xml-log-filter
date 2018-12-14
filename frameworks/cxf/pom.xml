@@ -60,7 +60,12 @@
 			    <groupId>com.sun.xml.ws</groupId>
 			    <artifactId>jaxws-ri</artifactId>
 			    <version>${jaxb.version}</version>
-			</dependency>			
+			</dependency>
+			<dependency>
+			    <groupId>javax.activation</groupId>
+			    <artifactId>javax.activation-api</artifactId>
+			    <version>1.2.0</version>
+			</dependency>
 	        <dependency>
 	            <groupId>org.apache.cxf</groupId>
 	            <artifactId>cxf-rt-frontend-jaxws</artifactId>
