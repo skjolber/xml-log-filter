@@ -69,7 +69,7 @@
 		<build-helper-maven-plugin.version>1.9.1</build-helper-maven-plugin.version>
 		<jacoco-maven-plugin.version>0.8.2</jacoco-maven-plugin.version>
 		<nexus-staging-maven-plugin.version>1.6.8</nexus-staging-maven-plugin.version>
-		<maven-surefire-plugin.version>2.22.1</maven-surefire-plugin.version>
+		<maven-surefire-plugin.version>3.0.0-M2</maven-surefire-plugin.version>
 		<maven-source-plugin.version>3.0.1</maven-source-plugin.version>
 		<maven-javadoc-plugin.version>3.0.1</maven-javadoc-plugin.version>
 		<maven-release-plugin.version>2.5.3</maven-release-plugin.version>
@@ -228,7 +228,7 @@
 					<artifactId>maven-surefire-plugin</artifactId>
 					<version>${maven-surefire-plugin.version}</version>
 					<configuration>
-						<forkMode>always</forkMode>
+				        <forkCount>0</forkCount>
 						<redirectTestOutputToFile>true</redirectTestOutputToFile>
 					</configuration>
 				</plugin>
@@ -378,6 +378,38 @@
 				    <artifactId>maven-war-plugin</artifactId>
 				    <version>${maven-war-plugin.version}</version>
 				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-enforcer-plugin</artifactId>
+					<version>3.0.0-M2</version>
+					<executions>
+						<execution>
+							<id>enforce-versions</id>
+							<goals>
+								<goal>enforce</goal>
+							</goals>
+							<configuration>
+								<rules>
+									<bannedPlugins>
+										<!-- will only display a warning but does not fail the build. -->
+										<level>WARN</level>
+										<excludes>
+											<exclude>org.apache.maven.plugins:maven-verifier-plugin</exclude>
+										</excludes>
+										<message>Please consider using the maven-invoker-plugin
+											(http://maven.apache.org/plugins/maven-invoker-plugin/)!</message>
+									</bannedPlugins>
+									<requireMavenVersion>
+										<version>3.5.2</version>
+									</requireMavenVersion>
+									<requireJavaVersion>
+										<version>1.8</version>
+									</requireJavaVersion>
+								</rules>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>				
 			</plugins>
 		</pluginManagement>
 	</build>
