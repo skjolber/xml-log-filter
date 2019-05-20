@@ -15,7 +15,7 @@
 
 	<properties>
 		<osgi.version>5.0.0</osgi.version>
-		<cxf.version>3.3.1</cxf.version>
+		<cxf.version>3.3.2</cxf.version>
 		<jaxb.version>2.3.1</jaxb.version>
 	</properties>
 
