@@ -12,8 +12,8 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import com.github.skjolber.indent.Indent;
-import com.skjolberg.xmlfilter.XmlFilter;
-import com.skjolberg.xmlfilter.filter.AbstractXPathFilter.FilterType;
+import com.github.skjolber.xmlfilter.XmlFilter;
+import com.github.skjolber.xmlfilter.filter.AbstractXPathFilter.FilterType;
 
 public class AbstractSingleXPathStAXXmlFilterTest extends SingleXPathStAXXmlFilterTest {
 

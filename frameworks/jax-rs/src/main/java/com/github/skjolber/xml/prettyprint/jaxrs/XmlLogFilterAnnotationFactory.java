@@ -1,7 +1,7 @@
 package com.github.skjolber.xml.prettyprint.jaxrs;
 
+import com.github.skjolber.xmlfilter.XmlFilter;
 import com.github.skjolber.xmlfilter.core.DefaultXmlFilterFactory;
-import com.skjolberg.xmlfilter.XmlFilter;
 
 public class XmlLogFilterAnnotationFactory {
 

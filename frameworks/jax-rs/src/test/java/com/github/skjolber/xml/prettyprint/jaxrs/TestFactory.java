@@ -13,11 +13,11 @@ import org.junit.Test;
 
 import com.github.skjolber.xml.prettyprint.jaxrs.XmlLogFilter;
 import com.github.skjolber.xml.prettyprint.jaxrs.XmlLogFilterAnnotationFactory;
+import com.github.skjolber.xmlfilter.XmlFilter;
 import com.github.skjolber.xmlfilter.core.MaxNodeLengthXmlFilter;
 import com.github.skjolber.xmlfilter.core.SingleXPathAnonymizeXmlFilter;
 import com.github.skjolber.xmlfilter.core.SingleXPathPruneXmlFilter;
 import com.github.skjolber.xmlfilter.core.XmlIndentationFilter;
-import com.skjolberg.xmlfilter.XmlFilter;
 
 public class TestFactory {
 

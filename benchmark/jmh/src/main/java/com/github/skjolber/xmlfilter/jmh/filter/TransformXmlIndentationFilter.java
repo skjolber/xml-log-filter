@@ -13,8 +13,8 @@ import javax.xml.transform.stream.StreamResult;
 import org.xml.sax.InputSource;
 
 import com.github.skjolber.indent.Indent;
+import com.github.skjolber.xmlfilter.filter.AbstractXmlFilter;
 import com.github.skjolber.xmlfilter.jmh.utils.StringBuilderWriter;
-import com.skjolberg.xmlfilter.filter.AbstractXmlFilter;
 
 public class TransformXmlIndentationFilter extends AbstractXmlFilter {
 

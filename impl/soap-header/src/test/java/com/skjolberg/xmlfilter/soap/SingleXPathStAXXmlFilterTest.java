@@ -10,13 +10,13 @@ import org.junit.Assert;
 
 import com.github.skjolber.ddom.xmlts.XMLConformanceTest;
 import com.github.skjolber.ddom.xmlts.XMLConformanceTestSuite;
+import com.github.skjolber.xmlfilter.XmlFilter;
+import com.github.skjolber.xmlfilter.filter.AbstractXmlFilter;
 import com.github.skjolber.xmlfilter.test.XmlFilterConformanceRunner;
 import com.github.skjolber.xmlfilter.test.XmlFilterConstants;
 import com.github.skjolber.xmlfilter.test.XmlFilterProperties;
 import com.github.skjolber.xmlfilter.test.XmlFilterPropertiesFactory;
 import com.github.skjolber.xmlfilter.test.XmlFilterRunner;
-import com.skjolberg.xmlfilter.XmlFilter;
-import com.skjolberg.xmlfilter.filter.AbstractXmlFilter;
 
 /**
  * 

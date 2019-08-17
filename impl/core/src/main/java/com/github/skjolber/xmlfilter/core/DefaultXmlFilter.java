@@ -4,7 +4,7 @@ import java.io.EOFException;
 import java.io.IOException;
 import java.io.Reader;
 
-import com.skjolberg.xmlfilter.XmlFilter;
+import com.github.skjolber.xmlfilter.XmlFilter;
 
 public class DefaultXmlFilter implements XmlFilter {
 

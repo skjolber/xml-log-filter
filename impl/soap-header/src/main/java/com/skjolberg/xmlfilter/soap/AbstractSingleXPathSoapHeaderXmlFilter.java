@@ -1,7 +1,7 @@
 package com.skjolberg.xmlfilter.soap;
 
 import com.github.skjolber.indent.Indent;
-import com.skjolberg.xmlfilter.filter.SingleCharArrayXPathFilter;
+import com.github.skjolber.xmlfilter.filter.SingleCharArrayXPathFilter;
 
 public class AbstractSingleXPathSoapHeaderXmlFilter extends SingleCharArrayXPathFilter {
 

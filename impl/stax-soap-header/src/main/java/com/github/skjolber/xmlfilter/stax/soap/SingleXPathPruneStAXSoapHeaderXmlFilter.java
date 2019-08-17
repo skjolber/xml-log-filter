@@ -11,8 +11,8 @@ import org.codehaus.stax2.XMLOutputFactory2;
 import org.codehaus.stax2.XMLStreamReader2;
 import org.codehaus.stax2.XMLStreamWriter2;
 
+import com.github.skjolber.xmlfilter.filter.CharArrayFilter;
 import com.github.skjolber.xmlfilter.stax.StringBuilderWriter;
-import com.skjolberg.xmlfilter.filter.CharArrayFilter;
 
 public class SingleXPathPruneStAXSoapHeaderXmlFilter extends AbstractSingleXPathStAXSoapHeaderXmlFilter {
 

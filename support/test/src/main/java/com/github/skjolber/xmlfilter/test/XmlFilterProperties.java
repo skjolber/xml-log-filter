@@ -2,7 +2,7 @@ package com.github.skjolber.xmlfilter.test;
 
 import java.util.Properties;
 
-import com.skjolberg.xmlfilter.XmlFilter;
+import com.github.skjolber.xmlfilter.XmlFilter;
 
 public class XmlFilterProperties {
 

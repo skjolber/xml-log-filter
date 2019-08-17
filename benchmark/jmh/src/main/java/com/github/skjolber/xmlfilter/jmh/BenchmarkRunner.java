@@ -5,9 +5,9 @@ import java.io.FileFilter;
 import java.io.IOException;
 import java.util.List;
 
+import com.github.skjolber.xmlfilter.XmlFilter;
 import com.github.skjolber.xmlfilter.utils.FileDirectoryCache;
 import com.github.skjolber.xmlfilter.utils.FileDirectoryValue;
-import com.skjolberg.xmlfilter.XmlFilter;
 
 public class BenchmarkRunner {
 	

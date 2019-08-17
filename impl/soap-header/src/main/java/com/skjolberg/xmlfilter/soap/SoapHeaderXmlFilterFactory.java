@@ -16,8 +16,8 @@
  */
 package com.skjolberg.xmlfilter.soap;
 
+import com.github.skjolber.xmlfilter.XmlFilter;
 import com.github.skjolber.xmlfilter.core.DefaultXmlFilterFactory;
-import com.skjolberg.xmlfilter.XmlFilter;
 
 public class SoapHeaderXmlFilterFactory extends DefaultXmlFilterFactory {
 	

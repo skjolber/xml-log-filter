@@ -30,8 +30,8 @@ import org.apache.cxf.feature.AbstractFeature;
 import org.apache.cxf.interceptor.InterceptorProvider;
 
 import com.github.skjolber.indent.LinebreakType;
-import com.skjolberg.xmlfilter.XmlFilter;
-import com.skjolberg.xmlfilter.filter.AbstractXmlFilterFactory;
+import com.github.skjolber.xmlfilter.XmlFilter;
+import com.github.skjolber.xmlfilter.filter.AbstractXmlFilterFactory;
 import com.skjolberg.xmlfilter.soap.SoapHeaderXmlFilterFactory;
 
 /**

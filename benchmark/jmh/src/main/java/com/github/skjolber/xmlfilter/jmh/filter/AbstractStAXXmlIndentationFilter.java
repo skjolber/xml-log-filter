@@ -8,7 +8,7 @@ import javax.xml.stream.XMLStreamReader;
 import javax.xml.stream.XMLStreamWriter;
 
 import com.github.skjolber.indent.Indent;
-import com.skjolberg.xmlfilter.filter.AbstractXmlFilter;
+import com.github.skjolber.xmlfilter.filter.AbstractXmlFilter;
 
 public abstract class AbstractStAXXmlIndentationFilter extends AbstractXmlFilter {
 

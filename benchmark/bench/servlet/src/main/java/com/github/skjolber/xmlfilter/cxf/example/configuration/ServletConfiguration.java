@@ -12,6 +12,7 @@ import org.springframework.context.annotation.PropertySource;
 
 import com.fasterxml.aalto.stax.InputFactoryImpl;
 import com.fasterxml.aalto.stax.OutputFactoryImpl;
+import com.github.skjolber.xmlfilter.XmlFilter;
 import com.github.skjolber.xmlfilter.core.DefaultXmlFilter;
 import com.github.skjolber.xmlfilter.core.MaxNodeLengthXmlFilter;
 import com.github.skjolber.xmlfilter.core.MultiXPathMaxNodeLengthXmlFilter;
@@ -27,7 +28,6 @@ import com.github.skjolber.xmlfilter.stax.SingleXPathPruneMaxNodeLengthStAXXmlFi
 import com.github.skjolber.xmlfilter.stax.soap.SingleXPathAnonymizeStAXSoapHeaderXmlFilter;
 import com.github.skjolber.xmlfilter.stax.soap.SingleXPathPruneStAXSoapHeaderXmlFilter;
 import com.github.skjolber.xmlns.schema.logger.LoggerService;
-import com.skjolberg.xmlfilter.XmlFilter;
 import com.skjolberg.xmlfilter.soap.SingleXPathAnonymizeSoapHeaderXmlFilter;
 import com.skjolberg.xmlfilter.soap.SingleXPathPruneSoapHeaderXmlFilter;
 

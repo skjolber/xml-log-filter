@@ -8,8 +8,8 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-import com.skjolberg.xmlfilter.XmlFilter;
-import com.skjolberg.xmlfilter.filter.AbstractXPathFilter.FilterType;
+import com.github.skjolber.xmlfilter.XmlFilter;
+import com.github.skjolber.xmlfilter.filter.AbstractXPathFilter.FilterType;
 
 public class SingleXPathMaxNodeLengthXmlIndentationFilterTest extends BaseXmlFilterTest {
 

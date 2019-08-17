@@ -11,10 +11,10 @@ import org.xml.sax.InputSource;
 
 import com.fasterxml.aalto.stax.OutputFactoryImpl;
 import com.github.skjolber.indent.Indent;
+import com.github.skjolber.xmlfilter.filter.AbstractXmlFilter;
 import com.github.skjolber.xmlfilter.jmh.utils.ContentHandlerToXMLStreamWriter;
 import com.github.skjolber.xmlfilter.jmh.utils.Jdk8IndentingXMLStreamWriter;
 import com.github.skjolber.xmlfilter.jmh.utils.StringBuilderWriter;
-import com.skjolberg.xmlfilter.filter.AbstractXmlFilter;
 
 /**
  * 

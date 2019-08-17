@@ -17,19 +17,19 @@
 
 package com.github.skjolber.xmlfilter.core;
 
-import static com.skjolberg.xmlfilter.filter.CharArrayFilter.FILTER_ANONYMIZE_MESSAGE_CHARS;
-import static com.skjolberg.xmlfilter.filter.CharArrayFilter.FILTER_PRUNE_MESSAGE_CHARS;
-import static com.skjolberg.xmlfilter.filter.CharArrayFilter.FILTER_TRUNCATE_MESSAGE_CHARS;
-import static com.skjolberg.xmlfilter.filter.CharArrayFilter.scanBeyondCDataEnd;
-import static com.skjolberg.xmlfilter.filter.CharArrayFilter.scanBeyondCommentEnd;
-import static com.skjolberg.xmlfilter.filter.CharArrayFilter.scanBeyondDTDEnd;
-import static com.skjolberg.xmlfilter.filter.CharArrayFilter.scanBeyondStartElement;
-import static com.skjolberg.xmlfilter.filter.CharArrayFilter.scanProcessingInstructionEnd;
-import static com.skjolberg.xmlfilter.filter.CharArrayFilter.skipSubtree;
-import static com.skjolberg.xmlfilter.filter.CharArrayFilter.startsWithXMLDeclaration;
+import static com.github.skjolber.xmlfilter.filter.CharArrayFilter.FILTER_ANONYMIZE_MESSAGE_CHARS;
+import static com.github.skjolber.xmlfilter.filter.CharArrayFilter.FILTER_PRUNE_MESSAGE_CHARS;
+import static com.github.skjolber.xmlfilter.filter.CharArrayFilter.FILTER_TRUNCATE_MESSAGE_CHARS;
+import static com.github.skjolber.xmlfilter.filter.CharArrayFilter.scanBeyondCDataEnd;
+import static com.github.skjolber.xmlfilter.filter.CharArrayFilter.scanBeyondCommentEnd;
+import static com.github.skjolber.xmlfilter.filter.CharArrayFilter.scanBeyondDTDEnd;
+import static com.github.skjolber.xmlfilter.filter.CharArrayFilter.scanBeyondStartElement;
+import static com.github.skjolber.xmlfilter.filter.CharArrayFilter.scanProcessingInstructionEnd;
+import static com.github.skjolber.xmlfilter.filter.CharArrayFilter.skipSubtree;
+import static com.github.skjolber.xmlfilter.filter.CharArrayFilter.startsWithXMLDeclaration;
 
 import com.github.skjolber.indent.Indent;
-import com.skjolberg.xmlfilter.filter.MultiCharArrayXPathFilter;
+import com.github.skjolber.xmlfilter.filter.MultiCharArrayXPathFilter;
 
 /**
  * 

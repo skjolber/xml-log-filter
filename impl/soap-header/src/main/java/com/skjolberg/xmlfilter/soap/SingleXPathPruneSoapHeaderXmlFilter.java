@@ -17,15 +17,15 @@
 
 package com.skjolberg.xmlfilter.soap;
 
-import static com.skjolberg.xmlfilter.filter.CharArrayFilter.matchRegion;
-import static com.skjolberg.xmlfilter.filter.CharArrayFilter.scanBeyondCDataEnd;
-import static com.skjolberg.xmlfilter.filter.CharArrayFilter.scanBeyondCommentEnd;
-import static com.skjolberg.xmlfilter.filter.CharArrayFilter.scanBeyondDTDEnd;
-import static com.skjolberg.xmlfilter.filter.CharArrayFilter.scanBeyondStartElement;
-import static com.skjolberg.xmlfilter.filter.CharArrayFilter.scanProcessingInstructionEnd;
-import static com.skjolberg.xmlfilter.filter.CharArrayFilter.skipSubtree;
+import static com.github.skjolber.xmlfilter.filter.CharArrayFilter.matchRegion;
+import static com.github.skjolber.xmlfilter.filter.CharArrayFilter.scanBeyondCDataEnd;
+import static com.github.skjolber.xmlfilter.filter.CharArrayFilter.scanBeyondCommentEnd;
+import static com.github.skjolber.xmlfilter.filter.CharArrayFilter.scanBeyondDTDEnd;
+import static com.github.skjolber.xmlfilter.filter.CharArrayFilter.scanBeyondStartElement;
+import static com.github.skjolber.xmlfilter.filter.CharArrayFilter.scanProcessingInstructionEnd;
+import static com.github.skjolber.xmlfilter.filter.CharArrayFilter.skipSubtree;
 
-import com.skjolberg.xmlfilter.filter.CharArrayFilter;
+import com.github.skjolber.xmlfilter.filter.CharArrayFilter;
 
 /**
  * 

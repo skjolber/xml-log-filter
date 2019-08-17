@@ -17,7 +17,7 @@
 package com.github.skjolber.xmlfilter.core;
 
 import com.github.skjolber.indent.Indent;
-import com.skjolberg.xmlfilter.XmlFilter;
+import com.github.skjolber.xmlfilter.XmlFilter;
 
 public class XmlFilterBuilder {
 

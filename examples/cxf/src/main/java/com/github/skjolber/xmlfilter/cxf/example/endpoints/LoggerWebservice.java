@@ -20,7 +20,7 @@ public class LoggerWebservice implements LoggerPort {
 
 	@Override
 	public PerformLogMessageResponse performLogMessage(PerformLogMessageRequest parameters, LogHeader logHeader) throws LoggerException {
-		logger.info("performLogMessage");
+		logger.info("performLogMessage method log statement");
 		PerformLogMessageResponse response = new PerformLogMessageResponse();
 		response.setImage(parameters.getImage());
 		return response;

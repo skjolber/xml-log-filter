@@ -9,7 +9,7 @@ import java.util.Map;
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.skjolberg.xmlfilter.XmlFilter;
+import com.github.skjolber.xmlfilter.XmlFilter;
 import com.skjolberg.xmlfilter.w3c.dom.MapNamespaceContext;
 import com.skjolberg.xmlfilter.w3c.dom.XPathFilter;
 import com.skjolberg.xmlfilter.w3c.dom.XPathFilterFactory;

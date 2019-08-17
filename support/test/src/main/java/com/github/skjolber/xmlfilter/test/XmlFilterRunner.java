@@ -20,7 +20,7 @@ import org.xmlunit.builder.DiffBuilder;
 import org.xmlunit.diff.Diff;
 
 import com.github.skjolber.ddom.stream.sax.XMLConformanceEntityResolver;
-import com.skjolberg.xmlfilter.XmlFilter;
+import com.github.skjolber.xmlfilter.XmlFilter;
 
 public class XmlFilterRunner {
 	

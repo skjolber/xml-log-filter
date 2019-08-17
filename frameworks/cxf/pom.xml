@@ -15,7 +15,7 @@
 
 	<properties>
 		<osgi.version>5.0.0</osgi.version>
-		<cxf.version>3.3.2</cxf.version>
+		<cxf.version>3.3.3</cxf.version>
 		<jaxb.version>2.3.1</jaxb.version>
 	</properties>
 
@@ -159,7 +159,7 @@
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
 			</plugin>			
-			-->
+			-->			
 		</plugins>
 	</build>
 

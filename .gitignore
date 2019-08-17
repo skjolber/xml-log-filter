@@ -27,6 +27,7 @@ nbproject/
 nbactions.xml
 
 #annet
+.factorypath
 *~
 .DS_Store
 .metadata/

@@ -1,5 +1,7 @@
 package com.github.skjolber.xmlfilter.cxf.example;
 
+import static org.junit.Assert.assertNotNull;
+
 import java.util.Base64;
 
 import org.apache.commons.io.IOUtils;
@@ -40,6 +42,7 @@ public class SpringCxfApplicationTests {
     	header.setUserId("userId");
     
         PerformLogMessageResponse response = client.performLogMessage(request, header);
+        assertNotNull(response);
     }
     
 }

@@ -18,10 +18,10 @@ package com.github.skjolber.xmlfilter.core;
 
 import com.github.skjolber.indent.Indent;
 import com.github.skjolber.indent.IndentFactory;
-import com.skjolberg.xmlfilter.XmlFilter;
-import com.skjolberg.xmlfilter.filter.AbstractXPathFilter;
-import com.skjolberg.xmlfilter.filter.AbstractXPathFilter.FilterType;
-import com.skjolberg.xmlfilter.filter.AbstractXmlFilterFactory;
+import com.github.skjolber.xmlfilter.XmlFilter;
+import com.github.skjolber.xmlfilter.filter.AbstractXPathFilter;
+import com.github.skjolber.xmlfilter.filter.AbstractXmlFilterFactory;
+import com.github.skjolber.xmlfilter.filter.AbstractXPathFilter.FilterType;
 
 /**
  * Property maxFilterMatches is ignored.

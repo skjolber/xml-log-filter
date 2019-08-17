@@ -18,7 +18,7 @@ import com.github.skjolber.ddom.stream.sax.XMLConformanceMapEntityResolver;
 import com.github.skjolber.ddom.xmlts.Filters;
 import com.github.skjolber.ddom.xmlts.XMLConformanceTest;
 import com.github.skjolber.ddom.xmlts.XMLConformanceTestSuite;
-import com.skjolberg.xmlfilter.XmlFilter;
+import com.github.skjolber.xmlfilter.XmlFilter;
 
 public class XmlFilterConformanceRunner extends XmlFilterRunner {
 

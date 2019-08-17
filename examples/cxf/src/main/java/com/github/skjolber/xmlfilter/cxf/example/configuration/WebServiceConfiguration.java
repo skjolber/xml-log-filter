@@ -14,6 +14,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 
+import com.github.skjolber.xmlfilter.XmlFilter;
 import com.github.skjolber.xmlfilter.core.SingleXPathAnonymizeMaxNodeLengthXmlFilter;
 import com.github.skjolber.xmlfilter.cxf.LoggingAccumulatorInteceptor;
 import com.github.skjolber.xmlfilter.cxf.LoggingInInterceptor;
@@ -21,7 +22,6 @@ import com.github.skjolber.xmlfilter.cxf.LoggingOutInterceptor;
 import com.github.skjolber.xmlfilter.cxf.example.endpoints.LoggerWebservice;
 import com.github.skjolber.xmlns.schema.logger.LoggerPort;
 import com.github.skjolber.xmlns.schema.logger.LoggerService;
-import com.skjolberg.xmlfilter.XmlFilter;
 
 /**
  * CXF webservice configuration.

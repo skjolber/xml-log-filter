@@ -32,7 +32,7 @@ import org.apache.cxf.io.CachedWriter;
 import org.apache.cxf.message.Message;
 import org.apache.cxf.phase.Phase;
 
-import com.skjolberg.xmlfilter.XmlFilter;
+import com.github.skjolber.xmlfilter.XmlFilter;
 
 /**
  * 

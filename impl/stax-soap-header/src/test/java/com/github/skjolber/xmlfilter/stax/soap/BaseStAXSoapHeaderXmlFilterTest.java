@@ -14,11 +14,11 @@ import org.junit.Assert;
 
 import com.fasterxml.aalto.stax.InputFactoryImpl;
 import com.fasterxml.aalto.stax.OutputFactoryImpl;
+import com.github.skjolber.xmlfilter.XmlFilter;
 import com.github.skjolber.xmlfilter.test.XmlFilterConstants;
 import com.github.skjolber.xmlfilter.test.XmlFilterProperties;
 import com.github.skjolber.xmlfilter.test.XmlFilterPropertiesFactory;
 import com.github.skjolber.xmlfilter.test.XmlFilterRunner;
-import com.skjolberg.xmlfilter.XmlFilter;
 
 /**
  * 

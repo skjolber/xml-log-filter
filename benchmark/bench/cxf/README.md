@@ -8,7 +8,7 @@ Build using maven command
 	
 then start the resulting app using command
 
-	mvn spring-boot:run -DLog4jContextSelector=org.apache.logging.log4j.core.async.AsyncLoggerContextSelector -Drun.jvmArguments="-Xmx2048m -Xms256m"
+	mvn spring-boot:run -Drun.jvmArguments="-Xmx2048m -Xms256m"
 
 Then access the various services at port 8080.
 

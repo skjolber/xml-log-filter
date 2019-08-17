@@ -9,7 +9,7 @@ import org.codehaus.stax2.XMLStreamReader2;
 import org.codehaus.stax2.XMLStreamWriter2;
 
 import com.github.skjolber.indent.Indent;
-import com.skjolberg.xmlfilter.filter.SingleXPathFilter;
+import com.github.skjolber.xmlfilter.filter.SingleXPathFilter;
 
 public class AbstractSingleXPathStAXXmlFilter extends SingleXPathFilter {
 

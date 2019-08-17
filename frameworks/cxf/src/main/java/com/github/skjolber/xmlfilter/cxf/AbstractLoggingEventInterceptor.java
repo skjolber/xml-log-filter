@@ -26,7 +26,7 @@ import org.apache.cxf.ext.logging.event.LogEventSender;
 import org.apache.cxf.message.Exchange;
 import org.apache.cxf.message.Message;
 
-import com.skjolberg.xmlfilter.XmlFilter;
+import com.github.skjolber.xmlfilter.XmlFilter;
 
 public abstract class AbstractLoggingEventInterceptor extends AbstractLoggingInterceptor {
 	

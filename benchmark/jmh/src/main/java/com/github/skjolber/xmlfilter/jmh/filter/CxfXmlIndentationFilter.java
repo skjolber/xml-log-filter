@@ -11,8 +11,8 @@ import org.apache.cxf.staxutils.PrettyPrintXMLStreamWriter;
 import org.apache.cxf.staxutils.StaxUtils;
 
 import com.github.skjolber.indent.Indent;
+import com.github.skjolber.xmlfilter.filter.AbstractXmlFilter;
 import com.github.skjolber.xmlfilter.jmh.utils.StringBuilderWriter;
-import com.skjolberg.xmlfilter.filter.AbstractXmlFilter;
 
 /**
  * Pretty-printed adopted from PrettyLoggingFilter

@@ -8,7 +8,7 @@ import java.lang.reflect.Method;
 import java.util.List;
 import java.util.Properties;
 
-import com.skjolberg.xmlfilter.XmlFilter;
+import com.github.skjolber.xmlfilter.XmlFilter;
 
 /**
  * 

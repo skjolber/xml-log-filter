@@ -3,7 +3,7 @@ package com.github.skjolber.xmlfilter.core;
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.skjolberg.xmlfilter.XmlFilter;
+import com.github.skjolber.xmlfilter.XmlFilter;
 
 public class XmlIndentationFilterTest extends BaseXmlFilterTest {
 

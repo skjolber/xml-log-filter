@@ -11,8 +11,8 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
+import com.github.skjolber.xmlfilter.XmlFilter;
 import com.github.skjolber.xmlfilter.stax.soap.SingleXPathAnonymizeStAXSoapHeaderXmlFilter;
-import com.skjolberg.xmlfilter.XmlFilter;
 
 public class SingleXPathAnonymizeStAXSoapHeaderXmlFilterTest extends BaseStAXSoapHeaderXmlFilterTest {
 

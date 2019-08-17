@@ -1,12 +1,18 @@
 [![Build Status](https://travis-ci.org/skjolber/xml-log-filter.svg?branch=master)](https://travis-ci.org/skjolber/xml-log-filter)
 
-
 # xml-log-filter
-The project is intended as a complimentary tool for use alongside XML frameworks, such as SOAP- or XML-based REST stacks. Its primary use-case is processing to-be logged XML. The project relies on the fact that such frameworks have very good error handling, like schema validation, to apply a simplified view of the XML syntax, basically handling only the happy-case of a well-formed document. The frameworks themselves detect invalid documents and handle them as raw content. 
+High-performance filtering of to-be-logged XML. Reads, filters, formats and writes XML in a single step -  drastically increasing throughput. Typical use-cases
 
-The corresponding reduction of complexity has resulted in being able to read, filter, format and write XML in a single step. This drastically increased throughput.
+  * Filter sensitive values from logs 
+     * technical details like passwords and so on
+     * sensitive personal information, for [GDPR](https://en.wikipedia.org/wiki/General_Data_Protection_Regulation) compliance and such
+  * Remove big elements (i..e base64 encoded binary data)
+     * low or no informational value
+     * consuming unnecessary xml accumulation tool resources
 
-Projects using this library will benefit from:
+In a typical bare-bones system, this could translate to something like 5-10% overall performance improvement.
+
+Features:
 
   * [High-performance] filtering of XML
     * Max text and/or CDATA node sizes
@@ -24,8 +30,6 @@ Projects using this library will benefit from:
 
 The processors have all been validated to handle valid documents using the [latest] W3C XML test suite.
 
-The project also has DOM- and StAX-based equivalents for comparison.
-
 Bugs, feature suggestions and help requests can be filed with the [issue-tracker].
 
 ## License
@@ -38,7 +42,7 @@ The project is built with [Maven] and is available on the central Maven reposito
 <dependency>
     <groupId>com.github.skjolber.xml-log-filter</groupId>
     <artifactId>xml-log-filter-core</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.2</version>
 </dependency>
 ```
 
@@ -130,21 +134,24 @@ or a simple any-level element search
 
     //myElement
 
-
 ## Performance
-The processors within this project are considerably faster than stock processors. This is expected as parser/serializer features have been traded for performance.
+The processors within this project are much faster than stock processors. This is expected as parser/serializer features have been traded for performance. 
 
-Depending on the implementation, throughput is approximately double compared to stock processors.
+The project has DOM- and StAX-based equivalents for feature and performance comparison. 
+Depending on the implementation, benchmarks show throughput is approximately double compared to stock processors. 
 
 Memory use will be approximately two times the XML string size.
 
 See this [visualization] and the [JMH] module for running detailed benchmarks.
 
+## Background
+The project is intended as a complimentary tool for use alongside XML frameworks, such as SOAP- or XML-based REST stacks. Its primary use-case is processing to-be logged XML. The project relies on the fact that such frameworks have very good error handling, like schema validation, to apply a simplified view of the XML syntax, basically handling only the happy-case of a well-formed document. The frameworks themselves detect invalid documents and handle them as raw content. 
+
 # See also
-See the [xml-formatter] for additional indenting/formatting. 
+See the [xml-formatter] for additional indenting/formatting of inner XML. 
 
 # History
-- [1.0.0]: Initial release.
+- [1.0.2]: Initial Java 11 (modules) support.
 
 [1.0.0]:                releases
 [Aalto]:                https://github.com/FasterXML/aalto-xml
@@ -154,5 +161,6 @@ See the [xml-formatter] for additional indenting/formatting.
 [latest]:               https://www.w3.org/XML/Test/
 [JMH]:                  benchmark/jmh
 [xml-formatter]:        https://github.com/greenbird/xml-formatter-core
-[visualization]:		https://skjolber.github.io/xml-log-filter/docs/benchmark/jmh/index.html
-[High-performance]:		https://skjolber.github.io/xml-log-filter/docs/benchmark/jmh/index.html
+[visualization]:	https://skjolber.github.io/xml-log-filter/docs/benchmark/jmh/index.html
+[High-performance]:	https://skjolber.github.io/xml-log-filter/docs/benchmark/jmh/index.html
+

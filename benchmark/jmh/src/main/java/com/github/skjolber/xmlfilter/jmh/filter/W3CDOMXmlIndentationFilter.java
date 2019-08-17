@@ -12,7 +12,7 @@ import org.w3c.dom.ls.LSSerializer;
 import org.xml.sax.InputSource;
 
 import com.github.skjolber.indent.Indent;
-import com.skjolberg.xmlfilter.filter.AbstractXmlFilter;
+import com.github.skjolber.xmlfilter.filter.AbstractXmlFilter;
 
 public class W3CDOMXmlIndentationFilter  extends AbstractXmlFilter {
 

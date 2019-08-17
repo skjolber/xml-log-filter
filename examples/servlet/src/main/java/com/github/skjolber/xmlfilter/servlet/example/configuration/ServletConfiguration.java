@@ -6,9 +6,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 
+import com.github.skjolber.xmlfilter.XmlFilter;
 import com.github.skjolber.xmlfilter.core.MaxNodeLengthXmlFilter;
 import com.github.skjolber.xmlfilter.servlet.example.endpoints.LoggerServlet;
-import com.skjolberg.xmlfilter.XmlFilter;
 
 @Configuration
 @PropertySource("classpath:application.properties")

@@ -28,6 +28,7 @@ import com.github.skjolber.xmlfilter.core.MultiXPathMaxNodeLengthXmlIndentationF
 import com.github.skjolber.xmlfilter.core.MultiXPathXmlIndentationFilter;
 import com.github.skjolber.xmlfilter.core.SingleXPathXmlIndentationFilter;
 import com.github.skjolber.xmlfilter.core.XmlIndentationFilter;
+import com.github.skjolber.xmlfilter.filter.AbstractXPathFilter.FilterType;
 import com.github.skjolber.xmlfilter.jmh.filter.AaltoStaxXmlIndentationFilter;
 import com.github.skjolber.xmlfilter.jmh.filter.CxfXmlIndentationFilter;
 import com.github.skjolber.xmlfilter.jmh.filter.DefaultStAXXmlIndentationFilter;
@@ -35,7 +36,6 @@ import com.github.skjolber.xmlfilter.jmh.filter.TransformXmlIndentationFilter;
 import com.github.skjolber.xmlfilter.jmh.filter.W3CDOMXmlIndentationFilter;
 import com.github.skjolber.xmlfilter.jmh.filter.XercesSAXXmlIndentationFilter;
 import com.github.skjolber.xmlfilter.jmh.utils.MapNamespaceContext;
-import com.skjolberg.xmlfilter.filter.AbstractXPathFilter.FilterType;
 import com.skjolberg.xmlfilter.w3c.dom.W3cDomXPathXmlFilter;
 import com.skjolberg.xmlfilter.w3c.dom.XPathFilter;
 import com.skjolberg.xmlfilter.w3c.dom.XPathFilterFactory;
