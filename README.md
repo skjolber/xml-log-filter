@@ -6,9 +6,9 @@ High-performance filtering of to-be-logged XML. Reads, filters, formats and writ
   * Filter sensitive values from logs 
      * technical details like passwords and so on
      * sensitive personal information, for [GDPR](https://en.wikipedia.org/wiki/General_Data_Protection_Regulation) compliance and such
-  * Remove big elements (i..e base64 encoded binary data)
+  * Remove big elements (i..e base64 encoded binary data) from logs
      * low or no informational value
-     * consuming unnecessary xml accumulation tool resources
+     * consuming unnecessary log accumulation tool resources
 
 In a typical bare-bones system, this could translate to something like 5-10% overall performance improvement.
 
