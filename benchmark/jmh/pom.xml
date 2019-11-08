@@ -63,7 +63,7 @@
 		<dependency>
 		    <groupId>org.apache.cxf</groupId>
 		    <artifactId>cxf-rt-features-logging</artifactId>
-		    <version>3.2.7</version>
+		    <version>3.2.11</version>
 		</dependency>
 		<dependency>
 			<groupId>com.github.skjolber.xml-log-filter</groupId>
@@ -101,8 +101,7 @@
                         <configuration>
                             <finalName>${uberjar.name}</finalName>
                             <transformers>
-                                <transformer
-                                        implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
                                     <mainClass>org.openjdk.jmh.Main</mainClass>
                                 </transformer>
                             </transformers>
