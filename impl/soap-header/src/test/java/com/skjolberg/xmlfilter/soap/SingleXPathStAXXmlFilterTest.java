@@ -1,14 +1,13 @@
 package com.skjolberg.xmlfilter.soap;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Properties;
-
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 
 import com.github.skjolber.ddom.xmlts.XMLConformanceTest;
 import com.github.skjolber.ddom.xmlts.XMLConformanceTestSuite;
@@ -18,7 +17,6 @@ import com.github.skjolber.xmlfilter.test.XmlFilterConformanceRunner;
 import com.github.skjolber.xmlfilter.test.XmlFilterConstants;
 import com.github.skjolber.xmlfilter.test.XmlFilterProperties;
 import com.github.skjolber.xmlfilter.test.XmlFilterPropertiesFactory;
-import com.github.skjolber.xmlfilter.test.XmlFilterRunner;
 
 /**
  * 

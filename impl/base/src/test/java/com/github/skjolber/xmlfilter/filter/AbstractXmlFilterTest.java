@@ -1,5 +1,4 @@
 package com.github.skjolber.xmlfilter.filter;
-import static com.github.skjolber.xmlfilter.filter.XPathExpressions.INVALID_XPATH;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
@@ -11,8 +10,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import com.github.skjolber.indent.Indent;
-import com.github.skjolber.xmlfilter.filter.AbstractXmlFilter;
-import com.github.skjolber.xmlfilter.filter.AbstractXPathXmlFilterTest.DefaultXPathXmlFilter;
 import com.github.skjolber.xmlfilter.test.XmlFilterRunner;;
 public class AbstractXmlFilterTest {
 

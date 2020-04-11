@@ -9,9 +9,7 @@ import org.hamcrest.core.StringContains;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import com.github.skjolber.indent.Indent;
-import com.github.skjolber.xmlfilter.filter.AbstractXPathFilter;
-import com.github.skjolber.xmlfilter.filter.MultiXPathFilterTest.DefaultMultiXPathXmlFilter;;
+import com.github.skjolber.indent.Indent;;
 public class AbstractXPathXmlFilterTest {
 
 	public class DefaultXPathXmlFilter extends AbstractXPathFilter {

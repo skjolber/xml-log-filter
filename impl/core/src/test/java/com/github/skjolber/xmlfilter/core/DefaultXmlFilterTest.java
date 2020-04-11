@@ -1,5 +1,8 @@
 package com.github.skjolber.xmlfilter.core;
 
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.List;
@@ -7,8 +10,6 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 
 import com.github.skjolber.xmlfilter.XmlFilter;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 public class DefaultXmlFilterTest extends BaseXmlFilterTest {
 

@@ -1,10 +1,11 @@
 package com.github.skjolber.xml.prettyprint.jaxrs;
 
 import static javax.ws.rs.client.Entity.xml;
-import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
-
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -28,22 +29,19 @@ import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.ext.WriterInterceptorContext;
 
+import org.apache.cxf.jaxrs.client.WebClient;
+import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 import org.slf4j.Logger;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.web.server.LocalServerPort;
-import org.apache.cxf.jaxrs.client.WebClient;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 
-import com.github.skjolber.xml.prettyprint.jaxrs.XmlLogContainerFilter;
 import com.github.skjolber.xml.prettyprint.jaxrs.XmlLogContainerFilter.CacheStream;
 import com.github.skjolber.xmlfilter.core.DefaultXmlFilter;
-import com.github.skjolber.xmlns.schema.logger.SampleRestApplication;
 import com.github.skjolber.xmlns.schema.logger.PerformLogMessageRequest;
 import com.github.skjolber.xmlns.schema.logger.PerformLogMessageResponse;
+import com.github.skjolber.xmlns.schema.logger.SampleRestApplication;
 
 @SpringBootTest(classes = SampleRestApplication.class, webEnvironment = WebEnvironment.RANDOM_PORT)
 public class TestMethodFilter {

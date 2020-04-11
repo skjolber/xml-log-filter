@@ -1,5 +1,7 @@
 package com.github.skjolber.xmlfilter.stax;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import java.io.CharArrayReader;
 
 import javax.xml.stream.XMLStreamException;
@@ -8,9 +10,7 @@ import org.codehaus.stax2.XMLInputFactory2;
 import org.codehaus.stax2.XMLOutputFactory2;
 import org.codehaus.stax2.XMLStreamReader2;
 import org.codehaus.stax2.XMLStreamWriter2;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 
 import com.github.skjolber.indent.Indent;
 import com.github.skjolber.xmlfilter.XmlFilter;

@@ -55,74 +55,74 @@ public class ServletConfiguration {
 	}
 
 	@Bean
-	public ServletRegistrationBean endpoint0() {
-		ServletRegistrationBean bean = new ServletRegistrationBean(new ReaderServlet(), String.format(servletUrl, "none"));
+	public ServletRegistrationBean<ReaderServlet> endpoint0() {
+		ServletRegistrationBean<ReaderServlet> bean = new ServletRegistrationBean<>(new ReaderServlet(), String.format(servletUrl, "none"));
 		bean.setName("none");
 		return bean;
 	}
 	
 	@Bean
-	public ServletRegistrationBean servlet1() {
+	public ServletRegistrationBean<LoggerServlet> servlet1() {
 		return setXmlFilter(new DefaultXmlFilter());
 	}
 
 	@Bean
-	public ServletRegistrationBean servlet2() {
+	public ServletRegistrationBean<LoggerServlet> servlet2() {
 		return setXmlFilter(new SingleXPathAnonymizeStAXSoapHeaderXmlFilter(true, xpath, 1, xmlInputFactory, xmlOutputFactory));
 	}
 
 	@Bean
-	public ServletRegistrationBean servlet3() {
+	public ServletRegistrationBean<LoggerServlet> servlet3() {
 		return setXmlFilter(new SingleXPathPruneStAXSoapHeaderXmlFilter(true, xpath, 1, xmlInputFactory, xmlOutputFactory));
 	}
 
 	@Bean
-	public ServletRegistrationBean servlet4() {
+	public ServletRegistrationBean<LoggerServlet> servlet4() {
 		return setXmlFilter(new SingleXPathAnonymizeSoapHeaderXmlFilter(true, xpath, 1));
 	}
 
 	@Bean
-	public ServletRegistrationBean servlet5() {
+	public ServletRegistrationBean<LoggerServlet> servlet5() {
 		return setXmlFilter(new SingleXPathPruneSoapHeaderXmlFilter(true, xpath, 1));
 	}
 
 	@Bean
-	public ServletRegistrationBean servlet6() {
+	public ServletRegistrationBean<LoggerServlet> servlet6() {
 		return setXmlFilter(new SingleXPathPruneMaxNodeLengthStAXXmlFilter(true, xpath, -1, -1, xmlInputFactory, xmlOutputFactory));
 	}
 
 	@Bean
-	public ServletRegistrationBean servlet7() {
+	public ServletRegistrationBean<LoggerServlet> servlet7() {
 		return setXmlFilter(new SingleXPathAnonymizeMaxNodeLengthStAXXmlFilter(true, xpath, -1, -1, xmlInputFactory, xmlOutputFactory));
 	}
 
 	@Bean
-	public ServletRegistrationBean servlet8() {
+	public ServletRegistrationBean<LoggerServlet> servlet8() {
 		return setXmlFilter(new SingleXPathAnonymizeXmlFilter(true, xpath));
 	}
 
 	@Bean
-	public ServletRegistrationBean servlet9() {
+	public ServletRegistrationBean<LoggerServlet> servlet9() {
 		return setXmlFilter(new SingleXPathPruneXmlFilter(true, xpath));
 	}
 
 	@Bean
-	public ServletRegistrationBean servlet10() {
+	public ServletRegistrationBean<LoggerServlet> servlet10() {
 		return setXmlFilter(new MultiXPathXmlFilter(false, new String[] { xpath }, null));
 	}
 
 	@Bean
-	public ServletRegistrationBean servlet11() {
+	public ServletRegistrationBean<LoggerServlet> servlet11() {
 		return setXmlFilter(new SingleXPathAnonymizeMaxNodeLengthXmlFilter(true, xpath, -1, -1));
 	}
 
 	@Bean
-	public ServletRegistrationBean servlet12() {
+	public ServletRegistrationBean<LoggerServlet> servlet12() {
 		return setXmlFilter(new SingleXPathPruneMaxNodeLengthXmlFilter(true, xpath, -1, -1));
 	}
 
 	@Bean
-	public ServletRegistrationBean servlet13() {
+	public ServletRegistrationBean<LoggerServlet> servlet13() {
 		return setXmlFilter(new MultiXPathMaxNodeLengthXmlFilter(false, -1, -1, new String[] { xpath }, null));
 	}
 
@@ -143,12 +143,12 @@ public class ServletConfiguration {
 	*/
 	
 	@Bean
-	public ServletRegistrationBean servlet15() {
+	public ServletRegistrationBean<LoggerServlet> servlet15() {
 		return setXmlFilter(new MaxNodeLengthXmlFilter(false, -1, -1));
 	}
 
-	public ServletRegistrationBean setXmlFilter(XmlFilter xmlFilter) {
-		ServletRegistrationBean bean = new ServletRegistrationBean(new LoggerServlet(xmlFilter), String.format(servletUrl, xmlFilter.getClass().getSimpleName()));
+	public ServletRegistrationBean<LoggerServlet> setXmlFilter(XmlFilter xmlFilter) {
+		ServletRegistrationBean<LoggerServlet> bean = new ServletRegistrationBean<>(new LoggerServlet(xmlFilter), String.format(servletUrl, xmlFilter.getClass().getSimpleName()));
 		bean.setName(xmlFilter.getClass().getSimpleName());
 		return bean;
 	}

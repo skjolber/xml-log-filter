@@ -21,13 +21,9 @@ import java.net.URL;
 import java.util.Collections;
 import java.util.Set;
 
-import javax.xml.parsers.SAXParserFactory;
-
 import org.apache.commons.io.IOUtils;
-import org.apache.xerces.jaxp.SAXParserFactoryImpl;
 import org.xml.sax.EntityResolver;
 import org.xml.sax.InputSource;
-import org.xml.sax.XMLReader;
 
 import com.github.skjolber.ddom.collections.Identifiable;
 import com.github.skjolber.ddom.stream.sax.XMLConformanceEntityResolver;

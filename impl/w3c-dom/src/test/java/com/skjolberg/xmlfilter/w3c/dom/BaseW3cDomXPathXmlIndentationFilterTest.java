@@ -1,13 +1,12 @@
 package com.skjolberg.xmlfilter.w3c.dom;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Properties;
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
-
 
 import com.github.skjolber.xmlfilter.XmlFilter;
 import com.github.skjolber.xmlfilter.test.XmlFilterConstants;

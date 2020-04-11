@@ -11,7 +11,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import com.github.skjolber.indent.Indent;
-import com.github.skjolber.xmlfilter.filter.SingleXPathFilter;
 import com.github.skjolber.xmlfilter.filter.AbstractXPathFilter.FilterType;
 
 public class SingleXPathFilterTest {

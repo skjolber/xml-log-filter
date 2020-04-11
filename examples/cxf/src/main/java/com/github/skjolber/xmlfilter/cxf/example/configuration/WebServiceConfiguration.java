@@ -43,8 +43,8 @@ public class WebServiceConfiguration {
 	private String endpointUrl;
 
 	@Bean
-	public ServletRegistrationBean cxfServlet() {
-		return new ServletRegistrationBean(new CXFServlet(), path + "/*");
+	public ServletRegistrationBean<?> cxfServlet() {
+		return new ServletRegistrationBean<>(new CXFServlet(), path + "/*");
 	}
 
 	@Bean(name = Bus.DEFAULT_BUS_ID)

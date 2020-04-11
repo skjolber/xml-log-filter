@@ -1,6 +1,9 @@
 package com.skjolberg.xmlfilter.soap;
 
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNull;
+
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
@@ -9,10 +12,8 @@ import java.util.List;
 import org.apache.commons.io.IOUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 
 import com.github.skjolber.xmlfilter.XmlFilter;
-import com.github.skjolber.xmlfilter.core.SingleXPathPruneXmlFilter;
 
 public class SingleXPathPruneSoapHeaderXmlFilterTest extends SingleXPathStAXXmlFilterTest {
 

@@ -1,5 +1,8 @@
 package com.skjolberg.xmlfilter.w3c.dom;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNull;
+
 import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -7,12 +10,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 
 import com.github.skjolber.xmlfilter.XmlFilter;
-import com.skjolberg.xmlfilter.w3c.dom.MapNamespaceContext;
-import com.skjolberg.xmlfilter.w3c.dom.XPathFilter;
-import com.skjolberg.xmlfilter.w3c.dom.XPathFilterFactory;
 
 public class W3cDomXPathXmlFilterTest extends BaseW3cDomXPathXmlIndentationFilterTest {
 

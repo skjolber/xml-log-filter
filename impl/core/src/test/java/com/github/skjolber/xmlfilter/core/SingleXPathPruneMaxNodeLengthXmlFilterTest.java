@@ -1,15 +1,15 @@
 package com.github.skjolber.xmlfilter.core;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNull;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
-
 
 import com.github.skjolber.xmlfilter.XmlFilter;
-import com.github.skjolber.xmlfilter.filter.AbstractXPathFilter.FilterType;
 
 public class SingleXPathPruneMaxNodeLengthXmlFilterTest extends BaseXmlFilterTest {
 

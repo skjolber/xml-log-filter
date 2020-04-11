@@ -9,10 +9,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import com.github.skjolber.indent.Indent;
-import com.github.skjolber.xmlfilter.filter.CharArrayFilter;
-import com.github.skjolber.xmlfilter.filter.MultiCharArrayXPathFilter;
-import com.github.skjolber.xmlfilter.filter.AbstractSingleXPathXmlFilterTest.DefaultSingleXPathXmlFilter;
-import com.github.skjolber.xmlfilter.filter.AbstractXPathFilter.FilterType;
 
 public class AbstractMultiXPathXmlFilterTest {
 

@@ -1,5 +1,8 @@
 package com.github.skjolber.xml.prettyprint.jaxrs;
 
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -12,10 +15,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import com.github.skjolber.xml.prettyprint.jaxrs.XmlLogFilter;
-import com.github.skjolber.xml.prettyprint.jaxrs.XmlLogFilterAnnotationFactory;
 import com.github.skjolber.xmlfilter.XmlFilter;
 import com.github.skjolber.xmlfilter.core.MaxNodeLengthXmlFilter;
 import com.github.skjolber.xmlfilter.core.SingleXPathAnonymizeXmlFilter;

@@ -19,8 +19,6 @@ import com.github.skjolber.xmlns.schema.logger.PerformLogMessageResponse;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 @SpringBootTest(classes = SimpleBootCxfApplication.class, webEnvironment = WebEnvironment.DEFINED_PORT)
 @EnableAutoConfiguration
 @DirtiesContext

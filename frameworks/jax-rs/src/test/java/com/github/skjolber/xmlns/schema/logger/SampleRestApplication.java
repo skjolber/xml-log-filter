@@ -1,14 +1,8 @@
 package com.github.skjolber.xmlns.schema.logger;
 
 
-import java.io.IOException;
 import java.net.URI;
 import java.util.Arrays;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
-import com.github.skjolber.xml.prettyprint.jaxrs.XmlLogContainerFilter;
-import com.github.skjolber.xml.prettyprint.jaxrs.XmlLogFilter;
 
 import org.apache.cxf.Bus;
 import org.apache.cxf.endpoint.Server;
@@ -18,6 +12,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+
+import com.github.skjolber.xml.prettyprint.jaxrs.XmlLogContainerFilter;
 
 /**
  * Jersey JAXB example application.
