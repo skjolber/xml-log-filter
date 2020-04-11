@@ -239,6 +239,7 @@ public abstract class AbstractXmlFilterFactory implements XmlFilterFactory {
 		this.ignoreWhitespace = ignoreWhitespace;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public void setProperty(String name, Object value) throws IllegalArgumentException {
 		if(name.equals(IS_INDENT)) {

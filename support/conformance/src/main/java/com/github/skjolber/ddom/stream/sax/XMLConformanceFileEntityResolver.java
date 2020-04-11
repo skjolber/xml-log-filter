@@ -20,6 +20,7 @@ public class XMLConformanceFileEntityResolver implements EntityResolver {
 		this.base = base;
 	}
 
+	@SuppressWarnings("resource")
 	public InputSource resolveEntity(String publicId, String systemID) throws IOException, SAXException {
 		if (systemID.contains("://")) {
 			InputStream openStream = new URL(systemID).openStream();

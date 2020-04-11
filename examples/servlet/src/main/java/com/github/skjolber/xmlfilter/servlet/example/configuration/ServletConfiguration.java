@@ -18,12 +18,12 @@ public class ServletConfiguration {
 	private String servletUrl;
 
 	@Bean
-	public ServletRegistrationBean servlet1() {
+	public ServletRegistrationBean<LoggerServlet> servlet1() {
 		return setXmlFilter(new MaxNodeLengthXmlFilter(false, 128, 128));
 	}
 
-	public ServletRegistrationBean setXmlFilter(XmlFilter xmlFilter) {
-		ServletRegistrationBean bean = new ServletRegistrationBean(new LoggerServlet(xmlFilter), String.format(servletUrl, xmlFilter.getClass().getSimpleName()));
+	public ServletRegistrationBean<LoggerServlet> setXmlFilter(XmlFilter xmlFilter) {
+		ServletRegistrationBean<LoggerServlet> bean = new ServletRegistrationBean<>(new LoggerServlet(xmlFilter), String.format(servletUrl, xmlFilter.getClass().getSimpleName()));
 		bean.setName(xmlFilter.getClass().getSimpleName());
 		return bean;
 	}

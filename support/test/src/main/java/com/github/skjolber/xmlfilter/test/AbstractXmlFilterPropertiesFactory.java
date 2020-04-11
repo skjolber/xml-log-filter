@@ -68,6 +68,7 @@ public abstract class AbstractXmlFilterPropertiesFactory {
 		return normalizeValue;
 	}
 
+	@SuppressWarnings("unchecked")
 	protected static Object normalizeValue(Object invoke) {
 		// make sure the object can respond to equals
 		if(invoke instanceof String[]) {

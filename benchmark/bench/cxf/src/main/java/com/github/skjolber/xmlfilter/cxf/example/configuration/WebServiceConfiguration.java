@@ -76,8 +76,8 @@ public class WebServiceConfiguration {
 	}
 
 	@Bean
-	public ServletRegistrationBean cxfServlet() {
-		return new ServletRegistrationBean(new CXFServlet(), path + "/*");
+	public ServletRegistrationBean<CXFServlet> cxfServlet() {
+		return new ServletRegistrationBean<>(new CXFServlet(), path + "/*");
 	}
 
 	@Bean(name = Bus.DEFAULT_BUS_ID)
