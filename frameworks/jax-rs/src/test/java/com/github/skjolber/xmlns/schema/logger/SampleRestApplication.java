@@ -23,8 +23,6 @@ import com.github.skjolber.xml.prettyprint.jaxrs.XmlLogContainerFilter;
 @EnableAutoConfiguration
 public class SampleRestApplication {
 
-    private static final URI BASE_URI = URI.create("http://localhost:8080/logger/");
-
     @Autowired
     private Bus bus;
     
