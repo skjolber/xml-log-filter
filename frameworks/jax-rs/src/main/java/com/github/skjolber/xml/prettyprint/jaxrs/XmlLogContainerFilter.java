@@ -32,8 +32,6 @@ public class XmlLogContainerFilter implements ContainerRequestFilter, ContainerR
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(XmlLogContainerFilter.class);
 
-	public static final String CACHE_STREAM = CacheStream.class.getName();
-	public static final String LOG_BUILDER = XmlLogContainerFilter.class.getName() + ":builder";
 	public static final String LOG_PRETTY_PRINTER = XmlLogContainerFilter.class.getName() + ":xmlFilter";
 
 	private XmlLogFilterAnnotationFactory factory = new XmlLogFilterAnnotationFactory();
@@ -69,7 +67,7 @@ public class XmlLogContainerFilter implements ContainerRequestFilter, ContainerR
 
 		StringBuilder buffer;
 		if(contentSize == -1) {
-			buffer = new StringBuilder(8 * 1024 + 1024);
+			buffer = new StringBuilder(16 * 1024 + 1024);
 		} else {
 			buffer = new StringBuilder(contentSize + 1024);
 		}
@@ -82,10 +80,11 @@ public class XmlLogContainerFilter implements ContainerRequestFilter, ContainerR
 		buffer.append(" [response]");
 
 		if(responseContext.hasEntity()) {
-			final OutputStream stream = new CacheStream(responseContext.getEntityStream());
-			responseContext.setEntityStream(stream);
-			requestContext.setProperty(CACHE_STREAM, stream);
-			requestContext.setProperty(LOG_BUILDER, buffer);
+			XmlFilter filter = (XmlFilter) requestContext.getProperty(LOG_PRETTY_PRINTER);
+			
+			// pass everything through the stream, seems properties are not propagated the
+			// same way by all framework implementations
+			responseContext.setEntityStream(new CacheStream(responseContext.getEntityStream(), buffer, filter));
 		} else {
 			logger.info(buffer.toString());
 		}
@@ -215,19 +214,20 @@ public class XmlLogContainerFilter implements ContainerRequestFilter, ContainerR
 	@Override
 	public void aroundWriteTo(WriterInterceptorContext context) throws IOException, WebApplicationException {
 
-		final CacheStream stream = (CacheStream) context.getProperty(CACHE_STREAM);
-		StringBuilder buffer = (StringBuilder) context.getProperty(LOG_BUILDER);
-
+		OutputStream outputStream = context.getOutputStream();
+		
 		context.proceed();
-		if (stream != null && buffer != null) {
-
-			XmlFilter prettyPrinter = (XmlFilter) context.getProperty(LOG_PRETTY_PRINTER);
+		if (outputStream instanceof CacheStream) {
+			CacheStream cacheStream = (CacheStream)outputStream;
+			XmlFilter prettyPrinter = cacheStream.getFilter();
 			if(prettyPrinter == null) {
 				prettyPrinter = getXmlFilter(context.getAnnotations());
 			}
 
-			String content = stream.getCacheOutputStream().toString(getCharset(context.getMediaType()).name());
+			String content = cacheStream.getCacheOutputStream().toString(getCharset(context.getMediaType()).name());
 
+			StringBuilder buffer = cacheStream.getBuffer();
+			
 			if(isXML(context.getMediaType())) {
 				// pretty print XML
 				if(prettyPrinter.process(content, buffer)) {
@@ -252,6 +252,9 @@ public class XmlLogContainerFilter implements ContainerRequestFilter, ContainerR
 	}
 
 	protected boolean isXML(MediaType mediaType) {
+		if(mediaType == null) {
+			return false;
+		}
 		return (mediaType.getType().equals("text") || mediaType.getType().equals("application")) && mediaType.getSubtype().contains("xml");
 	}
 
@@ -274,11 +277,23 @@ public class XmlLogContainerFilter implements ContainerRequestFilter, ContainerR
 
 		private final OutputStream delegate;
 		private final ByteArrayOutputStream cacheOutputStream = new ByteArrayOutputStream();
-
-		public CacheStream(final OutputStream delegate) {
+		private final StringBuilder buffer;
+		private final XmlFilter filter;
+		
+		public CacheStream(final OutputStream delegate, StringBuilder buffer, XmlFilter filter) {
 			this.delegate = delegate;
+			this.buffer = buffer;
+			this.filter = filter;
+		}
+		
+		public XmlFilter getFilter() {
+			return filter;
 		}
 
+		public StringBuilder getBuffer() {
+			return buffer;
+		}
+		
 		@Override
 		public void write(final int i) throws IOException {
 			cacheOutputStream.write(i);

@@ -1,19 +1,17 @@
 package com.github.skjolber.xmlfilter.core;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNull;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Assert;
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.rules.ExpectedException;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import com.github.skjolber.xmlfilter.XmlFilter;
 
 public class SingleXPathAnonymizeMaxNodeLengthXmlFilterTest extends BaseXmlFilterTest {
-
-	@Rule
-	public ExpectedException exception = ExpectedException.none();
 
 	/* TODO double max length
 	@Test
@@ -109,21 +107,22 @@ public class SingleXPathAnonymizeMaxNodeLengthXmlFilterTest extends BaseXmlFilte
 	
 	@Test
 	public void filter_textWithAny_throwsException() throws Exception {
-		exception.expect(IllegalArgumentException.class);
+		Assertions.assertThrows(IllegalArgumentException.class, () -> {
+			new SingleXPathAnonymizeMaxNodeLengthXmlFilter(true, DEFAULT_ANY_XPATH, -1, -1);
+		});
 		
-		new SingleXPathAnonymizeMaxNodeLengthXmlFilter(true, DEFAULT_ANY_XPATH, -1, -1);
 	}
 	
 	@Test
 	public void filter_invalidXML_noFiltering() throws Exception {
 		XmlFilter filter = new SingleXPathAnonymizeMaxNodeLengthXmlFilter(true, DEFAULT_XPATH, -1, -1);
-		Assert.assertNull(filter.process("</xml>"));
+		assertNull(filter.process("</xml>"));
 	}
 
 	@Test
 	public void filter_invalidRange_noFiltering() throws Exception {
 		XmlFilter filter = new SingleXPathAnonymizeMaxNodeLengthXmlFilter(true, DEFAULT_XPATH, -1, -1);
-		Assert.assertFalse(filter.process("<xml></xml>".toCharArray(), 0, 100, new StringBuilder()));
+		assertFalse(filter.process("<xml></xml>".toCharArray(), 0, 100, new StringBuilder()));
 	}
 	
 }

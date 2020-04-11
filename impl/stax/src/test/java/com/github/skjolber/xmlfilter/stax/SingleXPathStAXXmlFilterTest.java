@@ -1,5 +1,7 @@
 package com.github.skjolber.xmlfilter.stax;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -10,7 +12,6 @@ import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLOutputFactory;
 
 import org.codehaus.stax2.XMLOutputFactory2;
-import org.junit.Assert;
 
 import com.fasterxml.aalto.stax.InputFactoryImpl;
 import com.fasterxml.aalto.stax.OutputFactoryImpl;
@@ -68,7 +69,7 @@ public abstract class SingleXPathStAXXmlFilterTest implements XmlFilterConstants
 		for(XmlFilter filter : filters) {
 			files.addAll(runner.process(filter));
 		}
-		Assert.assertFalse(files.isEmpty());
+		assertFalse(files.isEmpty());
 	}
 
 }

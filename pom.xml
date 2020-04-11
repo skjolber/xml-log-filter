@@ -60,11 +60,11 @@
 		<hamcrest.version>2.2</hamcrest.version>
 		<commons-io.version>2.6</commons-io.version>
 		<mockito.version>3.3.3</mockito.version>
-		<junit.version>4.13</junit.version>
+		<junit.version>5.6.2</junit.version>
 		<xmlunit.version>2.6.4</xmlunit.version>
 		<logback.version>1.2.3</logback.version>
 		<slf4j.version>1.7.30</slf4j.version>
-
+		<commons-io.version>2.6</commons-io.version>
 		<!-- plugins -->
 		<build-helper-maven-plugin.version>1.9.1</build-helper-maven-plugin.version>
 		<jacoco-maven-plugin.version>0.8.5</jacoco-maven-plugin.version>
@@ -75,7 +75,7 @@
 		<maven-release-plugin.version>2.5.3</maven-release-plugin.version>
 		<maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
 		<maven-dependency-plugin.version>2.10</maven-dependency-plugin.version>
-		<jacoco-maven-plugin.version>0.7.8</jacoco-maven-plugin.version>
+		<jacoco-maven-plugin.version>0.8.5</jacoco-maven-plugin.version>
 		<maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
 		<maven-shade-plugin.version>3.2.2</maven-shade-plugin.version>
 		<maven-war-plugin.version>3.2.3</maven-war-plugin.version>
@@ -187,18 +187,29 @@
 	            <groupId>com.fasterxml</groupId>
 	            <artifactId>aalto-xml</artifactId>
 	            <version>${aalto.version}</version>
-	        </dependency>			
+	        </dependency>
+			<dependency>
+			    <groupId>commons-io</groupId>
+			    <artifactId>commons-io</artifactId>
+			    <version>${commons-io.version}</version>
+			</dependency>
 			<dependency>
 			    <groupId>org.xmlunit</groupId>
 			    <artifactId>xmlunit-core</artifactId>
 			    <version>${xmlunit.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>junit</groupId>
-				<artifactId>junit</artifactId>
+				<groupId>org.junit.jupiter</groupId>
+				<artifactId>junit-jupiter-api</artifactId>
 				<version>${junit.version}</version>
 				<scope>test</scope>
 			</dependency>
+			<dependency>
+				<groupId>org.junit.jupiter</groupId>
+				<artifactId>junit-jupiter-engine</artifactId>
+				<version>${junit.version}</version>
+				<scope>test</scope>
+			</dependency>			
 			<dependency>
 				<groupId>org.mockito</groupId>
 				<artifactId>mockito-core</artifactId>

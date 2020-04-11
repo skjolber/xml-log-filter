@@ -1,5 +1,8 @@
 package com.github.skjolber.xml.prettyprint.jaxrs;
 
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -8,17 +11,18 @@ import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 
-import com.github.skjolber.xml.prettyprint.jaxrs.XmlLogFilter;
-import com.github.skjolber.xml.prettyprint.jaxrs.XmlLogFilterAnnotationFactory;
 import com.github.skjolber.xmlfilter.XmlFilter;
 import com.github.skjolber.xmlfilter.core.MaxNodeLengthXmlFilter;
 import com.github.skjolber.xmlfilter.core.SingleXPathAnonymizeXmlFilter;
 import com.github.skjolber.xmlfilter.core.SingleXPathPruneXmlFilter;
 import com.github.skjolber.xmlfilter.core.XmlIndentationFilter;
+import com.github.skjolber.xmlns.schema.logger.SampleRestApplication;
 
+@SpringBootTest(classes = SampleRestApplication.class, webEnvironment = WebEnvironment.RANDOM_PORT)
 public class TestFactory {
 
 	private static class Defaults implements InvocationHandler {
@@ -37,7 +41,7 @@ public class TestFactory {
     public void testNull() {
     	XmlLogFilterAnnotationFactory factory = new XmlLogFilterAnnotationFactory();
     	
-    	Assert.assertNotNull(factory.getXmlFilter(null));
+    	assertNotNull(factory.getXmlFilter(null));
      }
     
     @Test
@@ -45,8 +49,8 @@ public class TestFactory {
     	XmlLogFilterAnnotationFactory factory = new XmlLogFilterAnnotationFactory();
     	
     	XmlFilter xmlFilter = factory.getXmlFilter(Defaults.of(XmlLogFilter.class));
-    	Assert.assertNotNull(xmlFilter);
-    	Assert.assertSame(xmlFilter, factory.getXmlFilter(null));
+    	assertNotNull(xmlFilter);
+    	assertSame(xmlFilter, factory.getXmlFilter(null));
     }
 
     @Test
@@ -59,7 +63,7 @@ public class TestFactory {
         when(mock.maxCDATANodeLength()).thenReturn(-1);
     	
     	XmlFilter result = factory.getXmlFilter(mock);
-    	Assert.assertTrue(result.getClass().getName(), result instanceof MaxNodeLengthXmlFilter);
+    	assertTrue(result instanceof MaxNodeLengthXmlFilter, result.getClass().getName());
     }
 
     @Test
@@ -72,7 +76,7 @@ public class TestFactory {
         when(mock.maxCDATANodeLength()).thenReturn(-1);
     	
     	XmlFilter result = factory.getXmlFilter(mock);
-    	Assert.assertTrue(result.getClass().getName(), result instanceof XmlIndentationFilter);
+    	assertTrue(result instanceof XmlIndentationFilter, result.getClass().getName());
     }
 
     @Test
@@ -85,7 +89,7 @@ public class TestFactory {
         when(mock.maxCDATANodeLength()).thenReturn(-1);
     	
     	XmlFilter result = factory.getXmlFilter(mock);
-    	Assert.assertTrue(result.getClass().getName(), result instanceof SingleXPathPruneXmlFilter);
+    	assertTrue(result instanceof SingleXPathPruneXmlFilter, result.getClass().getName());
     }
     
     @Test
@@ -98,7 +102,7 @@ public class TestFactory {
         when(mock.maxCDATANodeLength()).thenReturn(-1);
     	
     	XmlFilter result = factory.getXmlFilter(mock);
-    	Assert.assertTrue(result.getClass().getName(), result instanceof SingleXPathAnonymizeXmlFilter);
+    	assertTrue(result instanceof SingleXPathAnonymizeXmlFilter, result.getClass().getName());
     }
 
     @Test
@@ -110,7 +114,7 @@ public class TestFactory {
         when(mock.maxCDATANodeLength()).thenReturn(1024);
     	
     	XmlFilter result = factory.getXmlFilter(mock);
-    	Assert.assertTrue(result.getClass().getName(), result instanceof MaxNodeLengthXmlFilter);
+    	assertTrue(result instanceof MaxNodeLengthXmlFilter, result.getClass().getName());
     }
 
     @Test
@@ -122,7 +126,7 @@ public class TestFactory {
         when(mock.maxCDATANodeLength()).thenReturn(-1);
     	
     	XmlFilter result = factory.getXmlFilter(mock);
-    	Assert.assertTrue(result.getClass().getName(), result instanceof MaxNodeLengthXmlFilter);
+    	assertTrue(result instanceof MaxNodeLengthXmlFilter, result.getClass().getName());
     }
 
  

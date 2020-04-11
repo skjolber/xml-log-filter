@@ -9,16 +9,16 @@ import javax.xml.stream.XMLOutputFactory;
 import javax.xml.stream.XMLStreamWriter;
 
 import org.apache.commons.io.IOUtils;
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.test.annotation.DirtiesContext;
-import org.springframework.test.context.junit4.SpringRunner;
 
-@RunWith(SpringRunner.class)
 @SpringBootTest(classes = SimpleBootCxfApplication.class, webEnvironment = WebEnvironment.DEFINED_PORT)
 @EnableAutoConfiguration
 @DirtiesContext
@@ -50,6 +50,6 @@ public class SpringCxfApplicationTests {
     	writer.close();
     	
     	int responseCode = connection.getResponseCode();
-    	Assert.assertEquals(200, responseCode);
+    	assertEquals(200, responseCode);
     }
 }

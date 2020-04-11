@@ -1,5 +1,7 @@
 package com.github.skjolber.xmlfilter.stax;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import java.io.CharArrayReader;
 
 import javax.xml.stream.XMLStreamException;
@@ -8,8 +10,7 @@ import org.codehaus.stax2.XMLInputFactory2;
 import org.codehaus.stax2.XMLOutputFactory2;
 import org.codehaus.stax2.XMLStreamReader2;
 import org.codehaus.stax2.XMLStreamWriter2;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import com.github.skjolber.indent.Indent;
 import com.github.skjolber.xmlfilter.XmlFilter;
@@ -60,8 +61,8 @@ public class AbstractSingleXPathStAXXmlFilterTest extends SingleXPathStAXXmlFilt
 	
 	@Test
 	public void testEmpty() {
-		Assert.assertTrue(AbstractSingleXPathStAXXmlFilter.isEmpty(""));
-		Assert.assertTrue(AbstractSingleXPathStAXXmlFilter.isEmpty(null));
+		assertTrue(AbstractSingleXPathStAXXmlFilter.isEmpty(""));
+		assertTrue(AbstractSingleXPathStAXXmlFilter.isEmpty(null));
 	}
 	
 	@Test
@@ -69,6 +70,6 @@ public class AbstractSingleXPathStAXXmlFilterTest extends SingleXPathStAXXmlFilt
 		XmlFilter filter = new DefaultSingleXPathStAXXmlFilter(true, null, -1, -1, DEFAULT_WILDCARD_XPATH, FilterType.PRUNE, xmlInputFactory, xmlOutputFactory);
 		
 		String xml = "<xml></xml>";
-		Assert.assertTrue(filter.process(xml.toCharArray(), 0, xml.length(), new StringBuilder()));
+		assertTrue(filter.process(xml.toCharArray(), 0, xml.length(), new StringBuilder()));
 	}
 }

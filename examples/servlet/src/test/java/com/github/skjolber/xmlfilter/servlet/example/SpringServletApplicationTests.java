@@ -1,6 +1,7 @@
 package com.github.skjolber.xmlfilter.servlet.example;
 
-import java.io.InputStream;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -10,18 +11,12 @@ import javax.xml.stream.XMLOutputFactory;
 import javax.xml.stream.XMLStreamWriter;
 
 import org.apache.commons.io.IOUtils;
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.test.annotation.DirtiesContext;
-import org.springframework.test.context.junit4.SpringRunner;
 
-import com.github.skjolber.xmlfilter.servlet.example.SimpleBootServletApplication;
-
-@RunWith(SpringRunner.class)
 @SpringBootTest(classes = SimpleBootServletApplication.class, webEnvironment = WebEnvironment.DEFINED_PORT)
 @EnableAutoConfiguration
 @DirtiesContext
@@ -54,7 +49,7 @@ public class SpringServletApplicationTests {
     	writer.close();
     	
     	int responseCode = connection.getResponseCode();
-    	Assert.assertEquals(200, responseCode);
+    	assertEquals(200, responseCode);
     }
     
 }

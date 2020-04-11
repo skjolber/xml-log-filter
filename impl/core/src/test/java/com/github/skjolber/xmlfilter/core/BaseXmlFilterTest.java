@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Properties;
 
-import org.junit.Assert;
+import org.junit.jupiter.api.Assertions;
 
 import com.github.skjolber.ddom.xmlts.XMLConformanceTest;
 import com.github.skjolber.ddom.xmlts.XMLConformanceTestSuite;
@@ -58,7 +58,7 @@ public abstract class BaseXmlFilterTest implements XmlFilterConstants {
 		for(XmlFilter filter : filters) {
 			files.addAll(runner.process(filter));
 		}
-		Assert.assertFalse(files.isEmpty());
+		Assertions.assertFalse(files.isEmpty());
 	}
 	
 	protected void assertProcess(XmlFilter xmlFilter) throws Exception {
@@ -70,7 +70,7 @@ public abstract class BaseXmlFilterTest implements XmlFilterConstants {
 		for(XmlFilter filter : filters) {
 			files.addAll(runner.processConformance(filter, filter instanceof AbstractXmlFilter && !((AbstractXmlFilter)filter).getXmlDeclaration()));
 		}
-		Assert.assertTrue(files.isEmpty());
+		Assertions.assertTrue(files.isEmpty());
 		
 	}
 	

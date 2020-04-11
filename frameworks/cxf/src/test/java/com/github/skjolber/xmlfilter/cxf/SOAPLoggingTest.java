@@ -18,6 +18,11 @@
  */
 package com.github.skjolber.xmlfilter.cxf;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import java.net.MalformedURLException;
 import java.nio.charset.StandardCharsets;
 import java.util.Collections;
@@ -30,10 +35,7 @@ import org.apache.cxf.ext.logging.event.EventType;
 import org.apache.cxf.ext.logging.event.LogEvent;
 import org.apache.cxf.feature.Feature;
 import org.apache.cxf.jaxws.JaxWsProxyFactoryBean;
-import org.junit.Assert;
-import org.junit.Test;
-
-import com.github.skjolber.xmlfilter.cxf.LoggingFeature;
+import org.junit.jupiter.api.Test;
 
 public class SOAPLoggingTest {
 
@@ -72,7 +74,7 @@ public class SOAPLoggingTest {
         ep.stop();
 
         List<LogEvent> events = sender.getEvents();
-        Assert.assertEquals(4, events.size());
+        assertEquals(4, events.size());
         checkRequestOut(events.get(0));
         checkRequestIn(events.get(1));
         checkResponseOut(events.get(2));
@@ -80,64 +82,64 @@ public class SOAPLoggingTest {
     }
 
     private void checkRequestOut(LogEvent requestOut) {
-        Assert.assertEquals(SERVICE_URI, requestOut.getAddress());
-        Assert.assertEquals("text/xml", requestOut.getContentType());
-        Assert.assertEquals(EventType.REQ_OUT, requestOut.getType());
-        Assert.assertEquals(StandardCharsets.UTF_8.name(), requestOut.getEncoding());
-        Assert.assertNotNull(requestOut.getExchangeId());
-        Assert.assertEquals("POST", requestOut.getHttpMethod());
-        Assert.assertNotNull(requestOut.getMessageId());
-        Assert.assertTrue(requestOut.getPayload().contains("<arg0>test</arg0>"));
-        Assert.assertEquals("TestServicePort", requestOut.getPortName().getLocalPart());
-        Assert.assertEquals("TestService", requestOut.getPortTypeName().getLocalPart());
-        Assert.assertEquals("TestServiceService", requestOut.getServiceName().getLocalPart());
+        assertEquals(SERVICE_URI, requestOut.getAddress());
+        assertEquals("text/xml", requestOut.getContentType());
+        assertEquals(EventType.REQ_OUT, requestOut.getType());
+        assertEquals(StandardCharsets.UTF_8.name(), requestOut.getEncoding());
+        assertNotNull(requestOut.getExchangeId());
+        assertEquals("POST", requestOut.getHttpMethod());
+        assertNotNull(requestOut.getMessageId());
+        assertTrue(requestOut.getPayload().contains("<arg0>test</arg0>"));
+        assertEquals("TestServicePort", requestOut.getPortName().getLocalPart());
+        assertEquals("TestService", requestOut.getPortTypeName().getLocalPart());
+        assertEquals("TestServiceService", requestOut.getServiceName().getLocalPart());
     }
     
     private void checkRequestIn(LogEvent requestIn) {
-        Assert.assertEquals(SERVICE_URI, requestIn.getAddress());
-        Assert.assertEquals("text/xml; charset=UTF-8", requestIn.getContentType());
-        Assert.assertEquals(EventType.REQ_IN, requestIn.getType());
-        Assert.assertEquals(StandardCharsets.UTF_8.name(), requestIn.getEncoding());
-        Assert.assertNotNull(requestIn.getExchangeId());
-        Assert.assertEquals("POST", requestIn.getHttpMethod());
-        Assert.assertNotNull(requestIn.getMessageId());
-        Assert.assertTrue(requestIn.getPayload().contains("<arg0>test</arg0>"));
-        Assert.assertEquals("TestServiceImplementationPort", requestIn.getPortName().getLocalPart());
-        Assert.assertEquals("TestService", requestIn.getPortTypeName().getLocalPart());
-        Assert.assertEquals("TestServiceImplementationService", requestIn.getServiceName().getLocalPart());
+        assertEquals(SERVICE_URI, requestIn.getAddress());
+        assertEquals("text/xml; charset=UTF-8", requestIn.getContentType());
+        assertEquals(EventType.REQ_IN, requestIn.getType());
+        assertEquals(StandardCharsets.UTF_8.name(), requestIn.getEncoding());
+        assertNotNull(requestIn.getExchangeId());
+        assertEquals("POST", requestIn.getHttpMethod());
+        assertNotNull(requestIn.getMessageId());
+        assertTrue(requestIn.getPayload().contains("<arg0>test</arg0>"));
+        assertEquals("TestServiceImplementationPort", requestIn.getPortName().getLocalPart());
+        assertEquals("TestService", requestIn.getPortTypeName().getLocalPart());
+        assertEquals("TestServiceImplementationService", requestIn.getServiceName().getLocalPart());
     }
     
     private void checkResponseOut(LogEvent responseOut) {
         // Not yet available
-        Assert.assertNull(responseOut.getAddress());
-        Assert.assertEquals("text/xml", responseOut.getContentType());
-        Assert.assertEquals(EventType.RESP_OUT, responseOut.getType());
-        Assert.assertEquals(StandardCharsets.UTF_8.name(), responseOut.getEncoding());
-        Assert.assertNotNull(responseOut.getExchangeId());
+        assertNull(responseOut.getAddress());
+        assertEquals("text/xml", responseOut.getContentType());
+        assertEquals(EventType.RESP_OUT, responseOut.getType());
+        assertEquals(StandardCharsets.UTF_8.name(), responseOut.getEncoding());
+        assertNotNull(responseOut.getExchangeId());
         
         // Not yet available
-        Assert.assertNull(responseOut.getHttpMethod());
-        Assert.assertNotNull(responseOut.getMessageId());
-        Assert.assertTrue(responseOut.getPayload().contains("<return>test</return>"));
-        Assert.assertEquals("TestServiceImplementationPort", responseOut.getPortName().getLocalPart());
-        Assert.assertEquals("TestService", responseOut.getPortTypeName().getLocalPart());
-        Assert.assertEquals("TestServiceImplementationService", responseOut.getServiceName().getLocalPart());
+        assertNull(responseOut.getHttpMethod());
+        assertNotNull(responseOut.getMessageId());
+        assertTrue(responseOut.getPayload().contains("<return>test</return>"));
+        assertEquals("TestServiceImplementationPort", responseOut.getPortName().getLocalPart());
+        assertEquals("TestService", responseOut.getPortTypeName().getLocalPart());
+        assertEquals("TestServiceImplementationService", responseOut.getServiceName().getLocalPart());
     }
     
     private void checkResponseIn(LogEvent responseIn) {
-        Assert.assertNull(responseIn.getAddress());
-        Assert.assertEquals("text/xml;charset=utf-8", responseIn.getContentType().toLowerCase().replace(" ", ""));
-        Assert.assertEquals(EventType.RESP_IN, responseIn.getType());
-        Assert.assertEquals(StandardCharsets.UTF_8.name(), responseIn.getEncoding());
-        Assert.assertNotNull(responseIn.getExchangeId());
+        assertNull(responseIn.getAddress());
+        assertEquals("text/xml;charset=utf-8", responseIn.getContentType().toLowerCase().replace(" ", ""));
+        assertEquals(EventType.RESP_IN, responseIn.getType());
+        assertEquals(StandardCharsets.UTF_8.name(), responseIn.getEncoding());
+        assertNotNull(responseIn.getExchangeId());
         
         // Not yet available
-        Assert.assertNull(responseIn.getHttpMethod());
-        Assert.assertNotNull(responseIn.getMessageId());
-        Assert.assertTrue(responseIn.getPayload().contains("<return>test</return>"));
-        Assert.assertEquals("TestServicePort", responseIn.getPortName().getLocalPart());
-        Assert.assertEquals("TestService", responseIn.getPortTypeName().getLocalPart());
-        Assert.assertEquals("TestServiceService", responseIn.getServiceName().getLocalPart());
+        assertNull(responseIn.getHttpMethod());
+        assertNotNull(responseIn.getMessageId());
+        assertTrue(responseIn.getPayload().contains("<return>test</return>"));
+        assertEquals("TestServicePort", responseIn.getPortName().getLocalPart());
+        assertEquals("TestService", responseIn.getPortTypeName().getLocalPart());
+        assertEquals("TestServiceService", responseIn.getServiceName().getLocalPart());
     }
 
     private TestService createTestClient(Feature feature) throws MalformedURLException {

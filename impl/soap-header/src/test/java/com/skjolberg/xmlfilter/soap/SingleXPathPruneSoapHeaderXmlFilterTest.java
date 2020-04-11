@@ -1,23 +1,21 @@
 package com.skjolberg.xmlfilter.soap;
 
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNull;
+
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.io.IOUtils;
-import org.junit.Assert;
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.rules.ExpectedException;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import com.github.skjolber.xmlfilter.XmlFilter;
 
 public class SingleXPathPruneSoapHeaderXmlFilterTest extends SingleXPathStAXXmlFilterTest {
-
-	@Rule
-	public ExpectedException exception = ExpectedException.none();
 
 	@Test
 	public void filter_text_filtered() throws Exception {
@@ -45,21 +43,21 @@ public class SingleXPathPruneSoapHeaderXmlFilterTest extends SingleXPathStAXXmlF
 
 	@Test
 	public void filter_textWithAny_throwsException() throws Exception {
-		exception.expect(IllegalArgumentException.class);
-		
-		new SingleXPathPruneSoapHeaderXmlFilter(true, DEFAULT_ANY_XPATH, 1);
+		Assertions.assertThrows(IllegalArgumentException.class, () -> {
+			new SingleXPathPruneSoapHeaderXmlFilter(true, DEFAULT_ANY_XPATH, 1);
+		});
 	}
 	
 	@Test
 	public void filter_invalidXML_noFiltering() throws Exception {
 		XmlFilter filter = new SingleXPathPruneSoapHeaderXmlFilter(true, DEFAULT_XPATH, 1);
-		Assert.assertNull(filter.process("</xml>"));
+		assertNull(filter.process("</xml>"));
 	}
 
 	@Test
 	public void filter_invalidRange_noFiltering() throws Exception {
 		XmlFilter filter = new SingleXPathPruneSoapHeaderXmlFilter(true, DEFAULT_XPATH, 1);
-		Assert.assertFalse(filter.process("<xml></xml>".toCharArray(), 0, 100, new StringBuilder()));
+		assertFalse(filter.process("<xml></xml>".toCharArray(), 0, 100, new StringBuilder()));
 	}
 	
 	@Test
@@ -70,7 +68,7 @@ public class SingleXPathPruneSoapHeaderXmlFilterTest extends SingleXPathStAXXmlF
 		XmlFilter filter = new SingleXPathPruneSoapHeaderXmlFilter(true, xpath, 1);
 		
 		String process = filter.process(string);
-		Assert.assertFalse(process.contains("Password"));
+		assertFalse(process.contains("Password"));
 	}
 
 }

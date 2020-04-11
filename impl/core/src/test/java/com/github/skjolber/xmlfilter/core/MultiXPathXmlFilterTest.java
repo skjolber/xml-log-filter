@@ -1,20 +1,19 @@
 package com.github.skjolber.xmlfilter.core;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNull;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Assert;
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.rules.ExpectedException;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import com.github.skjolber.xmlfilter.XmlFilter;
 
+
 public class MultiXPathXmlFilterTest extends BaseXmlFilterTest {
 
-	@Rule
-	public ExpectedException exception = ExpectedException.none();
-	
 	@Test
 	public void passthrough_success() throws Exception {
 		List<XmlFilter> filters = new ArrayList<>();
@@ -79,21 +78,22 @@ public class MultiXPathXmlFilterTest extends BaseXmlFilterTest {
 	
 	@Test
 	public void filter_pruneTextWithAttribute_throwsException() throws Exception {
-		exception.expect(IllegalArgumentException.class);
-		new MultiXPathMaxNodeLengthXmlFilter(true, -1, -1, null, new String[]{DEFAULT_ATTRIBUTE_XPATH});
+		Assertions.assertThrows(IllegalArgumentException.class, () -> {
+			new MultiXPathMaxNodeLengthXmlFilter(true, -1, -1, null, new String[]{DEFAULT_ATTRIBUTE_XPATH});
+		});
 	}
 	
 	
 	@Test
 	public void filter_invalidXML_noFiltering() throws Exception {
 		XmlFilter filter = new MultiXPathXmlFilter(true, new String[]{DEFAULT_ATTRIBUTE_WILDCARD_XPATH}, null);
-		Assert.assertNull(filter.process("</xml>"));
+		assertNull(filter.process("</xml>"));
 	}
 	
 	@Test
 	public void filter_invalidRange_noFiltering() throws Exception {
 		XmlFilter filter = new MultiXPathXmlFilter(true, new String[]{DEFAULT_ATTRIBUTE_WILDCARD_XPATH}, null);
-		Assert.assertFalse(filter.process("<xml></xml>".toCharArray(), 0, 100, new StringBuilder()));
+		assertFalse(filter.process("<xml></xml>".toCharArray(), 0, 100, new StringBuilder()));
 	}
 	
 	

@@ -1,19 +1,17 @@
 package com.github.skjolber.xmlfilter.core;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNull;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Assert;
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.rules.ExpectedException;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import com.github.skjolber.xmlfilter.XmlFilter;
 
 public class SingleXPathAnonymizeXmlFilterTest extends BaseXmlFilterTest {
-
-	@Rule
-	public ExpectedException exception = ExpectedException.none();
 
 	@Test
 	public void filter_text_filtered() throws Exception {
@@ -38,20 +36,20 @@ public class SingleXPathAnonymizeXmlFilterTest extends BaseXmlFilterTest {
 	
 	@Test
 	public void filter_textWithAny_throwsException() throws Exception {
-		exception.expect(IllegalArgumentException.class);
-		
-		new SingleXPathAnonymizeXmlFilter(true, DEFAULT_ANY_XPATH);
+		Assertions.assertThrows(IllegalArgumentException.class, () -> {
+			new SingleXPathAnonymizeXmlFilter(true, DEFAULT_ANY_XPATH);
+		});
 	}
 	
 	@Test
 	public void filter_invalidXML_noFiltering() throws Exception {
 		XmlFilter filter = new SingleXPathAnonymizeXmlFilter(true, DEFAULT_XPATH);
-		Assert.assertNull(filter.process("</xml>"));
+		assertNull(filter.process("</xml>"));
 	}
 	
 	@Test
 	public void filter_invalidRange_noFiltering() throws Exception {
 		XmlFilter filter = new SingleXPathAnonymizeXmlFilter(true, DEFAULT_XPATH);
-		Assert.assertFalse(filter.process("<xml></xml>".toCharArray(), 0, 100, new StringBuilder()));
+		assertFalse(filter.process("<xml></xml>".toCharArray(), 0, 100, new StringBuilder()));
 	}	
 }

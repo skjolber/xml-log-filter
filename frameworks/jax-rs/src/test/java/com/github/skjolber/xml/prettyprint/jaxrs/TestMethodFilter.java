@@ -1,8 +1,11 @@
 package com.github.skjolber.xml.prettyprint.jaxrs;
 
 import static javax.ws.rs.client.Entity.xml;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -26,26 +29,26 @@ import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.ext.WriterInterceptorContext;
 
-import org.glassfish.jersey.server.ResourceConfig;
-import org.glassfish.jersey.test.JerseyTest;
-import org.junit.Assert;
-import org.junit.Test;
+import org.apache.cxf.jaxrs.client.WebClient;
+import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 import org.slf4j.Logger;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
+import org.springframework.boot.web.server.LocalServerPort;
 
-import com.github.skjolber.xml.prettyprint.jaxrs.XmlLogContainerFilter;
 import com.github.skjolber.xml.prettyprint.jaxrs.XmlLogContainerFilter.CacheStream;
-import com.github.skjolber.xmlns.schema.logger.App;
+import com.github.skjolber.xmlfilter.core.DefaultXmlFilter;
 import com.github.skjolber.xmlns.schema.logger.PerformLogMessageRequest;
 import com.github.skjolber.xmlns.schema.logger.PerformLogMessageResponse;
+import com.github.skjolber.xmlns.schema.logger.SampleRestApplication;
 
-public class TestMethodFilter extends JerseyTest {
+@SpringBootTest(classes = SampleRestApplication.class, webEnvironment = WebEnvironment.RANDOM_PORT)
+public class TestMethodFilter {
 
-    @Override
-    protected ResourceConfig configure() {
-       return App.createApp1();
-    }
-
+	@LocalServerPort
+	private int port;
+	
     @Test
     public void testPerformLogMessageObjects() {
         PerformLogMessageRequest request = new PerformLogMessageRequest();
@@ -53,7 +56,10 @@ public class TestMethodFilter extends JerseyTest {
         request.setSubject("Subject");
         request.setBody("Body");
         
-        PerformLogMessageResponse performLogMessage = target().path("logger1/performLogMessageObject").request("application/xml").post(xml(new GenericEntity<PerformLogMessageRequest>(request) {}), PerformLogMessageResponse.class);
+        WebClient wc = WebClient.create("http://localhost:" + port + "/services/logger1");        
+        wc.accept("application/xml");
+        
+        PerformLogMessageResponse performLogMessage = wc.path("performLogMessageObject").post(xml(new GenericEntity<PerformLogMessageRequest>(request) {}), PerformLogMessageResponse.class);
         assertNotNull(performLogMessage);
         assertEquals(1, performLogMessage.getStatus());
      }
@@ -64,8 +70,10 @@ public class TestMethodFilter extends JerseyTest {
         request.setAddress("thomas.skjolberg@gmail.com");
         request.setSubject("Subject");
         request.setBody("Body");
-        
-        Integer status = target().path("logger1/performLogMessageRequestObject").request().post(xml(new GenericEntity<PerformLogMessageRequest>(request) {}), Integer.class);
+
+        WebClient wc = WebClient.create("http://localhost:" + port + "/services/logger1");
+
+        Integer status = wc.path("performLogMessageRequestObject").post(xml(new GenericEntity<PerformLogMessageRequest>(request) {}), Integer.class);
         assertNotNull(status);
         assertEquals(1, status.intValue());
      }
@@ -77,25 +85,36 @@ public class TestMethodFilter extends JerseyTest {
         request.setSubject("Subject");
         request.setBody("Body");
         
-        target().path("logger/performLogMessageEmptyResponse").request().post(xml(new GenericEntity<PerformLogMessageRequest>(request) {}));
+        WebClient wc = WebClient.create("http://localhost:" + port + "/services/logger1");        
+        wc.accept("application/xml");
+
+        wc.path("performLogMessageEmptyResponse").post(xml(new GenericEntity<PerformLogMessageRequest>(request) {}));
      }
     @Test
     public void testPerformLogMessageResponseObject() {
-        PerformLogMessageResponse performLogMessage = target().path("logger1/performLogMessageResponseObject").request("application/xml").post(Entity.text(new GenericEntity<String>("message") {}), PerformLogMessageResponse.class);
+        WebClient wc = WebClient.create("http://localhost:" + port + "/services/logger1");        
+        wc.accept("application/xml");
+
+        PerformLogMessageResponse performLogMessage = wc.path("performLogMessageResponseObject").post(Entity.text(new GenericEntity<String>("message") {}), PerformLogMessageResponse.class);
         assertNotNull(performLogMessage);
         assertEquals(1, performLogMessage.getStatus());
      }
     
     @Test
     public void testPerformLogMessageParameter() {
-        PerformLogMessageResponse performLogMessage = target().path("logger1/performLogMessageParameter/message").request().get(PerformLogMessageResponse.class);
+        WebClient wc = WebClient.create("http://localhost:" + port + "/services/logger1");        
+        wc.accept("application/xml");
+    	
+        PerformLogMessageResponse performLogMessage = wc.path("performLogMessageParameter/message").get(PerformLogMessageResponse.class);
         assertNotNull(performLogMessage);
         assertEquals(1, performLogMessage.getStatus());
      }
  
     @Test
     public void testPerformLogMessageResponseObjectInvalid() {
-        PerformLogMessageResponse performLogMessage = target().path("logger1/performLogMessageResponseObject").request("application/xml").post(Entity.entity(new GenericEntity<String>("<xml>") {}, "text/xml"), PerformLogMessageResponse.class);
+        WebClient wc = WebClient.create("http://localhost:" + port + "/services/logger1");        
+        
+        PerformLogMessageResponse performLogMessage = wc.path("performLogMessageResponseObject").post(Entity.entity(new GenericEntity<String>("<xml>") {}, "text/xml"), PerformLogMessageResponse.class);
         assertNotNull(performLogMessage);
         assertEquals(1, performLogMessage.getStatus());
      }
@@ -105,12 +124,12 @@ public class TestMethodFilter extends JerseyTest {
     	ByteArrayOutputStream bout = new ByteArrayOutputStream();
     	
     	@SuppressWarnings("resource")
-		CacheStream cacheStream = new XmlLogContainerFilter.CacheStream(bout);
+		CacheStream cacheStream = new XmlLogContainerFilter.CacheStream(bout, new StringBuilder(), new DefaultXmlFilter());
     	
     	cacheStream.write(0);
     	
-    	Assert.assertEquals(1, bout.size());
-    	Assert.assertEquals(1, cacheStream.getCacheOutputStream().size());
+    	assertEquals(1, bout.size());
+    	assertEquals(1, cacheStream.getCacheOutputStream().size());
     }
     
     @Test
@@ -210,7 +229,7 @@ public class TestMethodFilter extends JerseyTest {
     	StringBuilder builder = new StringBuilder();
     	
     	InputStream result = XmlLogContainerFilter.readInputStream(entityStream, content.length, builder, Charset.forName("UTF-8"));
-    	Assert.assertSame(entityStream, result);
+    	assertSame(entityStream, result);
      }
 
     @Test
@@ -230,7 +249,7 @@ public class TestMethodFilter extends JerseyTest {
     	byte[] resultContent = new byte[32 * 1024];
     	result.read(resultContent);
     	
-    	Assert.assertTrue(Arrays.equals(content, resultContent));
+    	assertTrue(Arrays.equals(content, resultContent));
      }
     
     @Test
@@ -242,50 +261,25 @@ public class TestMethodFilter extends JerseyTest {
         try {
         	filter.aroundWriteTo(context);
         	
-        	Assert.fail();
+        	fail();
         } catch(Exception e) {
         	// ignore
         }
-        
-        context = mock(WriterInterceptorContext.class);
-        when(context.getProperty(XmlLogContainerFilter.LOG_BUILDER)).thenReturn(new StringBuilder());
-        try {
-        	filter.aroundWriteTo(context);
-        	
-        	Assert.fail();
-        } catch(Exception e) {
-        	// ignore
-        }
-
-        context = mock(WriterInterceptorContext.class);
-        when(context.getProperty(XmlLogContainerFilter.CACHE_STREAM)).thenReturn(new CacheStream(new ByteArrayOutputStream()));
-
-        try {
-        	filter.aroundWriteTo(context);
-        	
-        	Assert.fail();
-        } catch(Exception e) {
-        	// ignore
-        }
-
-        
     }
      
     @Test
     public void testAroundWriteToMimeTypes() throws IOException {
     	XmlLogContainerFilter filter = new XmlLogContainerFilter();
 
-    	CacheStream cacheStream = new CacheStream(new ByteArrayOutputStream());
+    	CacheStream cacheStream = new CacheStream(new ByteArrayOutputStream(), new StringBuilder(), new DefaultXmlFilter());
     	cacheStream.write("<xml>".getBytes("UTF-8"));
     	cacheStream.close();
     	
         WriterInterceptorContext context = mock(WriterInterceptorContext.class);
-        when(context.getProperty(XmlLogContainerFilter.LOG_BUILDER)).thenReturn(new StringBuilder());
-        when(context.getProperty(XmlLogContainerFilter.CACHE_STREAM)).thenReturn(cacheStream);
+        when(context.getOutputStream()).thenReturn(cacheStream);
         when(context.getMediaType()).thenReturn(MediaType.TEXT_XML_TYPE);
         
     	filter.aroundWriteTo(context);
-        
     }
      
 

@@ -1,12 +1,13 @@
 package com.skjolberg.xmlfilter.soap;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Properties;
-
-import org.junit.Assert;
 
 import com.github.skjolber.ddom.xmlts.XMLConformanceTest;
 import com.github.skjolber.ddom.xmlts.XMLConformanceTestSuite;
@@ -16,7 +17,6 @@ import com.github.skjolber.xmlfilter.test.XmlFilterConformanceRunner;
 import com.github.skjolber.xmlfilter.test.XmlFilterConstants;
 import com.github.skjolber.xmlfilter.test.XmlFilterProperties;
 import com.github.skjolber.xmlfilter.test.XmlFilterPropertiesFactory;
-import com.github.skjolber.xmlfilter.test.XmlFilterRunner;
 
 /**
  * 
@@ -55,7 +55,7 @@ public abstract class SingleXPathStAXXmlFilterTest implements XmlFilterConstants
 		for(XmlFilter filter : filters) {
 			files.addAll(runner.process(filter));
 		}
-		Assert.assertFalse(files.isEmpty());
+		assertFalse(files.isEmpty());
 	}
 	
 	protected void assertValidXmlConformant(List<XmlFilter> filters) throws Exception {
@@ -63,7 +63,7 @@ public abstract class SingleXPathStAXXmlFilterTest implements XmlFilterConstants
 		for(XmlFilter filter : filters) {
 			files.addAll(runner.processConformance(filter, filter instanceof AbstractXmlFilter && !((AbstractXmlFilter)filter).getXmlDeclaration()));
 		}
-		Assert.assertTrue(files.isEmpty());
+		assertTrue(files.isEmpty());
 		
 	}
 

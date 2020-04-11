@@ -1,12 +1,12 @@
 package com.skjolberg.xmlfilter.w3c.dom;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Properties;
-
-import org.junit.Assert;
 
 import com.github.skjolber.xmlfilter.XmlFilter;
 import com.github.skjolber.xmlfilter.test.XmlFilterConstants;
@@ -51,7 +51,7 @@ public abstract class BaseW3cDomXPathXmlIndentationFilterTest implements XmlFilt
 		for(XmlFilter filter : filters) {
 			files.addAll(runner.process(filter));
 		}
-		Assert.assertFalse(files.isEmpty());
+		assertFalse(files.isEmpty());
 	}
 
 }

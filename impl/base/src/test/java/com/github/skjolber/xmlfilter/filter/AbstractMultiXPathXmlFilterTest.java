@@ -5,13 +5,10 @@ import static com.github.skjolber.xmlfilter.filter.XPathExpressions.PASSTHROUGH_
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.rules.ExpectedException;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import com.github.skjolber.indent.Indent;
-import com.github.skjolber.xmlfilter.filter.CharArrayFilter;
-import com.github.skjolber.xmlfilter.filter.MultiCharArrayXPathFilter;
 
 public class AbstractMultiXPathXmlFilterTest {
 
@@ -36,21 +33,18 @@ public class AbstractMultiXPathXmlFilterTest {
 		
 	};
 
-	@Rule
-	public ExpectedException exception = ExpectedException.none();
-
 	@Test
 	public void construct_invalidAnonymizeXPath_throwsException() {
-		exception.expect(IllegalArgumentException.class);
-
-		new DefaultMultiXPathXmlFilter(true, null, -1, -1, new String[]{INVALID_XPATH}, null);
+		Assertions.assertThrows(IllegalArgumentException.class, () -> {
+			new DefaultMultiXPathXmlFilter(true, null, -1, -1, new String[]{INVALID_XPATH}, null);
+		});
 	}
 	
 	@Test
 	public void construct_invalidPruneXPath_throwsException() {
-		exception.expect(IllegalArgumentException.class);
-
-		new DefaultMultiXPathXmlFilter(true, null, -1, -1, null, new String[]{INVALID_XPATH});
+		Assertions.assertThrows(IllegalArgumentException.class, () -> {
+			new DefaultMultiXPathXmlFilter(true, null, -1, -1, null, new String[]{INVALID_XPATH});
+		});
 	}
 	
 	@Test

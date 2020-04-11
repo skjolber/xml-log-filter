@@ -7,17 +7,15 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
 import org.hamcrest.core.StringContains;
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.rules.ExpectedException;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import com.github.skjolber.indent.Indent;
-import com.github.skjolber.xmlfilter.filter.SingleXPathFilter;
 import com.github.skjolber.xmlfilter.filter.AbstractXPathFilter.FilterType;
 
 public class SingleXPathFilterTest {
 
-	private class DefaultXPathXmlFilter extends SingleXPathFilter {
+	public class DefaultXPathXmlFilter extends SingleXPathFilter {
 
 		public DefaultXPathXmlFilter(boolean declaration, Indent indentation, int maxTextNodeLength, int maxCDATANodeLength, String expression, FilterType type) {
 			super(declaration, indentation, maxTextNodeLength, maxCDATANodeLength, expression, type);
@@ -31,22 +29,20 @@ public class SingleXPathFilterTest {
 		}
 		
 	};
-	
-	@Rule
-	public ExpectedException exception = ExpectedException.none();
 
 	@Test
 	public void construct_invalidAnonymizeXPath_throwsException() {
-		exception.expect(IllegalArgumentException.class);
-
-		new DefaultXPathXmlFilter(true, null, -1, -1, INVALID_XPATH, FilterType.ANON);
+		Assertions.assertThrows(IllegalArgumentException.class, () -> {
+			new DefaultXPathXmlFilter(true, null, -1, -1, INVALID_XPATH, FilterType.ANON);
+		});
 	}
 	
 	@Test
 	public void construct_invalidPruneXPath_throwsException() {
-		exception.expect(IllegalArgumentException.class);
+		Assertions.assertThrows(IllegalArgumentException.class, () -> {
+			new DefaultXPathXmlFilter(true, null, -1, -1, INVALID_XPATH, FilterType.PRUNE);
+		});
 
-		new DefaultXPathXmlFilter(true, null, -1, -1, INVALID_XPATH, FilterType.PRUNE);
 	}
 	
 	@Test

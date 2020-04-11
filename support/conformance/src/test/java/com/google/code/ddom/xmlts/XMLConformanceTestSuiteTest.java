@@ -19,10 +19,9 @@ import java.io.InputStream;
 import java.util.HashSet;
 import java.util.Set;
 
-import junit.framework.Assert;
-
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 import com.github.skjolber.ddom.xmlts.XMLConformanceTest;
 import com.github.skjolber.ddom.xmlts.XMLConformanceTestSuite;
@@ -31,14 +30,14 @@ public class XMLConformanceTestSuiteTest {
 	
     private static XMLConformanceTestSuite suite;
     
-    @BeforeClass
+    @BeforeAll
     public static void load() {
         suite = XMLConformanceTestSuite.newInstance(XMLConformanceTestSuite.class.getResource("/xmlts20130923/xmlconf.xml"));
     }
     
     @Test
     public void testNumberOfTests() {
-        Assert.assertTrue(suite.getAllTests().size() > 2000);
+        Assertions.assertTrue(suite.getAllTests().size() > 2000);
     }
     
     @Test
@@ -46,7 +45,7 @@ public class XMLConformanceTestSuiteTest {
         Set<String> ids = new HashSet<String>();
         for (XMLConformanceTest test : suite.getAllTests()) {
             String id = test.getId();
-            Assert.assertTrue("Duplicate ID: " + id, ids.add(test.getId()));
+            Assertions.assertTrue(ids.add(test.getId()), "Duplicate ID: " + id);
         }
     }
     

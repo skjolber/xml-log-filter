@@ -77,7 +77,7 @@ public abstract class AbstractXmlFilterPropertiesFactory {
 			}
 			return null;
 		} else if(invoke instanceof List) {
-			List list = (List)invoke;
+			List<Object> list = (List<Object>)invoke;
 			if(!list.isEmpty()) {
 				if(list.size() == 1) {
 					return normalizeValue(list.get(0));
