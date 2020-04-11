@@ -9,6 +9,8 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -19,7 +21,9 @@ import com.github.skjolber.xmlfilter.core.MaxNodeLengthXmlFilter;
 import com.github.skjolber.xmlfilter.core.SingleXPathAnonymizeXmlFilter;
 import com.github.skjolber.xmlfilter.core.SingleXPathPruneXmlFilter;
 import com.github.skjolber.xmlfilter.core.XmlIndentationFilter;
+import com.github.skjolber.xmlns.schema.logger.SampleRestApplication;
 
+@SpringBootTest(classes = SampleRestApplication.class, webEnvironment = WebEnvironment.RANDOM_PORT)
 public class TestFactory {
 
 	private static class Defaults implements InvocationHandler {
