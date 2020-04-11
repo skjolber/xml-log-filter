@@ -1,7 +1,6 @@
 package com.github.skjolber.xmlns.schema.logger;
 
 
-import java.net.URI;
 import java.util.Arrays;
 
 import org.apache.cxf.Bus;
