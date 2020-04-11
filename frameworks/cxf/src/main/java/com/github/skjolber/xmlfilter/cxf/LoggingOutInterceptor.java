@@ -89,7 +89,7 @@ public class LoggingOutInterceptor extends AbstractLoggingEventInterceptor {
         StringWriter out2;
         int count;
         Message message;
-        private LogEventSender sender;SampleRestApplication.java
+        private LogEventSender sender;
 		private int logThreshold;
 		private int discThreshold;
 		private int memThreshold;
