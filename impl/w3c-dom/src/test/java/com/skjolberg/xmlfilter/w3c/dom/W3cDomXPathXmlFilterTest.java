@@ -6,8 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 import com.github.skjolber.xmlfilter.XmlFilter;
 import com.skjolberg.xmlfilter.w3c.dom.MapNamespaceContext;
@@ -39,10 +39,10 @@ public class W3cDomXPathXmlFilterTest extends BaseW3cDomXPathXmlIndentationFilte
 		
 		W3cDomXPathXmlFilter filter = new W3cDomXPathXmlFilter(false, true, xpathFilter);
 		
-		Assert.assertNull(filter.process("</xml>"));
-		Assert.assertNull(filter.process("</xml>".toCharArray()));
-		Assert.assertFalse(filter.process("</xml>".toCharArray(), 0, 6, new StringBuilder()));
-		Assert.assertFalse(filter.process(new StringReader("</xml>"), 6, new StringBuilder()));
+		assertNull(filter.process("</xml>"));
+		assertNull(filter.process("</xml>".toCharArray()));
+		assertFalse(filter.process("</xml>".toCharArray(), 0, 6, new StringBuilder()));
+		assertFalse(filter.process(new StringReader("</xml>"), 6, new StringBuilder()));
 	}
 }	
 

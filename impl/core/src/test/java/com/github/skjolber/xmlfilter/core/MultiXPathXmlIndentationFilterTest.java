@@ -3,17 +3,13 @@ package com.github.skjolber.xmlfilter.core;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Assert;
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.rules.ExpectedException;
-
 import com.github.skjolber.xmlfilter.XmlFilter;
 
-public class MultiXPathXmlIndentationFilterTest extends BaseXmlFilterTest {
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
-	@Rule
-	public ExpectedException exception = ExpectedException.none();
+public class MultiXPathXmlIndentationFilterTest extends BaseXmlFilterTest {
 
 	@Test
 	public void filter_anon1() throws Exception {
@@ -69,20 +65,21 @@ public class MultiXPathXmlIndentationFilterTest extends BaseXmlFilterTest {
 	
 	@Test
 	public void filter_pruneTextWithAttribute_throwsException() throws Exception {
-		exception.expect(IllegalArgumentException.class);
-		new MultiXPathMaxNodeLengthXmlFilter(true, -1, -1, null, new String[]{DEFAULT_ATTRIBUTE_XPATH});
+		Assertions.assertThrows(IllegalArgumentException.class, () -> {
+			new MultiXPathMaxNodeLengthXmlFilter(true, -1, -1, null, new String[]{DEFAULT_ATTRIBUTE_XPATH});
+		});
 	}
 	
 	@Test
 	public void filter_invalidXML_noFiltering() throws Exception {
 		XmlFilter filter = new MultiXPathXmlIndentationFilter(true, new String[]{DEFAULT_ATTRIBUTE_WILDCARD_XPATH}, null, indent);
-		Assert.assertNull(filter.process("</xml>"));
+		assertNull(filter.process("</xml>"));
 	}
 
 	@Test
 	public void filter_invalidRange_noFiltering() throws Exception {
 		XmlFilter filter = new MultiXPathXmlIndentationFilter(true, new String[]{DEFAULT_ATTRIBUTE_WILDCARD_XPATH}, null, indent);
-		Assert.assertFalse(filter.process("<xml></xml>".toCharArray(), 0, 100, new StringBuilder()));
+		assertFalse(filter.process("<xml></xml>".toCharArray(), 0, 100, new StringBuilder()));
 	}
 
 }

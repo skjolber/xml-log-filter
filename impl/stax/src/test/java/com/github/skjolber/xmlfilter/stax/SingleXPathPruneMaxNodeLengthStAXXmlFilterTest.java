@@ -4,19 +4,14 @@ package com.github.skjolber.xmlfilter.stax;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Assert;
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.rules.ExpectedException;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 import com.github.skjolber.xmlfilter.XmlFilter;
 import com.github.skjolber.xmlfilter.stax.SingleXPathPruneMaxNodeLengthStAXXmlFilter;
 
 public class SingleXPathPruneMaxNodeLengthStAXXmlFilterTest extends SingleXPathStAXXmlFilterTest {
-
-	@Rule
-	public ExpectedException exception = ExpectedException.none();
-
 	/* TODO double max length
 	@Test
 	public void filter_xpath_maxlength() throws Exception {
@@ -108,21 +103,21 @@ public class SingleXPathPruneMaxNodeLengthStAXXmlFilterTest extends SingleXPathS
 	
 	@Test
 	public void filter_textWithAny_throwsException() throws Exception {
-		exception.expect(IllegalArgumentException.class);
-		
-		new SingleXPathPruneMaxNodeLengthStAXXmlFilter(true, DEFAULT_ANY_XPATH, -1, -1, xmlInputFactory, xmlOutputFactory);
+		Assertions.assertThrows(IllegalArgumentException.class, () -> {
+			new SingleXPathPruneMaxNodeLengthStAXXmlFilter(true, DEFAULT_ANY_XPATH, -1, -1, xmlInputFactory, xmlOutputFactory);
+		});
 	}
 	
 	@Test
 	public void filter_invalidXML_noFiltering() throws Exception {
 		XmlFilter filter = new SingleXPathPruneMaxNodeLengthStAXXmlFilter(true, DEFAULT_XPATH, -1, -1, xmlInputFactory, xmlOutputFactory);
-		Assert.assertNull(filter.process("</xml>"));
+		assertNull(filter.process("</xml>"));
 	}
 
 	@Test
 	public void filter_invalidRange_noFiltering() throws Exception {
 		XmlFilter filter = new SingleXPathPruneMaxNodeLengthStAXXmlFilter(true, DEFAULT_XPATH, -1, -1, xmlInputFactory, xmlOutputFactory);
-		Assert.assertFalse(filter.process("<xml></xml>".toCharArray(), 0, 100, new StringBuilder()));
+		assertFalse(filter.process("<xml></xml>".toCharArray(), 0, 100, new StringBuilder()));
 	}
 	
 }

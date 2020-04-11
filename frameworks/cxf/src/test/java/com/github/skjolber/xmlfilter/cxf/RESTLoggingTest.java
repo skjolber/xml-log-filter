@@ -30,8 +30,9 @@ import org.apache.cxf.ext.logging.event.LogEvent;
 import org.apache.cxf.jaxrs.JAXRSServerFactoryBean;
 import org.apache.cxf.jaxrs.client.JAXRSClientFactoryBean;
 import org.apache.cxf.jaxrs.client.WebClient;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 import com.github.skjolber.xmlfilter.cxf.LoggingFeature;
 
@@ -48,7 +49,7 @@ public class RESTLoggingTest {
         WebClient client = createClient(loggingFeature);
         String result = client.get(String.class);
         server.destroy();
-        Assert.assertEquals("test1", result);
+        assertEquals("test1", result);
     }
     
     @Test
@@ -78,11 +79,11 @@ public class RESTLoggingTest {
     }
 
     private void assertLogged(LogEvent event) {
-        Assert.assertNotEquals(event.getPayload(), "--- Content suppressed ---", event.getPayload());
+        assertNotEquals(event.getPayload(), "--- Content suppressed ---", event.getPayload());
     }
     
     private void assertNotLogged(LogEvent event) {
-        Assert.assertEquals(event.getPayload(), "--- Content suppressed ---", event.getPayload());
+        assertEquals(event.getPayload(), "--- Content suppressed ---", event.getPayload());
     }
 
     private WebClient createClient(LoggingFeature loggingFeature) {
@@ -125,10 +126,10 @@ public class RESTLoggingTest {
         server.start();
         WebClient client = createClient(loggingFeature);
         String result = client.get(String.class);
-        Assert.assertEquals("test1", result);
+        assertEquals("test1", result);
         server.destroy();
         List<LogEvent> events = sender.getEvents();
-        Assert.assertEquals(4, events.size());
+        assertEquals(4, events.size());
         
         checkRequestOut(events.get(0));
         checkRequestIn(events.get(1));
@@ -137,53 +138,53 @@ public class RESTLoggingTest {
     }
     
     private void checkRequestOut(LogEvent requestOut) {
-        Assert.assertEquals(SERVICE_URI + "/test1", requestOut.getAddress());
-        Assert.assertNull(requestOut.getContentType());
-        Assert.assertEquals(EventType.REQ_OUT, requestOut.getType());
-        Assert.assertNull(requestOut.getEncoding());
-        Assert.assertNotNull(requestOut.getExchangeId());
-        Assert.assertEquals("GET", requestOut.getHttpMethod());
-        Assert.assertNotNull(requestOut.getMessageId());
-        Assert.assertEquals("", requestOut.getPayload());
+        assertEquals(SERVICE_URI + "/test1", requestOut.getAddress());
+        assertNull(requestOut.getContentType());
+        assertEquals(EventType.REQ_OUT, requestOut.getType());
+        assertNull(requestOut.getEncoding());
+        assertNotNull(requestOut.getExchangeId());
+        assertEquals("GET", requestOut.getHttpMethod());
+        assertNotNull(requestOut.getMessageId());
+        assertEquals("", requestOut.getPayload());
     }
 
     private void checkRequestIn(LogEvent requestIn) {
-        Assert.assertEquals(SERVICE_URI + "/test1", requestIn.getAddress());
-        Assert.assertNull(requestIn.getContentType());
-        Assert.assertEquals(EventType.REQ_IN, requestIn.getType());
-        Assert.assertNull(requestIn.getEncoding());
-        Assert.assertNotNull(requestIn.getExchangeId());
-        Assert.assertEquals("GET", requestIn.getHttpMethod());
-        Assert.assertNotNull(requestIn.getMessageId());
-        Assert.assertEquals("", requestIn.getPayload());
+        assertEquals(SERVICE_URI + "/test1", requestIn.getAddress());
+        assertNull(requestIn.getContentType());
+        assertEquals(EventType.REQ_IN, requestIn.getType());
+        assertNull(requestIn.getEncoding());
+        assertNotNull(requestIn.getExchangeId());
+        assertEquals("GET", requestIn.getHttpMethod());
+        assertNotNull(requestIn.getMessageId());
+        assertEquals("", requestIn.getPayload());
     }
     
     private void checkResponseOut(LogEvent responseOut) {
         // Not yet available
-        Assert.assertNull(responseOut.getAddress());
-        Assert.assertEquals("application/octet-stream", responseOut.getContentType());
-        Assert.assertEquals(EventType.RESP_OUT, responseOut.getType());
-        Assert.assertNull(responseOut.getEncoding());
-        Assert.assertNotNull(responseOut.getExchangeId());
+        assertNull(responseOut.getAddress());
+        assertEquals("application/octet-stream", responseOut.getContentType());
+        assertEquals(EventType.RESP_OUT, responseOut.getType());
+        assertNull(responseOut.getEncoding());
+        assertNotNull(responseOut.getExchangeId());
         
         // Not yet available
-        Assert.assertNull(responseOut.getHttpMethod());
-        Assert.assertNotNull(responseOut.getMessageId());
-        Assert.assertEquals("test1", responseOut.getPayload());
+        assertNull(responseOut.getHttpMethod());
+        assertNotNull(responseOut.getMessageId());
+        assertEquals("test1", responseOut.getPayload());
     }
     
     private void checkResponseIn(LogEvent responseIn) {
         // Not yet available
-        Assert.assertNull(responseIn.getAddress());
-        Assert.assertEquals("application/octet-stream", responseIn.getContentType());
-        Assert.assertEquals(EventType.RESP_IN, responseIn.getType());
-        Assert.assertEquals("ISO-8859-1", responseIn.getEncoding());
-        Assert.assertNotNull(responseIn.getExchangeId());
+        assertNull(responseIn.getAddress());
+        assertEquals("application/octet-stream", responseIn.getContentType());
+        assertEquals(EventType.RESP_IN, responseIn.getType());
+        assertEquals("ISO-8859-1", responseIn.getEncoding());
+        assertNotNull(responseIn.getExchangeId());
         
         // Not yet available
-        Assert.assertNull(responseIn.getHttpMethod());
-        Assert.assertNotNull(responseIn.getMessageId());
-        Assert.assertEquals("test1", responseIn.getPayload());
+        assertNull(responseIn.getHttpMethod());
+        assertNotNull(responseIn.getMessageId());
+        assertEquals("test1", responseIn.getPayload());
     }
     
 

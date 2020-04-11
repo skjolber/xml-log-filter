@@ -3,18 +3,15 @@ package com.github.skjolber.xmlfilter.core;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Assert;
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.rules.ExpectedException;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 import com.github.skjolber.xmlfilter.XmlFilter;
 
 public class MultiXPathMaxNodeLengthXmlIndentationFilterTest  extends BaseXmlFilterTest {
 
-	@Rule
-	public ExpectedException exception = ExpectedException.none();
-	
 	@Test
 	public void filter_anon1() throws Exception {
 		String[] regularXPaths = {DEFAULT_XPATH, DEFAULT_WILDCARD_XPATH, DEFAULT_ATTRIBUTE_XPATH, DEFAULT_ATTRIBUTE_WILDCARD_XPATH};
@@ -88,20 +85,21 @@ public class MultiXPathMaxNodeLengthXmlIndentationFilterTest  extends BaseXmlFil
 	
 	@Test
 	public void filter_pruneTextWithAttribute_throwsException() throws Exception {
-		exception.expect(IllegalArgumentException.class);
-		new MultiXPathMaxNodeLengthXmlIndentationFilter(true, -1, -1, null, new String[]{DEFAULT_ATTRIBUTE_XPATH}, indent);
+		Assertions.assertThrows(IllegalArgumentException.class, () -> {
+			new MultiXPathMaxNodeLengthXmlIndentationFilter(true, -1, -1, null, new String[]{DEFAULT_ATTRIBUTE_XPATH}, indent);
+		});
 	}
 	
 	@Test
 	public void filter_invalidXML_noFiltering() throws Exception {
 		XmlFilter filter = new MultiXPathMaxNodeLengthXmlIndentationFilter(true, -1, -1, new String[]{DEFAULT_ATTRIBUTE_WILDCARD_XPATH}, null, indent);
-		Assert.assertNull(filter.process("</xml>"));
+		assertNull(filter.process("</xml>"));
 	}
 	
 	@Test
 	public void filter_invalidRange_noFiltering() throws Exception {
 		XmlFilter filter = new MultiXPathMaxNodeLengthXmlIndentationFilter(true, -1, -1, new String[]{DEFAULT_ATTRIBUTE_WILDCARD_XPATH}, null, indent);
-		Assert.assertFalse(filter.process("<xml></xml>".toCharArray(), 0, 100, new StringBuilder()));
+		assertFalse(filter.process("<xml></xml>".toCharArray(), 0, 100, new StringBuilder()));
 	}
 	
 	

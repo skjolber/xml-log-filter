@@ -10,7 +10,10 @@ import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLOutputFactory;
 
 import org.codehaus.stax2.XMLOutputFactory2;
-import org.junit.Assert;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 import com.fasterxml.aalto.stax.InputFactoryImpl;
 import com.fasterxml.aalto.stax.OutputFactoryImpl;
@@ -68,7 +71,7 @@ public abstract class SingleXPathStAXXmlFilterTest implements XmlFilterConstants
 		for(XmlFilter filter : filters) {
 			files.addAll(runner.process(filter));
 		}
-		Assert.assertFalse(files.isEmpty());
+		assertFalse(files.isEmpty());
 	}
 
 }

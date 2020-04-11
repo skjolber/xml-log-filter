@@ -8,7 +8,7 @@ import javax.ws.rs.core.GenericEntity;
 
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.test.JerseyTest;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import com.github.skjolber.xmlns.schema.logger.App;
 import com.github.skjolber.xmlns.schema.logger.PerformLogMessageRequest;

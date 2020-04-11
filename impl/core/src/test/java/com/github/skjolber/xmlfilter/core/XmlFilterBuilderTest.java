@@ -1,7 +1,7 @@
 package com.github.skjolber.xmlfilter.core;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 import com.github.skjolber.xmlfilter.XmlFilter;
 
@@ -11,7 +11,7 @@ public class XmlFilterBuilderTest {
 	public void testBuilderNone() throws Exception {
 		XmlFilter newXmlFilter = XmlFilterBuilder.newXmlFilter().build();
 		
-		Assert.assertEquals(MaxNodeLengthXmlFilter.class, newXmlFilter.getClass());
+		assertEquals(MaxNodeLengthXmlFilter.class, newXmlFilter.getClass());
 	}
 	
 	@Test
@@ -25,7 +25,7 @@ public class XmlFilterBuilderTest {
 				.prune(new String[]{"/abcd/a"})
 				.build();
 		
-		Assert.assertNotNull(newXmlFilter);
+		assertNotNull(newXmlFilter);
 	}
 	
 }

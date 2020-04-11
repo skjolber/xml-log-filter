@@ -10,11 +10,13 @@ import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLOutputFactory;
 
 import org.codehaus.stax2.XMLOutputFactory2;
-import org.junit.Assert;
+import org.junit.jupiter.api.Assertions;
+import static org.junit.jupiter.api.Assertions.*;
 
 import com.fasterxml.aalto.stax.InputFactoryImpl;
 import com.fasterxml.aalto.stax.OutputFactoryImpl;
 import com.github.skjolber.xmlfilter.XmlFilter;
+import com.github.skjolber.xmlfilter.stax.SingleXPathPruneMaxNodeLengthStAXXmlFilter;
 import com.github.skjolber.xmlfilter.test.XmlFilterConstants;
 import com.github.skjolber.xmlfilter.test.XmlFilterProperties;
 import com.github.skjolber.xmlfilter.test.XmlFilterPropertiesFactory;
@@ -68,7 +70,7 @@ public abstract class BaseStAXSoapHeaderXmlFilterTest implements XmlFilterConsta
 		for(XmlFilter filter : filters) {
 			files.addAll(runner.process(filter));
 		}
-		Assert.assertFalse(files.isEmpty());
+		assertFalse(files.isEmpty());
 	}
 
 }

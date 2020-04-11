@@ -1,8 +1,10 @@
 package com.github.skjolber.xml.prettyprint.jaxrs;
 
 import static javax.ws.rs.client.Entity.xml;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -28,8 +30,6 @@ import javax.ws.rs.ext.WriterInterceptorContext;
 
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.test.JerseyTest;
-import org.junit.Assert;
-import org.junit.Test;
 import org.mockito.ArgumentCaptor;
 import org.slf4j.Logger;
 
@@ -109,8 +109,8 @@ public class TestMethodFilter extends JerseyTest {
     	
     	cacheStream.write(0);
     	
-    	Assert.assertEquals(1, bout.size());
-    	Assert.assertEquals(1, cacheStream.getCacheOutputStream().size());
+    	assertEquals(1, bout.size());
+    	assertEquals(1, cacheStream.getCacheOutputStream().size());
     }
     
     @Test
@@ -210,7 +210,7 @@ public class TestMethodFilter extends JerseyTest {
     	StringBuilder builder = new StringBuilder();
     	
     	InputStream result = XmlLogContainerFilter.readInputStream(entityStream, content.length, builder, Charset.forName("UTF-8"));
-    	Assert.assertSame(entityStream, result);
+    	assertSame(entityStream, result);
      }
 
     @Test
@@ -230,7 +230,7 @@ public class TestMethodFilter extends JerseyTest {
     	byte[] resultContent = new byte[32 * 1024];
     	result.read(resultContent);
     	
-    	Assert.assertTrue(Arrays.equals(content, resultContent));
+    	assertTrue(Arrays.equals(content, resultContent));
      }
     
     @Test
@@ -242,7 +242,7 @@ public class TestMethodFilter extends JerseyTest {
         try {
         	filter.aroundWriteTo(context);
         	
-        	Assert.fail();
+        	fail();
         } catch(Exception e) {
         	// ignore
         }
@@ -252,7 +252,7 @@ public class TestMethodFilter extends JerseyTest {
         try {
         	filter.aroundWriteTo(context);
         	
-        	Assert.fail();
+        	fail();
         } catch(Exception e) {
         	// ignore
         }
@@ -263,7 +263,7 @@ public class TestMethodFilter extends JerseyTest {
         try {
         	filter.aroundWriteTo(context);
         	
-        	Assert.fail();
+        	fail();
         } catch(Exception e) {
         	// ignore
         }

@@ -5,7 +5,9 @@ import static org.hamcrest.Matchers.is;
 
 import java.util.Arrays;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
 
 public class XmlFilterFactoryTest extends BaseXmlFilterTest {
 

@@ -1,4 +1,5 @@
 package com.github.skjolber.xmlfilter.filter;
+import static com.github.skjolber.xmlfilter.filter.XPathExpressions.INVALID_XPATH;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
@@ -6,13 +7,12 @@ import java.io.EOFException;
 import java.io.IOException;
 import java.io.StringReader;
 
-import org.junit.Assert;
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.rules.ExpectedException;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import com.github.skjolber.indent.Indent;
 import com.github.skjolber.xmlfilter.filter.AbstractXmlFilter;
+import com.github.skjolber.xmlfilter.filter.AbstractXPathXmlFilterTest.DefaultXPathXmlFilter;
 import com.github.skjolber.xmlfilter.test.XmlFilterRunner;;
 public class AbstractXmlFilterTest {
 
@@ -44,21 +44,18 @@ public class AbstractXmlFilterTest {
 
 	private static String invalidXmlString = "<xml>";
 
-	@Rule
-	public ExpectedException exception = ExpectedException.none();
-
 	@Test
 	public void construct_invalidTextNodeLength_throwsException() {
-		exception.expect(IllegalArgumentException.class);
-
-		new DefaultXmlFilter(true, -2, Integer.MAX_VALUE, Integer.MAX_VALUE);
+		Assertions.assertThrows(IllegalArgumentException.class, () -> {
+			new DefaultXmlFilter(true, -2, Integer.MAX_VALUE, Integer.MAX_VALUE);
+		});
 	}
 	
 	@Test
 	public void construct_invalidCDataNodeLength_throwsException() {
-		exception.expect(IllegalArgumentException.class);
-
-		new DefaultXmlFilter(true, Integer.MAX_VALUE, -2, Integer.MAX_VALUE);
+		Assertions.assertThrows(IllegalArgumentException.class, () -> {
+			new DefaultXmlFilter(true, Integer.MAX_VALUE, -2, Integer.MAX_VALUE);
+		});
 	}
 	
 	@Test
@@ -91,8 +88,8 @@ public class AbstractXmlFilterTest {
 		DefaultXmlFilter defaultXmlFilter = new DefaultXmlFilter(true, -1, -1, Integer.MAX_VALUE);
 		
 		assertThat(defaultXmlFilter.getXmlDeclaration(), is(true));
-		Assert.assertNull(defaultXmlFilter.process(invalidXmlString));
-		Assert.assertNull(defaultXmlFilter.process(invalidXmlString));
+		Assertions.assertNull(defaultXmlFilter.process(invalidXmlString));
+		Assertions.assertNull(defaultXmlFilter.process(invalidXmlString));
 	}	
 
 	@Test
@@ -109,17 +106,17 @@ public class AbstractXmlFilterTest {
 		DefaultXmlFilter defaultXmlFilter = new DefaultXmlFilter(true, -1, -1, Integer.MAX_VALUE);
 		
 		assertThat(defaultXmlFilter.getXmlDeclaration(), is(true));
-		Assert.assertFalse(defaultXmlFilter.process(invalidXmlString, new StringBuilder(1024)));
-		Assert.assertFalse(defaultXmlFilter.process(new StringReader(invalidXmlString), invalidXmlString.length(), new StringBuilder(1024)));
+		Assertions.assertFalse(defaultXmlFilter.process(invalidXmlString, new StringBuilder(1024)));
+		Assertions.assertFalse(defaultXmlFilter.process(new StringReader(invalidXmlString), invalidXmlString.length(), new StringBuilder(1024)));
 	}
 	
 	@Test
 	public void process_invalidCharacterLengths_returnsFalse() throws IOException {
-		exception.expect(EOFException.class);
-		
-		DefaultXmlFilter defaultXmlFilter = new DefaultXmlFilter(true, -1, -1, Integer.MAX_VALUE);
-		
-		defaultXmlFilter.process(new StringReader(""), 1, new StringBuilder(1024));
+		Assertions.assertThrows(EOFException.class, () -> {
+			DefaultXmlFilter defaultXmlFilter = new DefaultXmlFilter(true, -1, -1, Integer.MAX_VALUE);
+			
+			defaultXmlFilter.process(new StringReader(""), 1, new StringBuilder(1024));
+		});
 	}
 
 }
