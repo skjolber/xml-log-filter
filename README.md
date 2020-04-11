@@ -42,7 +42,7 @@ The project is built with [Maven] and is available on the central Maven reposito
 <dependency>
     <groupId>com.github.skjolber.xml-log-filter</groupId>
     <artifactId>xml-log-filter-core</artifactId>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
 </dependency>
 ```
 
@@ -151,6 +151,7 @@ The project is intended as a complimentary tool for use alongside XML frameworks
 See the [xml-formatter] for additional indenting/formatting of inner XML. 
 
 # History
+- [1.0.3]: Maintenance release
 - [1.0.2]: Initial Java 11 (modules) support.
 
 [1.0.2]:                releases
