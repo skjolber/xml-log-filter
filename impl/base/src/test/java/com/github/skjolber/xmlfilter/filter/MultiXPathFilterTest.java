@@ -12,7 +12,7 @@ import com.github.skjolber.indent.Indent;
 
 public class MultiXPathFilterTest {
 
-	public class DefaultMultiXPathXmlFilter extends MultiXPathFilter {
+	public class DefaultMultiXPathXmlFilter extends MultiCharArrayXPathFilter {
 
 		public DefaultMultiXPathXmlFilter(boolean declaration, Indent indentation, int maxTextNodeLength, int maxCDATANodeLength, String[] anonymizes, String[] prunes) {
 			super(declaration, maxTextNodeLength, maxCDATANodeLength, anonymizes, prunes, indentation);
