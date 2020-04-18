@@ -138,7 +138,7 @@ or a simple any-level element search
 The processors within this project are much faster than stock processors. This is expected as parser/serializer features have been traded for performance. 
 
 The project has DOM- and StAX-based equivalents for feature and performance comparison. 
-Depending on the implementation, benchmarks show throughput is approximately double compared to stock processors. 
+Depending on the implementation, benchmarks show throughput is approximately 5x-10x compared to stock processors. 
 
 Memory use will be approximately two times the XML string size.
 
@@ -162,6 +162,6 @@ See the [xml-formatter] for additional indenting/formatting of inner XML.
 [latest]:               https://www.w3.org/XML/Test/
 [JMH]:                  benchmark/jmh
 [xml-formatter]:        https://github.com/greenbird/xml-formatter-core
-[visualization]:	https://skjolber.github.io/xml-log-filter/docs/benchmark/jmh/index.html
-[High-performance]:	https://skjolber.github.io/xml-log-filter/docs/benchmark/jmh/index.html
+[visualization]:	https://jmh.morethan.io/?source=https://raw.githubusercontent.com/skjolber/xml-log-filter/master/docs/benchmark/jmh-result.json&topBar=off
+[High-performance]:	https://jmh.morethan.io/?source=https://raw.githubusercontent.com/skjolber/xml-log-filter/master/docs/benchmark/jmh-result.json&topBar=off
 
