@@ -13,7 +13,8 @@ public class BenchmarkRunner {
 	
 	private List<FileDirectoryValue> directories;
 	private XmlFilter xmlFilter;
-	
+	private StringBuilder builder = new StringBuilder(1024 * 1024);
+
 	public BenchmarkRunner(File file, boolean recursive) throws IOException {
 		directories = new FileDirectoryCache().getValue(file, new FileFilter() {
 			
@@ -33,7 +34,6 @@ public class BenchmarkRunner {
 	}
 
 	public long benchmark() {
-		StringBuilder builder = new StringBuilder(1024 * 1024);
 
 		// warmup
 		long sizeSum = 0;
