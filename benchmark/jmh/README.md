@@ -104,21 +104,21 @@ See this [visualization] for interactive results. Summarized below.
 
 | Benchmark                               | Score     |
 | --------------------------------------- | --------- |
-| DOM                                     | 1.1k      | 
-| StAX                                    | 2.9k      | 
-| xml-log-filte                           | 4.5-5.0K  | 
-| passthrough                             | 5.2k      | 
+| DOM                                     | 1k        | 
+| StAX                                    | 4.5k      | 
+| xml-log-filter                          | 26-62K    | 
+| passthrough                             | 403k      | 
 
 ### IndentBenchmark
 Average time, floored.
 
 | Benchmark                               | Score     |
 | --------------------------------------- | --------- |
-| DOM                                     | 09-1.2k   | 
-| SAX                                     | 1.5-1.8k  |
-| StAX                                    | 2.2k      | 
-| xml-log-filter                          | 4.0-4.5K  | 
-| passthrough                             | 5.1k      | 
+| DOM                                     | 0.8-1.2k  | 
+| SAX                                     | 1.4-2k    |
+| StAX                                    | 2.8k      | 
+| xml-log-filter                          | 11.5-22.4K| 
+| passthrough                             | 404k      | 
 
 
 ### SoapHeaderBench
@@ -126,14 +126,14 @@ Average time, floored.
 
 | Benchmark                               | Score     |
 | --------------------------------------- | --------- |
-| DOM                                     | 1.1k   | 
-| SAX                                     | 1.5-1.8k  |
-| StAX                                    | 2.7-2.9k      | 
-| xml-log-filter                          | 4.5-4.8K  | 
-| xml-log-filter app-specific             | 5.0-5.1K  | 
-| passthrough                             | 5.1k      | 
+| DOM                                     | 0.9k      | 
+| SAX                                     | 4.4k      |
+| StAX                                    | 4-4.5k    | 
+| xml-log-filter                          | 27.7-51.8K| 
+| xml-log-filter app-specific             | 186-192K  | 
+| passthrough                             | 403k      | 
 
-[JMH]: 				http://openjdk.java.net/projects/code-tools/jmh/
+[JMH]: 		https://openjdk.java.net/projects/code-tools/jmh/
 [Aalto XML]: 		https://github.com/FasterXML/aalto-xml
-[JMH Visualizer]:	http://jmh.morethan.io/
-[visualization]:	https://skjolber.github.io/xml-log-filter/docs/benchmark/jmh/index.html
+[JMH Visualizer]:	https://jmh.morethan.io/
+[visualization]:	https://jmh.morethan.io/?source=https://raw.githubusercontent.com/skjolber/xml-log-filter/master/docs/benchmark/jmh-result.json&topBar=off
