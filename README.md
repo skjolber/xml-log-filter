@@ -152,9 +152,9 @@ See the [xml-formatter] for additional indenting/formatting of inner XML.
 
 # History
 - [1.0.3]: Maintenance release
-- [1.0.2]: Initial Java 11 (modules) support.
+- 1.0.2: Initial Java 11 (modules) support.
 
-[1.0.2]:                releases
+[1.0.3]:                releases
 [Aalto]:                https://github.com/FasterXML/aalto-xml
 [Apache 2.0]:           http://www.apache.org/licenses/LICENSE-2.0.html
 [issue-tracker]:        https://github.com/skjolber/xml-log-filter/issues
