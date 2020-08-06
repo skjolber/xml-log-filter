@@ -148,7 +148,10 @@ See this [visualization] and the [JMH] module for running detailed benchmarks.
 The project is intended as a complimentary tool for use alongside XML frameworks, such as SOAP- or XML-based REST stacks. Its primary use-case is processing to-be logged XML. The project relies on the fact that such frameworks have very good error handling, like schema validation, to apply a simplified view of the XML syntax, basically handling only the happy-case of a well-formed document. The frameworks themselves detect invalid documents and handle them as raw content. 
 
 # See also
-See the [xml-formatter] for additional indenting/formatting of inner XML. 
+See
+
+ * [xml-formatter] for additional indenting/formatting of inner XML. 
+ * [json-log-filter] for filtering of JSON.
 
 # History
 - [1.0.3]: Maintenance release
@@ -164,4 +167,4 @@ See the [xml-formatter] for additional indenting/formatting of inner XML.
 [xml-formatter]:        https://github.com/greenbird/xml-formatter-core
 [visualization]:	https://jmh.morethan.io/?source=https://raw.githubusercontent.com/skjolber/xml-log-filter/master/docs/benchmark/jmh-result.json&topBar=off
 [High-performance]:	https://jmh.morethan.io/?source=https://raw.githubusercontent.com/skjolber/xml-log-filter/master/docs/benchmark/jmh-result.json&topBar=off
-
+ [json-log-filter]: https://github.com/skjolber/json-log-filter
