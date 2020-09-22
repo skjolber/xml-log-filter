@@ -5,6 +5,7 @@ build/
 bin/
 dist/
 vendor/
+.attach_pid*
 
 #eclipse
 .settings

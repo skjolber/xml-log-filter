@@ -42,7 +42,7 @@ The project is built with [Maven] and is available on the central Maven reposito
 <dependency>
     <groupId>com.github.skjolber.xml-log-filter</groupId>
     <artifactId>xml-log-filter-core</artifactId>
-    <version>1.0.3</version>
+    <version>1.0.4</version>
 </dependency>
 ```
 
@@ -154,10 +154,11 @@ See
  * [json-log-filter] for filtering of JSON.
 
 # History
-- [1.0.3]: Maintenance release
+- [1.0.4]: Maintenance release
+- 1.0.3: Maintenance release
 - 1.0.2: Initial Java 11 (modules) support.
 
-[1.0.3]:                releases
+[1.0.4]:                releases
 [Aalto]:                https://github.com/FasterXML/aalto-xml
 [Apache 2.0]:           http://www.apache.org/licenses/LICENSE-2.0.html
 [issue-tracker]:        https://github.com/skjolber/xml-log-filter/issues
