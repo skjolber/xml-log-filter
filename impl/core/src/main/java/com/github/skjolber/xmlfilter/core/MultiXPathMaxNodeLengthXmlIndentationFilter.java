@@ -273,7 +273,7 @@ public class MultiXPathMaxNodeLengthXmlIndentationFilter extends MultiCharArrayX
 							}
 							
 							if(anyElementFilters != null) {
-								FilterType filterType = matchAnyElements(chars, offset, sourceStart + 1);
+								FilterType filterType = matchAnyElements(chars, sourceStart + 1, offset);
 								if(filterType == FilterType.ANON) {
 									anon = true;
 								} else if(filterType == FilterType.PRUNE) {

@@ -143,12 +143,17 @@ public abstract class AbstractMultiXPathFilter extends AbstractXPathFilter {
 			elementFilterStart = new int[maxElementPaths + 1];
 			elementFilterEnd = new int[maxElementPaths + 1];
 			
-			// count
-			for(int i = 0; i < elements.size(); i++) {
-				if(elementFilterEnd[elements.get(i).getLength()] == 0) { // first filter for this index
-					elementFilterStart[elements.get(i).getLength()] = i;
+			for (AbsolutePathFilter absolutePathFilter : elements) {
+				elementFilterEnd[absolutePathFilter.getLength()]++;
+			}
+			
+			for(int i = 1; i < elementFilterEnd.length; i++) {
+				int sum = 0;
+				for(int k = 0; k < i; k++) {
+					sum += elementFilterEnd[k];
 				}
-				elementFilterEnd[elements.get(i).getLength()]++;
+				
+				elementFilterStart[i] = sum;
 			}
 
 			// add start to count for end
@@ -176,16 +181,19 @@ public abstract class AbstractMultiXPathFilter extends AbstractXPathFilter {
 			attributeFilterStart = new int[maxAttributePaths];
 			attributeFilterEnd = new int[maxAttributePaths];
 			
-			// count
-			for(int i = 0; i < attributes.size(); i++) {
-				
-				int elementPaths = attributes.get(i).getLength() - 1; // last is attribute
-				if(attributeFilterEnd[elementPaths] == 0) { // first filter for this index
-					attributeFilterStart[elementPaths] = i;
-				}
-				attributeFilterEnd[elementPaths]++;
+			for (AbsolutePathFilter absolutePathFilter : elements) {
+				attributeFilterEnd[absolutePathFilter.getLength()]++;
 			}
 			
+			for(int i = 1; i < attributeFilterEnd.length; i++) {
+				int sum = 0;
+				for(int k = 0; k < i; k++) {
+					sum += attributeFilterEnd[k];
+				}
+				
+				attributeFilterStart[i] = sum;
+			}
+
 			// add start to count for end
 			for(int i = 0; i < attributeFilterEnd.length; i++) {
 				attributeFilterEnd[i] += attributeFilterStart[i];

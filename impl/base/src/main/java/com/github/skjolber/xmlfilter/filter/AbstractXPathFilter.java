@@ -94,7 +94,7 @@ public abstract class AbstractXPathFilter extends AbstractXmlFilter {
 		String[] split = expression.split("/");
 		String[] elementPath = new String[split.length - 1];
 		for(int k = 0; k < elementPath.length; k++) {
-			elementPath[k] = split[k + 1];
+			elementPath[k] = intern(split[k + 1]);
 		}
 		return elementPath;
 	}
