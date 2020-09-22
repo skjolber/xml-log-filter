@@ -84,12 +84,12 @@ public abstract class MultiCharArrayXPathFilter extends AbstractMultiXPathFilter
 	 * Note that the order or the filters establishes precedence (prune over anon).
 	 * 
 	 * @param chars XML characters
-	 * @param end XML characters end position
 	 * @param start XML characters start position
+	 * @param end XML characters end position
 	 * @return the matching filter type, or null if none
 	 */
 	
-	protected FilterType matchAnyElements(final char[] chars, int end, int start) {
+	protected FilterType matchAnyElements(final char[] chars, int start, int end) {
 		anyFilters:
 		for(int i = 0; i < anyElementFilters.length; i++) {
 			if(anyElementFilters[i].path.length != end - start) {

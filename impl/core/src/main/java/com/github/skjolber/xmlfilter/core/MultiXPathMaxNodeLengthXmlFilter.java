@@ -213,7 +213,7 @@ public class MultiXPathMaxNodeLengthXmlFilter extends MultiCharArrayXPathFilter 
 							}
 							
 							if(anyElementFilters != null) {
-								FilterType filterType = matchAnyElements(chars, offset, sourceStart);
+								FilterType filterType = matchAnyElements(chars, sourceStart, offset);
 								if(filterType == FilterType.ANON) {
 									anon = true;
 								} else if(filterType == FilterType.PRUNE) {
