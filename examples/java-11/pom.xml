@@ -19,7 +19,7 @@
 		
   		<xml-log-filter.version>1.0.5-SNAPSHOT</xml-log-filter.version>
 		<assertj-core.version>3.15.0</assertj-core.version>
-		<junit.version>4.13</junit.version>
+		<junit.version>4.13.1</junit.version>
 	</properties>
 
 	<dependencies>
