@@ -110,8 +110,7 @@ public class SOAPLoggingTest {
     }
     
     private void checkResponseOut(LogEvent responseOut) {
-        // Not yet available
-        assertNull(responseOut.getAddress());
+    	assertEquals(SERVICE_URI, responseOut.getAddress());
         assertEquals("text/xml", responseOut.getContentType());
         assertEquals(EventType.RESP_OUT, responseOut.getType());
         assertEquals(StandardCharsets.UTF_8.name(), responseOut.getEncoding());
@@ -127,7 +126,7 @@ public class SOAPLoggingTest {
     }
     
     private void checkResponseIn(LogEvent responseIn) {
-        assertNull(responseIn.getAddress());
+    	assertEquals(SERVICE_URI, responseIn.getAddress());
         assertEquals("text/xml;charset=utf-8", responseIn.getContentType().toLowerCase().replace(" ", ""));
         assertEquals(EventType.RESP_IN, responseIn.getType());
         assertEquals(StandardCharsets.UTF_8.name(), responseIn.getEncoding());
