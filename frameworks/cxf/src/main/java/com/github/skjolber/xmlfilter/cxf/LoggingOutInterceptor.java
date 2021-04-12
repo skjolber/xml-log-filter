@@ -23,6 +23,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.StringWriter;
 import java.io.Writer;
+import java.util.Collections;
 
 import org.apache.cxf.common.injection.NoJSR250Annotations;
 import org.apache.cxf.common.util.StringUtils;
@@ -67,7 +68,7 @@ public class LoggingOutInterceptor extends AbstractLoggingEventInterceptor {
                 }
             }
         } else {
-            final LogEvent event = logEventMapper.map(message);
+            final LogEvent event = logEventMapper.map(message, Collections.emptySet());
             event.setPayload(CONTENT_SUPPRESSED);
             logEventSender.send(event);
         }
@@ -130,7 +131,7 @@ public class LoggingOutInterceptor extends AbstractLoggingEventInterceptor {
         }
 
         public void close() throws IOException {
-            final LogEvent event = logEventMapper.map(message);
+            final LogEvent event = logEventMapper.map(message, Collections.emptySet());
             StringWriter w2 = out2;
             if (w2 == null) {
                 w2 = (StringWriter)out;
@@ -176,7 +177,7 @@ public class LoggingOutInterceptor extends AbstractLoggingEventInterceptor {
         }
 
         public void onClose(CachedOutputStream cos) {
-            final LogEvent event = logEventMapper.map(message);
+            final LogEvent event = logEventMapper.map(message, Collections.emptySet());
             copyPayload(cos, event);
 
             sender.send(event);
