@@ -20,6 +20,7 @@ package com.github.skjolber.xmlfilter.cxf;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.util.Collections;
 
 import org.apache.cxf.common.injection.NoJSR250Annotations;
 import org.apache.cxf.common.util.StringUtils;
@@ -50,7 +51,7 @@ public class LoggingInInterceptor extends AbstractLoggingEventInterceptor {
 
     public void handleMessage(Message message) throws Fault {
         createExchangeId(message);
-        final LogEvent event = logEventMapper.map(message);
+        final LogEvent event = logEventMapper.map(message, Collections.emptySet());
         if (shouldLogContent(event)) {
             addContent(message, event);
         } else {

@@ -161,8 +161,7 @@ public class RESTLoggingTest {
     }
     
     private void checkResponseOut(LogEvent responseOut) {
-        // Not yet available
-        assertNull(responseOut.getAddress());
+    	assertEquals(SERVICE_URI + "/test1", responseOut.getAddress());
         assertEquals("application/octet-stream", responseOut.getContentType());
         assertEquals(EventType.RESP_OUT, responseOut.getType());
         assertNull(responseOut.getEncoding());
@@ -175,8 +174,7 @@ public class RESTLoggingTest {
     }
     
     private void checkResponseIn(LogEvent responseIn) {
-        // Not yet available
-        assertNull(responseIn.getAddress());
+    	assertEquals(SERVICE_URI + "/test1", responseIn.getAddress());
         assertEquals("application/octet-stream", responseIn.getContentType());
         assertEquals(EventType.RESP_IN, responseIn.getType());
         assertEquals("ISO-8859-1", responseIn.getEncoding());
