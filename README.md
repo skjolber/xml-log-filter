@@ -1,5 +1,3 @@
-[![Build Status](https://travis-ci.org/skjolber/xml-log-filter.svg?branch=master)](https://travis-ci.org/skjolber/xml-log-filter)
-
 # xml-log-filter
 High-performance filtering of to-be-logged XML. Reads, filters, formats and writes XML in a single step -  drastically increasing throughput. Typical use-cases
 
