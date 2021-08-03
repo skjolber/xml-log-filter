@@ -52,7 +52,7 @@
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 
-		<aalto.version>1.2.2</aalto.version>
+		<aalto.version>1.3.0</aalto.version>
 		<xerces.version>2.12.1</xerces.version>
 		
 		<indent.version>1.0.0</indent.version>
