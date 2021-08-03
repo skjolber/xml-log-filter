@@ -40,7 +40,7 @@ The project is built with [Maven] and is available on the central Maven reposito
 <dependency>
     <groupId>com.github.skjolber.xml-log-filter</groupId>
     <artifactId>xml-log-filter-core</artifactId>
-    <version>1.0.4</version>
+    <version>1.0.5</version>
 </dependency>
 ```
 
@@ -152,6 +152,7 @@ See
  * [json-log-filter] for filtering of JSON.
 
 # History
+- [1.0.5]: Support for CXF 3.4, with good help from [TomEvers](https://github.com/TomEvers). CXF 3.3 users: Use version 1.0.4.
 - [1.0.4]: Maintenance release
 - 1.0.3: Maintenance release
 - 1.0.2: Initial Java 11 (modules) support.
