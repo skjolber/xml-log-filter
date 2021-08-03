@@ -146,18 +146,18 @@ See this [visualization] and the [JMH] module for running detailed benchmarks.
 The project is intended as a complimentary tool for use alongside XML frameworks, such as SOAP- or XML-based REST stacks. Its primary use-case is processing to-be logged XML. The project relies on the fact that such frameworks have very good error handling, like schema validation, to apply a simplified view of the XML syntax, basically handling only the happy-case of a well-formed document. The frameworks themselves detect invalid documents and handle them as raw content. 
 
 # See also
-See
+See projects
 
  * [xml-formatter] for additional indenting/formatting of inner XML. 
  * [json-log-filter] for filtering of JSON.
 
 # History
 - [1.0.5]: Support for CXF 3.4, with good help from [TomEvers](https://github.com/TomEvers). CXF 3.3 users: Use version 1.0.4.
-- [1.0.4]: Maintenance release
+- 1.0.4: Maintenance release
 - 1.0.3: Maintenance release
 - 1.0.2: Initial Java 11 (modules) support.
 
-[1.0.4]:                releases
+[1.0.5]:                releases
 [Aalto]:                https://github.com/FasterXML/aalto-xml
 [Apache 2.0]:           http://www.apache.org/licenses/LICENSE-2.0.html
 [issue-tracker]:        https://github.com/skjolber/xml-log-filter/issues
