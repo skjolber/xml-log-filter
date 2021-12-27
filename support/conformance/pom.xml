@@ -11,7 +11,7 @@
 	<packaging>jar</packaging>
 	
 	<properties>
-		<rome.version>1.12.2</rome.version>
+		<rome.version>1.17.0</rome.version>
 	</properties>
 
 	<dependencies>
