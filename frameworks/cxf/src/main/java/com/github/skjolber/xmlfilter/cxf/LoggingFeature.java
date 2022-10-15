@@ -332,4 +332,12 @@ public class LoggingFeature extends AbstractFeature {
 	public AbstractXmlFilterFactory getFactory() {
 		return factory;
 	}
+	
+	public void setSensitiveProtocolHeaders(Set<String> sensitiveProtocolHeaders) {
+		this.sensitiveProtocolHeaders = sensitiveProtocolHeaders;
+	}
+	
+	public Set<String> getSensitiveProtocolHeaders() {
+		return sensitiveProtocolHeaders;
+	}
 }
