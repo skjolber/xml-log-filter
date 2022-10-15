@@ -153,7 +153,7 @@ See projects
 
 # History
 
-- 1.0.7: Maintenance release
+- 1.0.8: Maintenance release
 - 1.0.5: Support for CXF 3.4, with good help from [TomEvers](https://github.com/TomEvers). CXF 3.3 users: Use version 1.0.4.
 - 1.0.4: Maintenance release
 - 1.0.3: Maintenance release
