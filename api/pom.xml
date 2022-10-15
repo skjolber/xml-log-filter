@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>com.github.skjolber.xml-log-filter</groupId>
 		<artifactId>xml-log-filter-parent</artifactId>
-		<version>1.0.8-SNAPSHOT</version>
+		<version>1.0.8</version>
 		<relativePath>..</relativePath>
 	</parent>
 	<artifactId>xml-log-filter-api</artifactId>
