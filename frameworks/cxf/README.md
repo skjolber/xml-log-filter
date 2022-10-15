@@ -10,7 +10,7 @@ Example dependency config:
 <dependency>
     <groupId>com.github.skjolber.xml-log-filter</groupId>
     <artifactId>xml-log-filter-cxf</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.x</version>
 </dependency>
 ```
 

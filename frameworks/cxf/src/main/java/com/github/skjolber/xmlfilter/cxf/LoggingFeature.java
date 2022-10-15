@@ -18,7 +18,9 @@
  */
 package com.github.skjolber.xmlfilter.cxf;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.apache.cxf.Bus;
 import org.apache.cxf.annotations.Provider;
@@ -49,6 +51,8 @@ public class LoggingFeature extends AbstractFeature {
     private LoggingOutInterceptor out;
     
     protected AbstractXmlFilterFactory factory = new SoapHeaderXmlFilterFactory();
+    
+    protected Set<String> sensitiveProtocolHeaders = new HashSet<>();
 
     protected int logThreshold = -1; // maximum payload logged (after filtering, in characters)
     protected int discThreshold = -1; // maximum payload held on disc (before filtering, in bytes)
@@ -84,6 +88,8 @@ public class LoggingFeature extends AbstractFeature {
             in.setInMemThreshold(memThreshold);
             in.setLogThreshold(logThreshold);
 
+            in.setSensitiveProtocolHeaders(sensitiveProtocolHeaders);
+            
             in.setLogBinary(logBinary);
             in.setLogMultipart(logMultipart);
             
@@ -96,6 +102,8 @@ public class LoggingFeature extends AbstractFeature {
             out.setInMemThreshold(memThreshold);
             out.setLogThreshold(logThreshold);
             
+            out.setSensitiveProtocolHeaders(sensitiveProtocolHeaders);
+
             out.setLogBinary(logBinary);
             out.setLogMultipart(logMultipart);
             
