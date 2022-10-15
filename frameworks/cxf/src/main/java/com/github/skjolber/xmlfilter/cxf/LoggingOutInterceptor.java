@@ -185,7 +185,7 @@ public class LoggingOutInterceptor extends AbstractLoggingEventInterceptor {
         }
 
         public void onClose(CachedOutputStream cos) {
-            final LogEvent event = logEventMapper.map(message, Collections.emptySet());
+            final LogEvent event = logEventMapper.map(message, sensitiveProtocolHeaders);
             copyPayload(cos, event);
 
             sender.send(event);

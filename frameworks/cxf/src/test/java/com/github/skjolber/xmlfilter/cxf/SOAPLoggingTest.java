@@ -25,7 +25,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.net.MalformedURLException;
 import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 
 import javax.jws.WebService;
@@ -54,6 +56,7 @@ public class SOAPLoggingTest {
         TestService serviceImpl = new TestServiceImplementation();
         LoggingFeature loggingFeature = new LoggingFeature();
         loggingFeature.setIndent(true);
+        loggingFeature.setSensitiveProtocolHeaders(new HashSet<>(Arrays.asList("Accept")));
         // Setting the limit should omit parts of the body but the result should still be well formed xml
         loggingFeature.setDiscThreshold(140);
         Endpoint ep = Endpoint.publish(SERVICE_URI, serviceImpl, loggingFeature);
@@ -67,6 +70,7 @@ public class SOAPLoggingTest {
         TestService serviceImpl = new TestServiceImplementation();
         TestEventSender sender = new TestEventSender();
         LoggingFeature loggingFeature = new LoggingFeature(sender);
+        loggingFeature.setSensitiveProtocolHeaders(new HashSet<>(Arrays.asList("Accept")));
         
         Endpoint ep = Endpoint.publish(SERVICE_URI, serviceImpl, loggingFeature);
         TestService client = createTestClient(loggingFeature);
@@ -93,6 +97,8 @@ public class SOAPLoggingTest {
         assertEquals("TestServicePort", requestOut.getPortName().getLocalPart());
         assertEquals("TestService", requestOut.getPortTypeName().getLocalPart());
         assertEquals("TestServiceService", requestOut.getServiceName().getLocalPart());
+        
+        System.out.println(requestOut.getHeaders());
     }
     
     private void checkRequestIn(LogEvent requestIn) {
@@ -107,6 +113,8 @@ public class SOAPLoggingTest {
         assertEquals("TestServiceImplementationPort", requestIn.getPortName().getLocalPart());
         assertEquals("TestService", requestIn.getPortTypeName().getLocalPart());
         assertEquals("TestServiceImplementationService", requestIn.getServiceName().getLocalPart());
+        
+        System.out.println(requestIn.getHeaders());
     }
     
     private void checkResponseOut(LogEvent responseOut) {
@@ -123,6 +131,8 @@ public class SOAPLoggingTest {
         assertEquals("TestServiceImplementationPort", responseOut.getPortName().getLocalPart());
         assertEquals("TestService", responseOut.getPortTypeName().getLocalPart());
         assertEquals("TestServiceImplementationService", responseOut.getServiceName().getLocalPart());
+        
+        System.out.println(responseOut.getHeaders());
     }
     
     private void checkResponseIn(LogEvent responseIn) {
@@ -139,6 +149,8 @@ public class SOAPLoggingTest {
         assertEquals("TestServicePort", responseIn.getPortName().getLocalPart());
         assertEquals("TestService", responseIn.getPortTypeName().getLocalPart());
         assertEquals("TestServiceService", responseIn.getServiceName().getLocalPart());
+        
+        System.out.println(responseIn.getHeaders());
     }
 
     private TestService createTestClient(Feature feature) throws MalformedURLException {
