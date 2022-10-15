@@ -24,6 +24,8 @@ import java.io.OutputStream;
 import java.io.StringWriter;
 import java.io.Writer;
 import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.apache.cxf.common.injection.NoJSR250Annotations;
 import org.apache.cxf.common.util.StringUtils;
@@ -44,6 +46,8 @@ import org.apache.cxf.phase.Phase;
 @NoJSR250Annotations
 public class LoggingOutInterceptor extends AbstractLoggingEventInterceptor {
 
+	private Set<String> sensitiveProtocolHeaders = new HashSet<>();
+
     public LoggingOutInterceptor() {
         this(new Slf4jEventSender());
     }
@@ -52,6 +56,10 @@ public class LoggingOutInterceptor extends AbstractLoggingEventInterceptor {
         super(Phase.PRE_STREAM, sender);
         addBefore(StaxOutInterceptor.class.getName());
     }
+    
+    public void setSensitiveProtocolHeaders(Set<String> sensitiveProtocolHeaders) {
+		this.sensitiveProtocolHeaders = sensitiveProtocolHeaders;
+	}
 
     public void handleMessage(Message message) throws Fault {
         createExchangeId(message);
@@ -68,7 +76,7 @@ public class LoggingOutInterceptor extends AbstractLoggingEventInterceptor {
                 }
             }
         } else {
-            final LogEvent event = logEventMapper.map(message, Collections.emptySet());
+            final LogEvent event = logEventMapper.map(message, sensitiveProtocolHeaders);
             event.setPayload(CONTENT_SUPPRESSED);
             logEventSender.send(event);
         }

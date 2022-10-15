@@ -21,6 +21,8 @@ package com.github.skjolber.xmlfilter.cxf;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.apache.cxf.common.injection.NoJSR250Annotations;
 import org.apache.cxf.common.util.StringUtils;
@@ -41,6 +43,8 @@ import com.github.skjolber.xmlfilter.XmlFilter;
 @NoJSR250Annotations
 public class LoggingInInterceptor extends AbstractLoggingEventInterceptor {
 
+	private Set<String> sensitiveProtocolHeaders = new HashSet<>();
+	
     public LoggingInInterceptor() {
     	this(new Slf4jEventSender());
     }
@@ -48,10 +52,14 @@ public class LoggingInInterceptor extends AbstractLoggingEventInterceptor {
     public LoggingInInterceptor(LogEventSender sender) {
         super(Phase.PRE_INVOKE, sender);
     }
+    
+    public void setSensitiveProtocolHeaders(Set<String> sensitiveProtocolHeaders) {
+		this.sensitiveProtocolHeaders = sensitiveProtocolHeaders;
+	}
 
     public void handleMessage(Message message) throws Fault {
         createExchangeId(message);
-        final LogEvent event = logEventMapper.map(message, Collections.emptySet());
+        final LogEvent event = logEventMapper.map(message, sensitiveProtocolHeaders);
         if (shouldLogContent(event)) {
             addContent(message, event);
         } else {
