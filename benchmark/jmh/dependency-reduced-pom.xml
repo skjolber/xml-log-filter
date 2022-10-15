@@ -3,7 +3,7 @@
   <parent>
     <artifactId>xml-log-filter-parent</artifactId>
     <groupId>com.github.skjolber.xml-log-filter</groupId>
-    <version>1.0.7-SNAPSHOT</version>
+    <version>1.0.8-SNAPSHOT</version>
     <relativePath>../../pom.xml</relativePath>
   </parent>
   <modelVersion>4.0.0</modelVersion>
@@ -54,9 +54,9 @@
   </dependencies>
   <properties>
     <jmh.version>1.33</jmh.version>
-    <uberjar.name>benchmarks</uberjar.name>
     <xmlresolver.version>1.2</xmlresolver.version>
     <dom4j.version>1.6.1</dom4j.version>
+    <uberjar.name>benchmarks</uberjar.name>
     <asm.version>5.0.1</asm.version>
   </properties>
 </project>
