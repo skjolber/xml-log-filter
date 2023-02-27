@@ -16,7 +16,7 @@
 	<description>Component for logging of pretty-printed XML in JAX-RS.</description>
 
 	<properties>
-		<spring.boot.version>2.7.5</spring.boot.version>
+		<spring.boot.version>3.0.3</spring.boot.version>
 		<cxf.version>3.5.4</cxf.version>
 		<junit.version>5.9.1</junit.version>
 	</properties>
