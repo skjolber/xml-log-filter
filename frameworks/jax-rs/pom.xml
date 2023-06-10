@@ -17,7 +17,7 @@
 
 	<properties>
 		<spring.boot.version>2.7.5</spring.boot.version>
-		<cxf.version>3.5.4</cxf.version>
+		<cxf.version>3.6.1</cxf.version>
 		<junit.version>5.9.1</junit.version>
 	</properties>
 
