@@ -1,6 +1,8 @@
 package com.github.skjolber.xmlfilter.cxf.example.configuration;
 
-import javax.xml.ws.Endpoint;
+import com.github.skjolber.xmlns.schema.logger.LoggerPort;
+import com.github.skjolber.xmlns.schema.logger.LoggerService;
+import jakarta.xml.ws.Endpoint;
 
 import org.apache.cxf.Bus;
 import org.apache.cxf.bus.spring.SpringBus;
@@ -20,8 +22,6 @@ import com.github.skjolber.xmlfilter.cxf.LoggingAccumulatorInteceptor;
 import com.github.skjolber.xmlfilter.cxf.LoggingInInterceptor;
 import com.github.skjolber.xmlfilter.cxf.LoggingOutInterceptor;
 import com.github.skjolber.xmlfilter.cxf.example.endpoints.LoggerWebservice;
-import com.github.skjolber.xmlns.schema.logger.LoggerPort;
-import com.github.skjolber.xmlns.schema.logger.LoggerService;
 
 /**
  * CXF webservice configuration.

@@ -1,6 +1,6 @@
 package com.github.skjolber.xml.prettyprint.jaxrs;
 
-import static javax.ws.rs.client.Entity.xml;
+import static jakarta.ws.rs.client.Entity.xml;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertSame;
@@ -19,15 +19,15 @@ import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import javax.ws.rs.client.Entity;
-import javax.ws.rs.container.ContainerRequestContext;
-import javax.ws.rs.container.ContainerResponseContext;
-import javax.ws.rs.core.GenericEntity;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.MultivaluedHashMap;
-import javax.ws.rs.core.MultivaluedMap;
-import javax.ws.rs.core.UriInfo;
-import javax.ws.rs.ext.WriterInterceptorContext;
+import jakarta.ws.rs.client.Entity;
+import jakarta.ws.rs.container.ContainerRequestContext;
+import jakarta.ws.rs.container.ContainerResponseContext;
+import jakarta.ws.rs.core.GenericEntity;
+import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.MultivaluedHashMap;
+import jakarta.ws.rs.core.MultivaluedMap;
+import jakarta.ws.rs.core.UriInfo;
+import jakarta.ws.rs.ext.WriterInterceptorContext;
 
 import org.apache.cxf.jaxrs.client.WebClient;
 import org.junit.jupiter.api.Test;
@@ -35,13 +35,13 @@ import org.mockito.ArgumentCaptor;
 import org.slf4j.Logger;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
-import org.springframework.boot.web.server.LocalServerPort;
 
 import com.github.skjolber.xml.prettyprint.jaxrs.XmlLogContainerFilter.CacheStream;
 import com.github.skjolber.xmlfilter.core.DefaultXmlFilter;
 import com.github.skjolber.xmlns.schema.logger.PerformLogMessageRequest;
 import com.github.skjolber.xmlns.schema.logger.PerformLogMessageResponse;
 import com.github.skjolber.xmlns.schema.logger.SampleRestApplication;
+import org.springframework.boot.test.web.server.LocalServerPort;
 
 @SpringBootTest(classes = SampleRestApplication.class, webEnvironment = WebEnvironment.RANDOM_PORT)
 public class TestMethodFilter {

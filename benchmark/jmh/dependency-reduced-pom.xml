@@ -19,7 +19,6 @@
       <plugin>
         <artifactId>maven-surefire-plugin</artifactId>
         <configuration>
-          <forkMode>always</forkMode>
           <redirectTestOutputToFile>true</redirectTestOutputToFile>
         </configuration>
       </plugin>
@@ -48,15 +47,15 @@
     <dependency>
       <groupId>org.openjdk.jmh</groupId>
       <artifactId>jmh-generator-annprocess</artifactId>
-      <version>1.33</version>
+      <version>1.37</version>
       <scope>provided</scope>
     </dependency>
   </dependencies>
   <properties>
-    <jmh.version>1.33</jmh.version>
-    <uberjar.name>benchmarks</uberjar.name>
+    <jmh.version>1.37</jmh.version>
     <xmlresolver.version>1.2</xmlresolver.version>
     <dom4j.version>1.6.1</dom4j.version>
-    <asm.version>5.0.1</asm.version>
+    <uberjar.name>benchmarks</uberjar.name>
+    <asm.version>9.8</asm.version>
   </properties>
 </project>
