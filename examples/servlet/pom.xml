@@ -19,7 +19,7 @@
 		<java.version>11</java.version>
 		<cxf.version>4.1.3</cxf.version>
 		<log4j.version>2.25.1</log4j.version>
-		<xml-log-filter.version>1.0.9-SNAPSHOT</xml-log-filter.version>		
+		<xml-log-filter.version>2.0.1-SNAPSHOT</xml-log-filter.version>
 	</properties>
 
 	<dependencies>
