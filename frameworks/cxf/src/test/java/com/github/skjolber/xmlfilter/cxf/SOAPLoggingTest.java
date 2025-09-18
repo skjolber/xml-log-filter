@@ -30,8 +30,8 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 
-import javax.jws.WebService;
-import javax.xml.ws.Endpoint;
+import jakarta.jws.WebService;
+import jakarta.xml.ws.Endpoint;
 
 import org.apache.cxf.ext.logging.event.EventType;
 import org.apache.cxf.ext.logging.event.LogEvent;

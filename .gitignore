@@ -38,3 +38,4 @@ profiles.xml
 rebel.xml
 # Symlink til target-katalogen:
 target
+dependency-reduced-pom.xml
