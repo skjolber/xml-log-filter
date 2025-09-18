@@ -5,7 +5,7 @@
 		<groupId>com.github.skjolber.xml-log-filter</groupId>
 		<artifactId>xml-log-filter-parent</artifactId>
 		<version>1.0.9-SNAPSHOT</version>
-		<relativePath>../../</relativePath>
+		<relativePath>../../pom.xml</relativePath>
 	</parent>
 	<artifactId>xml-log-filter-soap-header</artifactId>
 	<packaging>jar</packaging>
@@ -70,8 +70,8 @@
 				<artifactId>jacoco-maven-plugin</artifactId>
 			</plugin>
 			<plugin>
-				<groupId>org.sonatype.plugins</groupId>
-				<artifactId>nexus-staging-maven-plugin</artifactId>
+				<groupId>org.sonatype.central</groupId>
+				<artifactId>central-publishing-maven-plugin</artifactId>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>

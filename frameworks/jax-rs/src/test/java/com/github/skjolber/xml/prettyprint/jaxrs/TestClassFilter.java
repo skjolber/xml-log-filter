@@ -1,20 +1,20 @@
 package com.github.skjolber.xml.prettyprint.jaxrs;
 
-import static javax.ws.rs.client.Entity.xml;
+import static jakarta.ws.rs.client.Entity.xml;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import javax.ws.rs.core.GenericEntity;
+import jakarta.ws.rs.core.GenericEntity;
 
 import org.apache.cxf.jaxrs.client.WebClient;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
-import org.springframework.boot.web.server.LocalServerPort;
 
 import com.github.skjolber.xmlns.schema.logger.PerformLogMessageRequest;
 import com.github.skjolber.xmlns.schema.logger.PerformLogMessageResponse;
 import com.github.skjolber.xmlns.schema.logger.SampleRestApplication;
+import org.springframework.boot.test.web.server.LocalServerPort;
 
 @SpringBootTest(classes = SampleRestApplication.class, webEnvironment = WebEnvironment.RANDOM_PORT)
 public class TestClassFilter {

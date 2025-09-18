@@ -9,7 +9,7 @@
 	<url>https://github.com/skjolber/xml-log-filter</url>
 
 	<organization>
-		<name>Media Skjolberg</name>
+		<name>Thomas Skjolberg</name>
 		<url>http://skjolber.github.io</url>
 	</organization>
 
@@ -49,35 +49,37 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-		<maven.compiler.source>1.8</maven.compiler.source>
-		<maven.compiler.target>1.8</maven.compiler.target>
+		<maven.compiler.source>11</maven.compiler.source>
+		<maven.compiler.target>11</maven.compiler.target>
 
-		<aalto.version>1.3.2</aalto.version>
+		<aalto.version>1.3.3</aalto.version>
 		<xerces.version>2.12.1</xerces.version>
 		
 		<indent.version>1.0.0</indent.version>
 			
-		<hamcrest.version>2.2</hamcrest.version>
-		<mockito.version>4.8.1</mockito.version>
-		<junit.version>5.9.1</junit.version>
+		<hamcrest.version>3.0</hamcrest.version>
+		<mockito.version>5.19.0</mockito.version>
+		<junit.version>5.13.4</junit.version>
 		<xmlunit.version>2.8.2</xmlunit.version>
-		<logback.version>1.2.11</logback.version>
-		<slf4j.version>1.7.36</slf4j.version>
-		<commons-io.version>2.11.0</commons-io.version>
+		<logback.version>1.5.18</logback.version>
+		<slf4j.version>2.0.7</slf4j.version>
+		<commons-io.version>2.20.0</commons-io.version>
+
 		<!-- plugins -->
-		<build-helper-maven-plugin.version>1.9.1</build-helper-maven-plugin.version>
-		<jacoco-maven-plugin.version>0.8.8</jacoco-maven-plugin.version>
-		<nexus-staging-maven-plugin.version>1.6.13</nexus-staging-maven-plugin.version>
-		<maven-surefire-plugin.version>3.0.0-M7</maven-surefire-plugin.version>
+		<build-helper-maven-plugin.version>3.6.1</build-helper-maven-plugin.version>
+		<sonatype-plugin.version>0.8.0</sonatype-plugin.version>
+		<maven-surefire-plugin.version>3.5.3</maven-surefire-plugin.version>
 		<maven-source-plugin.version>3.2.1</maven-source-plugin.version>
-		<maven-javadoc-plugin.version>3.4.1</maven-javadoc-plugin.version>
+		<maven-javadoc-plugin.version>3.11.2</maven-javadoc-plugin.version>
 		<maven-release-plugin.version>2.5.3</maven-release-plugin.version>
 		<maven-gpg-plugin.version>3.0.1</maven-gpg-plugin.version>
 		<maven-dependency-plugin.version>2.10</maven-dependency-plugin.version>
-		<jacoco-maven-plugin.version>0.8.5</jacoco-maven-plugin.version>
-		<maven-compiler-plugin.version>3.10.1</maven-compiler-plugin.version>
-		<maven-shade-plugin.version>3.4.1</maven-shade-plugin.version>
-		<maven-war-plugin.version>3.3.2</maven-war-plugin.version>
+		<jacoco-maven-plugin.version>0.8.9</jacoco-maven-plugin.version>
+		<maven-compiler-plugin.version>3.14.0</maven-compiler-plugin.version>
+
+		<!-- plugins -->
+		<maven-shade-plugin.version>3.6.1</maven-shade-plugin.version>
+		<maven-war-plugin.version>3.4.0</maven-war-plugin.version>
 		
 		<!--  module descriptors -->
 		<java.module.version>11</java.module.version>
@@ -193,17 +195,12 @@
 				<version>${xmlunit.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.junit.jupiter</groupId>
-				<artifactId>junit-jupiter-api</artifactId>
+				<groupId>org.junit</groupId>
+				<artifactId>junit-bom</artifactId>
 				<version>${junit.version}</version>
-				<scope>test</scope>
+				<type>pom</type>
+				<scope>import</scope>
 			</dependency>
-			<dependency>
-				<groupId>org.junit.jupiter</groupId>
-				<artifactId>junit-jupiter-engine</artifactId>
-				<version>${junit.version}</version>
-				<scope>test</scope>
-			</dependency>			
 			<dependency>
 				<groupId>org.mockito</groupId>
 				<artifactId>mockito-core</artifactId>
@@ -287,25 +284,16 @@
 							</configuration>
 						</execution>
 					</executions>
-				</plugin>				
+				</plugin>
 				<plugin>
-					<groupId>org.sonatype.plugins</groupId>
-					<artifactId>nexus-staging-maven-plugin</artifactId>
-					<version>${nexus-staging-maven-plugin.version}</version>
+					<groupId>org.sonatype.central</groupId>
+					<artifactId>central-publishing-maven-plugin</artifactId>
+					<version>${sonatype-plugin.version}</version>
 					<extensions>true</extensions>
-					<executions>
-						<execution>
-							<id>default-deploy</id>
-							<phase>deploy</phase>
-							<goals>
-								<goal>deploy</goal>
-							</goals>
-						</execution>
-					</executions>
 					<configuration>
-						<serverId>ossrh</serverId>
-						<nexusUrl>https://oss.sonatype.org/</nexusUrl>
-						<autoReleaseAfterClose>false</autoReleaseAfterClose>
+						<publishingServerId>central</publishingServerId>
+						<autoPublish>true</autoPublish>
+						<waitUntil>published</waitUntil>
 					</configuration>
 				</plugin>
 				<plugin>
@@ -394,7 +382,7 @@
 										<version>3.5.2</version>
 									</requireMavenVersion>
 									<requireJavaVersion>
-										<version>1.8</version>
+										<version>11</version>
 									</requireJavaVersion>
 								</rules>
 							</configuration>
@@ -404,7 +392,7 @@
 				<plugin>
 					<groupId>org.moditect</groupId>
 					<artifactId>moditect-maven-plugin</artifactId>
-					<version>1.0.0.RC1</version>
+					<version>1.3.0.Final</version>
 					<executions>
 						<execution>
 							<id>add-module-infos</id>
@@ -460,8 +448,8 @@
 						<artifactId>maven-release-plugin</artifactId>
 					</plugin>
 					<plugin>
-						<groupId>org.sonatype.plugins</groupId>
-						<artifactId>nexus-staging-maven-plugin</artifactId>
+						<groupId>org.sonatype.central</groupId>
+						<artifactId>central-publishing-maven-plugin</artifactId>
 					</plugin>
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
@@ -486,15 +474,6 @@
 				<module>benchmark/gatling</module>
 				-->
 			</modules>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.eluder.coveralls</groupId>
-						<artifactId>coveralls-maven-plugin</artifactId>
-						<version>4.3.0</version>
-					</plugin>
-				</plugins>
-			</build>
 		</profile>
 		<profile>
 			<id>java11</id>
@@ -514,5 +493,12 @@
 			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
 		</repository>
 	</distributionManagement>
+
+	<repositories>
+		<repository>
+			<id>mavenCentral</id>
+			<url>https://repo1.maven.org/maven2</url>
+		</repository>
+	</repositories>
 	
 </project>
