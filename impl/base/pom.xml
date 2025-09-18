@@ -9,7 +9,8 @@
 	</parent>
 	<artifactId>xml-log-filter-base</artifactId>
 	<packaging>jar</packaging>
-
+	<name>xml-log-filter-base</name>
+	<description>base implementation</description>
 	<dependencies>
 		<dependency>
 			<groupId>com.github.skjolber</groupId>

@@ -9,7 +9,8 @@
 	</parent>
 	<artifactId>xml-log-filter-stax</artifactId>
 	<packaging>jar</packaging>
-
+	<name>xml-log-filter-stax</name>
+	<description>stax filters</description>
 	<dependencies>
 		<dependency>
 			<groupId>com.github.skjolber.xml-log-filter</groupId>

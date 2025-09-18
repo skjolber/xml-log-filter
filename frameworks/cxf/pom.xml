@@ -12,7 +12,6 @@
 	<description>CXF logging feature.</description>
 	<artifactId>xml-log-filter-cxf</artifactId>
 	<packaging>jar</packaging>
-
 	<properties>
 		<osgi.version>5.0.0</osgi.version>
 		<cxf.version>4.1.3</cxf.version>

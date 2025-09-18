@@ -7,11 +7,10 @@
 		<version>1.0.9-SNAPSHOT</version>
 		<relativePath>../../pom.xml</relativePath>
 	</parent>
-
 	<artifactId>xml-log-filter-w3c-dom</artifactId>
-
     <packaging>jar</packaging>
-
+	<name>xml-log-filter-w3c-dom</name>
+	<description>w3c dom filters</description>
     <dependencies>
         <dependency>
 			<groupId>com.github.skjolber.xml-log-filter</groupId>

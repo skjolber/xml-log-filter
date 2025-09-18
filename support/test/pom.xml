@@ -8,7 +8,8 @@
 	</parent>
 	<artifactId>xml-log-filter-test</artifactId>
 	<packaging>jar</packaging>
-
+	<name>xml-log-filter-test</name>
+	<description>testing</description>
 	<dependencies>
 		<dependency>
 			<groupId>com.github.skjolber</groupId>

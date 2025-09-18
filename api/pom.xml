@@ -5,11 +5,12 @@
 		<groupId>com.github.skjolber.xml-log-filter</groupId>
 		<artifactId>xml-log-filter-parent</artifactId>
 		<version>1.0.9-SNAPSHOT</version>
-		<relativePath>..</relativePath>
+		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<artifactId>xml-log-filter-api</artifactId>
 	<packaging>jar</packaging>
-
+	<name>xml-log-filter-api</name>
+	<description>api</description>
 	<build>
 		<plugins>
 			<plugin>

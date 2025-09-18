@@ -9,7 +9,8 @@
 	</parent>
 	<artifactId>xml-log-filter-stax-soap-header</artifactId>
 	<packaging>jar</packaging>
-
+	<name>xml-log-filter-stax-soap-header</name>
+	<description>stax soap filters</description>
 	<dependencies>
 
 		<dependency>
