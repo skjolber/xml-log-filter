@@ -78,8 +78,8 @@
 		<maven-compiler-plugin.version>3.14.0</maven-compiler-plugin.version>
 
 		<!-- plugins -->
-		<maven-shade-plugin.version>3.4.1</maven-shade-plugin.version>
-		<maven-war-plugin.version>3.3.2</maven-war-plugin.version>
+		<maven-shade-plugin.version>3.6.1</maven-shade-plugin.version>
+		<maven-war-plugin.version>3.4.0</maven-war-plugin.version>
 		
 		<!--  module descriptors -->
 		<java.module.version>11</java.module.version>
@@ -382,7 +382,7 @@
 										<version>3.5.2</version>
 									</requireMavenVersion>
 									<requireJavaVersion>
-										<version>1.8</version>
+										<version>11</version>
 									</requireJavaVersion>
 								</rules>
 							</configuration>
@@ -392,7 +392,7 @@
 				<plugin>
 					<groupId>org.moditect</groupId>
 					<artifactId>moditect-maven-plugin</artifactId>
-					<version>1.0.0.RC1</version>
+					<version>1.3.0.Final</version>
 					<executions>
 						<execution>
 							<id>add-module-infos</id>
