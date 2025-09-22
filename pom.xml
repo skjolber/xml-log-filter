@@ -62,7 +62,7 @@
 		<junit.version>5.13.4</junit.version>
 		<xmlunit.version>2.10.0</xmlunit.version>
 		<logback.version>1.5.18</logback.version>
-		<slf4j.version>2.0.7</slf4j.version>
+		<slf4j.version>2.0.17</slf4j.version>
 		<commons-io.version>2.20.0</commons-io.version>
 
 		<!-- plugins -->
