@@ -58,7 +58,7 @@
 		<indent.version>1.0.0</indent.version>
 			
 		<hamcrest.version>3.0</hamcrest.version>
-		<mockito.version>5.19.0</mockito.version>
+		<mockito.version>5.20.0</mockito.version>
 		<junit.version>5.13.4</junit.version>
 		<xmlunit.version>2.10.0</xmlunit.version>
 		<logback.version>1.5.18</logback.version>
