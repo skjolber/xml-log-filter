@@ -140,7 +140,11 @@
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
 			</plugin>			
-			-->			
+			-->
+			<plugin>
+			    <groupId>org.moditect</groupId>
+			    <artifactId>moditect-maven-plugin</artifactId>
+			</plugin>
 		</plugins>
 	</build>
 
