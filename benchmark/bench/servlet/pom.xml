@@ -13,7 +13,7 @@
 		<version>3.5.6</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-
+	<version>2.0.2-SNAPSHOT</version>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>21</java.version>
@@ -22,7 +22,6 @@
 		<stax2-api.version>4.3.0</stax2-api.version>
 		<disruptor.version>4.0.0</disruptor.version>
 		<commons-io.version>2.22.0</commons-io.version>
-		<xml-log-filter.version>2.0.1-SNAPSHOT</xml-log-filter.version>
 	</properties>
 
 	<dependencies>
@@ -63,32 +62,32 @@
 		<dependency>
 			<groupId>com.github.skjolber.xml-log-filter</groupId>
 			<artifactId>xml-log-filter-cxf</artifactId>		
-			<version>${xml-log-filter.version}</version>
+			<version>${project.version}</version>
 		</dependency>
         <dependency>
 			<groupId>com.github.skjolber.xml-log-filter</groupId>
 			<artifactId>xml-log-filter-core</artifactId>
-			<version>${xml-log-filter.version}</version>
+			<version>${project.version}</version>
         </dependency>
         <dependency>
 			<groupId>com.github.skjolber.xml-log-filter</groupId>
 			<artifactId>xml-log-filter-soap-header</artifactId>
-			<version>${xml-log-filter.version}</version>
+			<version>${project.version}</version>
         </dependency>        
         <dependency>
 			<groupId>com.github.skjolber.xml-log-filter</groupId>
 			<artifactId>xml-log-filter-stax</artifactId>
-			<version>${xml-log-filter.version}</version>
+			<version>${project.version}</version>
         </dependency>        
         <dependency>
 			<groupId>com.github.skjolber.xml-log-filter</groupId>
 			<artifactId>xml-log-filter-stax-soap-header</artifactId>
-			<version>${xml-log-filter.version}</version>
+			<version>${project.version}</version>
         </dependency>        
 		<dependency>
 			<groupId>com.github.skjolber.xml-log-filter</groupId>
 			<artifactId>xml-log-filter-w3c-dom</artifactId>
-			<version>${xml-log-filter.version}</version>
+			<version>${project.version}</version>
 			<exclusions>
 				<exclusion>
 					<groupId>ch.qos.logback</groupId>					
