@@ -14,23 +14,17 @@
     <packaging>jar</packaging>
 
 	<properties>
-        <jmh.version>1.37</jmh.version>
 		<uberjar.name>benchmarks</uberjar.name>
-        <asm.version>9.8</asm.version>
-        <dom4j.version>1.6.1</dom4j.version>
-        <xmlresolver.version>1.2</xmlresolver.version>
 	</properties>
 
     <dependencies>
         <dependency>
             <groupId>org.openjdk.jmh</groupId>
             <artifactId>jmh-core</artifactId>
-            <version>${jmh.version}</version>
         </dependency>
         <dependency>
             <groupId>org.openjdk.jmh</groupId>
             <artifactId>jmh-generator-annprocess</artifactId>
-            <version>${jmh.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -56,14 +50,10 @@
         <dependency>
             <groupId>org.codehaus.woodstox</groupId>
             <artifactId>stax2-api</artifactId>
-            <version>4.3.0</version>
         </dependency>
-        
-		<!-- https://mvnrepository.com/artifact/org.apache.cxf/cxf-core -->
-		<dependency>
+        <dependency>
 		    <groupId>org.apache.cxf</groupId>
 		    <artifactId>cxf-rt-features-logging</artifactId>
-		    <version>4.2.1</version>
 		</dependency>
 		<dependency>
 			<groupId>com.github.skjolber.xml-log-filter</groupId>

@@ -52,8 +52,17 @@
 		<maven.compiler.source>11</maven.compiler.source>
 		<maven.compiler.target>11</maven.compiler.target>
 
-		<aalto.version>1.3.4</aalto.version>
+		<aalto.version>1.4.0</aalto.version>
 		<xerces.version>2.12.2</xerces.version>
+		<stax2-api.version>4.3.0</stax2-api.version>
+		<cxf.version>4.2.1</cxf.version>
+		<osgi-core.version>6.0.0</osgi-core.version>
+		<osgi-compendium.version>5.0.0</osgi-compendium.version>
+		<spring.boot.version>3.5.6</spring.boot.version>
+		<rome.version>2.1.0</rome.version>
+		<jmh.version>1.37</jmh.version>
+		<disruptor.version>4.0.0</disruptor.version>
+		<log-domain-test-logback.version>1.0.3</log-domain-test-logback.version>
 		
 		<indent.version>1.0.0</indent.version>
 			
@@ -73,9 +82,11 @@
 		<maven-javadoc-plugin.version>3.11.3</maven-javadoc-plugin.version>
 		<maven-release-plugin.version>3.3.1</maven-release-plugin.version>
 		<maven-gpg-plugin.version>3.2.8</maven-gpg-plugin.version>
-		<maven-dependency-plugin.version>2.10</maven-dependency-plugin.version>
+		<maven-dependency-plugin.version>3.10.0</maven-dependency-plugin.version>
 		<jacoco-maven-plugin.version>0.8.14</jacoco-maven-plugin.version>
 		<maven-compiler-plugin.version>3.15.0</maven-compiler-plugin.version>
+		<maven-enforcer-plugin.version>3.6.3</maven-enforcer-plugin.version>
+		<moditect-maven-plugin.version>1.3.0.Final</moditect-maven-plugin.version>
 
 		<!-- plugins -->
 		<maven-shade-plugin.version>3.6.1</maven-shade-plugin.version>
@@ -213,8 +224,54 @@
 				<version>${hamcrest.version}</version>
 				<scope>test</scope>
 			</dependency>
+			<dependency>
+				<groupId>org.codehaus.woodstox</groupId>
+				<artifactId>stax2-api</artifactId>
+				<version>${stax2-api.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.cxf</groupId>
+				<artifactId>cxf-rt-features-logging</artifactId>
+				<version>${cxf.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.osgi</groupId>
+				<artifactId>org.osgi.core</artifactId>
+				<version>${osgi-core.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.osgi</groupId>
+				<artifactId>org.osgi.compendium</artifactId>
+				<version>${osgi-compendium.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.rometools</groupId>
+				<artifactId>rome</artifactId>
+				<version>${rome.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.openjdk.jmh</groupId>
+				<artifactId>jmh-core</artifactId>
+				<version>${jmh.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.openjdk.jmh</groupId>
+				<artifactId>jmh-generator-annprocess</artifactId>
+				<version>${jmh.version}</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>com.lmax</groupId>
+				<artifactId>disruptor</artifactId>
+				<version>${disruptor.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.skjolber.log-domain</groupId>
+				<artifactId>log-domain-test-logback</artifactId>
+				<version>${log-domain-test-logback.version}</version>
+			</dependency>
 		</dependencies>
-	</dependencyManagement>
+		</dependencyManagement>
 	
 	<build>
 		<pluginManagement>
@@ -359,8 +416,13 @@
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-dependency-plugin</artifactId>
+					<version>${maven-dependency-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-enforcer-plugin</artifactId>
-					<version>3.6.1</version>
+					<version>${maven-enforcer-plugin.version}</version>
 					<executions>
 						<execution>
 							<id>enforce-versions</id>
@@ -392,7 +454,7 @@
 				<plugin>
 					<groupId>org.moditect</groupId>
 					<artifactId>moditect-maven-plugin</artifactId>
-					<version>1.3.0.Final</version>
+					<version>${moditect-maven-plugin.version}</version>
 					<executions>
 						<execution>
 							<id>add-module-infos</id>

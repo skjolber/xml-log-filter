@@ -58,7 +58,6 @@
 		<dependency>
 		    <groupId>com.github.skjolber.log-domain</groupId>
 		    <artifactId>log-domain-test-logback</artifactId>
-		    <version>1.0.3</version>
 		    <scope>test</scope>
 		</dependency>
 		<dependency>

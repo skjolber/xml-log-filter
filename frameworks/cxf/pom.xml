@@ -13,27 +13,10 @@
 	<artifactId>xml-log-filter-cxf</artifactId>
 	<packaging>jar</packaging>
 	<properties>
-		<osgi.version>5.0.0</osgi.version>
-		<cxf.version>4.2.1</cxf.version>
 	</properties>
 
 	<dependencyManagement>
 		<dependencies>
-			<dependency>
-		        <groupId>org.apache.cxf</groupId>
-			    <artifactId>cxf-rt-features-logging</artifactId>			
-	            <version>${cxf.version}</version>
-			</dependency>
-	        <dependency>
-	            <groupId>org.osgi</groupId>
-	            <artifactId>org.osgi.core</artifactId>
-	            <version>${osgi.version}</version>
-	        </dependency>
-	        <dependency>
-	            <groupId>org.osgi</groupId>
-	            <artifactId>org.osgi.compendium</artifactId>
-	            <version>${osgi.version}</version>
-	        </dependency>		
 	        <dependency>
 	            <groupId>org.apache.cxf</groupId>
 	            <artifactId>cxf-rt-frontend-jaxws</artifactId>

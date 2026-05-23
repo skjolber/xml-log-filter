@@ -17,8 +17,9 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>11</java.version>
-		<cxf.version>4.1.4</cxf.version>
-		<commons-io.version>2.20.0</commons-io.version>
+		<cxf.version>4.2.1</cxf.version>
+		<commons-io.version>2.22.0</commons-io.version>
+		<build-helper-maven-plugin.version>3.6.1</build-helper-maven-plugin.version>
 		<xml-log-filter.version>2.0.1-SNAPSHOT</xml-log-filter.version>
 	</properties>
 
@@ -106,7 +107,7 @@
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>build-helper-maven-plugin</artifactId>
-				<version>3.6.1</version>
+				<version>${build-helper-maven-plugin.version}</version>
 				<executions>
 					<execution>
 						<id>add-source</id>
