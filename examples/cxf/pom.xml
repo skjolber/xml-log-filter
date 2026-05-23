@@ -10,16 +10,18 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.5.6</version>
+		<version>4.0.6</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
+	<version>2.0.1-SNAPSHOT</version>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<java.version>11</java.version>
-		<cxf.version>4.1.4</cxf.version>
-		<commons-io.version>2.20.0</commons-io.version>
-		<xml-log-filter.version>2.0.1-SNAPSHOT</xml-log-filter.version>
+		<java.version>21</java.version>
+		<cxf.version>4.2.1</cxf.version>
+		<commons-io.version>2.22.0</commons-io.version>
+		<build-helper-maven-plugin.version>3.6.1</build-helper-maven-plugin.version>
+		<project.version>2.0.1-SNAPSHOT</project.version>
 	</properties>
 
 	<dependencies>
@@ -51,12 +53,12 @@
 		<dependency>
 			<groupId>com.github.skjolber.xml-log-filter</groupId>
 			<artifactId>xml-log-filter-cxf</artifactId>		
-			<version>${xml-log-filter.version}</version>
+			<version>${project.version}</version>
 		</dependency>
         <dependency>
 			<groupId>com.github.skjolber.xml-log-filter</groupId>
 			<artifactId>xml-log-filter-soap-header</artifactId>
-			<version>${xml-log-filter.version}</version>
+			<version>${project.version}</version>
         </dependency>        
 		<dependency>
 			<groupId>commons-io</groupId>
@@ -106,7 +108,7 @@
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>build-helper-maven-plugin</artifactId>
-				<version>3.6.1</version>
+				<version>${build-helper-maven-plugin.version}</version>
 				<executions>
 					<execution>
 						<id>add-source</id>

@@ -17,8 +17,10 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>11</java.version>
-		<cxf.version>4.1.4</cxf.version>
+		<cxf.version>4.2.1</cxf.version>
 		<log4j.version>2.25.1</log4j.version>
+		<commons-io.version>2.22.0</commons-io.version>
+		<disruptor.version>4.0.0</disruptor.version>
 		<xml-log-filter.version>2.0.1-SNAPSHOT</xml-log-filter.version>
 	</properties>
 
@@ -69,12 +71,12 @@
 		<dependency>
 		    <groupId>com.lmax</groupId>
 		    <artifactId>disruptor</artifactId>
-		    <version>4.0.0</version>
+		    <version>${disruptor.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>commons-io</groupId>
 			<artifactId>commons-io</artifactId>
-			<version>2.20.0</version>
+			<version>${commons-io.version}</version>
 		</dependency>
 	</dependencies>
 	

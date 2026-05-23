@@ -63,7 +63,11 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-release-plugin</artifactId>
-			</plugin>			
+			</plugin>
+			<plugin>
+			    <groupId>org.moditect</groupId>
+			    <artifactId>moditect-maven-plugin</artifactId>
+			</plugin>
 		</plugins>
 	</build>
 </project>

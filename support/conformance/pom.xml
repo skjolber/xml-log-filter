@@ -11,9 +11,6 @@
 	<packaging>jar</packaging>
 	<name>xml-log-filter-conformance</name>
 	<description>conformance testing</description>
-	<properties>
-		<rome.version>2.1.0</rome.version>
-	</properties>
 
 	<dependencies>
 		<dependency>
