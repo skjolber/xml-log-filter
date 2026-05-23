@@ -56,14 +56,14 @@
         <dependency>
             <groupId>org.codehaus.woodstox</groupId>
             <artifactId>stax2-api</artifactId>
-            <version>4.2.2</version>
+            <version>4.3.0</version>
         </dependency>
         
 		<!-- https://mvnrepository.com/artifact/org.apache.cxf/cxf-core -->
 		<dependency>
 		    <groupId>org.apache.cxf</groupId>
 		    <artifactId>cxf-rt-features-logging</artifactId>
-		    <version>4.1.4</version>
+		    <version>4.2.1</version>
 		</dependency>
 		<dependency>
 			<groupId>com.github.skjolber.xml-log-filter</groupId>

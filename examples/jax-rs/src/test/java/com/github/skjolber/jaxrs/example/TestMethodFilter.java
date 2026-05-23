@@ -5,6 +5,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
@@ -33,11 +34,9 @@ import org.springframework.boot.test.web.server.LocalServerPort;
 @SpringBootTest(webEnvironment=WebEnvironment.RANDOM_PORT)
 public class TestMethodFilter {
 
-	@Mock
-	private Appender mockAppender;
+	private Appender mockAppender = mock(Appender.class);
 
-	@Captor
-	private ArgumentCaptor<LoggingEvent> captorLoggingEvent;
+	private ArgumentCaptor<LoggingEvent> captorLoggingEvent = ArgumentCaptor.forClass(LoggingEvent.class);
 
 	@BeforeEach
 	public void setup() {

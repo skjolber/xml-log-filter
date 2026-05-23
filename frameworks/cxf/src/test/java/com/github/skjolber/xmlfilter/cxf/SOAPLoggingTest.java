@@ -103,7 +103,7 @@ public class SOAPLoggingTest {
     
     private void checkRequestIn(LogEvent requestIn) {
         assertEquals(SERVICE_URI, requestIn.getAddress());
-        assertEquals("text/xml; charset=UTF-8", requestIn.getContentType());
+        assertEquals("text/xml;charset=utf-8", requestIn.getContentType().toLowerCase().replace(" ", ""));
         assertEquals(EventType.REQ_IN, requestIn.getType());
         assertEquals(StandardCharsets.UTF_8.name(), requestIn.getEncoding());
         assertNotNull(requestIn.getExchangeId());
