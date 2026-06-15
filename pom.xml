@@ -55,7 +55,7 @@
 		<aalto.version>1.4.0</aalto.version>
 		<xerces.version>2.12.2</xerces.version>
 		<stax2-api.version>4.3.0</stax2-api.version>
-		<cxf.version>4.2.1</cxf.version>
+		<cxf.version>4.2.2</cxf.version>
 		<osgi-core.version>6.0.0</osgi-core.version>
 		<osgi-compendium.version>5.0.0</osgi-compendium.version>
 		<spring.boot.version>3.5.6</spring.boot.version>
