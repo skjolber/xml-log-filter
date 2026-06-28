@@ -58,7 +58,7 @@
 		<cxf.version>4.2.2</cxf.version>
 		<osgi-core.version>6.0.0</osgi-core.version>
 		<osgi-compendium.version>5.0.0</osgi-compendium.version>
-		<spring.boot.version>3.5.6</spring.boot.version>
+		<spring.boot.version>4.1.0</spring.boot.version>
 		<rome.version>2.1.0</rome.version>
 		<jmh.version>1.37</jmh.version>
 		<disruptor.version>4.0.0</disruptor.version>
