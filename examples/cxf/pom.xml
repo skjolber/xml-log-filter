@@ -20,7 +20,7 @@
 		<java.version>21</java.version>
 		<cxf.version>4.2.3</cxf.version>
 		<commons-io.version>2.22.0</commons-io.version>
-		<build-helper-maven-plugin.version>3.6.1</build-helper-maven-plugin.version>
+		<build-helper-maven-plugin.version>3.6.2</build-helper-maven-plugin.version>
 	</properties>
 
 	<dependencies>
