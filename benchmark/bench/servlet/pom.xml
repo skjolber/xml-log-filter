@@ -19,7 +19,7 @@
 		<java.version>21</java.version>
 		<cxf.version>4.2.3</cxf.version>
 		<aalto.version>1.4.0</aalto.version>
-		<stax2-api.version>4.3.0</stax2-api.version>
+		<stax2-api.version>4.3.2</stax2-api.version>
 		<disruptor.version>4.0.0</disruptor.version>
 		<commons-io.version>2.22.0</commons-io.version>
 	</properties>
