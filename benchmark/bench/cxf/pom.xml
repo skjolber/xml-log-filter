@@ -20,7 +20,7 @@
 		<java.version>21</java.version>
 		<cxf.version>4.2.3</cxf.version>
 		<aalto.version>1.4.0</aalto.version>
-		<stax2-api.version>4.3.0</stax2-api.version>
+		<stax2-api.version>4.3.2</stax2-api.version>
 		<build-helper-maven-plugin.version>3.6.2</build-helper-maven-plugin.version>
 	</properties>
 
